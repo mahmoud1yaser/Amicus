@@ -1,0 +1,224 @@
+<!-------------------------------------- Template start ---------------------------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../static/css/patientStyle.css">
+
+	<title>Profile</title>
+</head>
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			
+			<i class='bx bxs-user-circle'></i>
+			<span class="text" >User_name </span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="#">
+					<i class='bx bxs-home-heart' ></i>
+					<span class="text">Home</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="profile.html">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Profile</span>
+				</a>
+			</li>
+			<li>
+				<a href="Booking.html">
+					<i class='bx bxs-bookmark-plus' ></i>
+					<span class="text">Book Appointment</span>
+				</a>
+			</li>
+			<li>
+				<a href="https://calendar.google.com/calendar" target="_blank">
+					<i class='bx bxs-calendar' ></i>
+					<span class="text">Reserved Appointments</span>
+				</a>
+			</li>
+			<li>
+				<a href="contact.html">
+					<i class='bx bxs-message-rounded' ></i>
+					<span class="text">Contact your Doctor</span>
+				</a>
+			</li>
+			
+			<li>
+				<a href="scans.html">
+					<i class='bx bxs-file-find' ></i>
+					<span class="text">Your Scans</span>
+				</a>
+			</li>
+			<li>
+				<a href="p_edit.html">
+					<i class='bx bxs-pencil' ></i>
+					<span class="text">Edit Profile</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<h3>website name</h3>
+			<form action="#">
+				<div class="form-input">
+					
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			
+			<a href="#" class="profile">
+				<img src="../static/img/people.png">
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+						<!-------------------------------------- Template end ---------------------------->
+		<!-- MAIN -->
+		<main>
+		
+			<div class="head-title">
+				<div class="left">
+					<h2>Personal information</h2>
+				
+				</div>
+				
+			</div>
+			<ul class="box-info">
+				<li>
+					<i class='bx bxs-id-card' ></i>
+					<span class="text">
+						<h4>ID</h4>
+					<label for="id">p_id</label>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-message-alt-detail' ></i>
+					<span class="text">
+						<h4>E-mail</h4>
+						<label for="e_mail">p_e_mail</label>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-phone-call' ></i>
+					<span class="text">
+						<h4>Phone number</h4>
+						<label for="phone">p_number</label>
+					</span>
+				</li>
+			</ul>
+
+			<div class="head-title">
+				<div class="left">
+					<br> <span><h2>  Medical information</h2></span>
+				
+				</div>
+				
+			</div>
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<span><h3>Medical Record</h3></span>
+						
+					</div>
+					
+					<div>
+						<br><h2> <span>Diagnosis</span> </h2>
+						<label for="di"> write diagnosis here</label>
+					</div>
+					<div>
+						<br><h2> <span>Medical History</span></h2>
+						<label for="di"> write  here</label>
+					</div>
+					<div>
+						<br><h2><span>Restricted Drugs</span></h2>
+						<label for="di"> write diagnosis here</label>
+					</div>
+				</div>
+				<div class="todo">
+					<div class="head">
+						<span><h3>Prescription</h3></span>
+						
+					</div>
+					
+					<br><button type="button" class="collapsible">Prescription 1 </button>
+               		<div class="content">
+						<div>
+							<br><h3> <span>Doctor name</span> </h3>
+							<label for="di"> write here</label>
+						</div>
+						<div>
+							<br><h3> <span>Date</span></h3>
+							<label for="di"> write  here</label>
+						</div>
+						<div>
+							<br><h3><span>Medicine</span></h3>
+							<label for="di"> write  here</label>
+						</div>
+					</div>
+					<button type="button" class="collapsible">Prescription 2</button>
+               		<div class="content">
+						<div>
+							<br><h3> <span>Doctor name</span> </h3>
+							<label for="di"> write here</label>
+						</div>
+						<div>
+							<br><h3> <span>Date</span></h3>
+							<label for="di"> write  here</label>
+						</div>
+						<div>
+							<br><h3><span>Medicine</span></h3>
+							<label for="di"> write  here</label>
+						</div>
+					</div>
+					<button type="button" class="collapsible">prescription 3</button>
+               		<div class="content">
+						<div>
+							<br><h3> <span>Doctor name</span> </h3>
+							<label for="di"> write here</label>
+						</div>
+						<div>
+							<br><h3> <span>Date</span></h3>
+							<label for="di"> write  here</label>
+						</div>
+						<div>
+							<br><h3><span>Medicine</span></h3>
+							<label for="di"> write  here</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script src="../static/js/script.js"></script>
+</body>
+</html>
