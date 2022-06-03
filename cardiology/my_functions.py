@@ -2,6 +2,7 @@ import datetime
 from cardiology.models import Appointments
 import os
 import secrets
+import re
 
 def parse_time(day, time):
     
@@ -44,4 +45,6 @@ def save_picture(form_picture, folder_name):
     return picture_path
 
 
+
+# def sorting_appointments(appontments):
 
