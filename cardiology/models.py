@@ -87,6 +87,7 @@ class Prescription(db.Model):
     d_name = db.Column(db.String(), db.ForeignKey('doctors.d_name')) 
     diagnosis = db.Column(db.String(), nullable=False)
     drugs = db.Column(db.String(), nullable=False)
+    pres_date = db.Column(db.Date())
 
 
 class Scans(db.Model):

@@ -2,8 +2,8 @@ from flask import render_template, redirect, url_for, request, flash, Markup
 from flask_sqlalchemy import SQLAlchemy
 from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_records, p_Messages, Scans, Prescription
 from cardiology import app, db, doctor
-from datetime import datetime, timedelta, now
-from my_functions import parse_time, generate_gcalendar_link, availabe_appointments, save_picture
+from datetime import datetime, timedelta
+from cardiology.my_functions import parse_time, generate_gcalendar_link, availabe_appointments, save_picture
 
 
 # ---------------------------------
@@ -17,10 +17,12 @@ medicl_record = 0
 
 @app.route('/PatientProfile')
 def p_profile():
+    i=1
     MR = Medical_records.query.filter_by(p_id=p_user.p_id).first()
     PRs = Medical_records.query.filter_by(p_id=p_user.p_id).all()
+    appoints = Appointments.query.filter_by(p_id=p_user.p_id).all()
     PRs.reverse()
-    return render_template('.html', user=p_user, medicl_record=MR, perscriptions=PRs)
+    return render_template('patient_profile.html', user=p_user, MR=MR, PRs=PRs, appoints=appoints, i=i)
 
 
 
@@ -33,7 +35,7 @@ def book_appointment():
         day = request.form['day']
         redirect(url_for('doc_appointments'))
 
-    return render_template('.html', user=p_user, doctors=doctors)
+    return render_template('Booking.html', user=p_user, doctors=doctors)
 
 
 
@@ -72,7 +74,7 @@ def contact_page():
         flash('Message is sent successfully')
 
     
-    return render_template('.html', user=p_user, doctors=doctors)
+    return render_template('contact.html', user=p_user, doctors=doctors)
 
 
 
@@ -87,7 +89,7 @@ def scans_page():
         flash('Your scan is uploaded')
 
     patient_scans = Scans.query.filter_by(p_id=p_user.p_id).all
-    return render_template('.html', user=p_user, scans=patient_scans)
+    return render_template('scans.html', user=p_user, scans=patient_scans)
 
 
 # needs validation
@@ -103,5 +105,5 @@ def edit_patient():
         p_user.p_photo = save_picture(request.files['photo'], 'profile_pics')
         flash('profile is updated successfully')
 
-    return render_template('.html', user=p_user)
+    return render_template('p_edit.html', user=p_user)
          
