@@ -25,6 +25,8 @@ const container = document.querySelector(".container"),
         })
     })
 
+birthdate.max = new Date().toISOString().split("T")[0];
+
     // // js code to appear signup and login form
     // signUp.addEventListener("click", ( )=>{
     //     container.classList.add("active");
