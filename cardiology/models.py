@@ -14,7 +14,7 @@ class Doctors(db.Model):
     d_salary = db.Column(db.Float())
     d_workperiod = db.Column(db.String())
     d_position = db.Column(db.String())
-    d_photo = db.Column(db.String())
+    d_photo = db.Column(db.String(), default='../static/images/profile.png')
 
 
 
@@ -25,7 +25,7 @@ class Admins(db.Model):
     a_password = db.Column(db.String(length=60), nullable=False)
     a_name = db.Column(db.String(), nullable=False)
     a_email = db.Column(db.String(length=50), nullable=False, unique=True)
-    a_photo = db.Column(db.String())
+    a_photo = db.Column(db.String(), default='../static/images/profile.png')
 
 
 
@@ -39,7 +39,7 @@ class Patients(db.Model):
     p_phone = db.Column(db.String(length=11), nullable=False)
     p_birth_date = db.Column(db.Date(), nullable=False)
     p_sex = db.Column(db.String(), nullable=False)
-    p_photo = db.Column(db.String())
+    p_photo = db.Column(db.String(), default='../static/images/profile.png')
 
 
 class Appointments(db.Model):
