@@ -181,8 +181,24 @@ body {
 }
 
 
+#btn5{
+	width: 7rem;
+	margin-top:9.75rem;
 
+}
+#btn6{
+	width:4rem;
+	margin-bottom: 1rem;
+    margin-left: 12rem;
+	background-color: var(--light);
+	color: darkgreen;
+	font-size:x-large ;
 
+   
+}
+#btn6:hover{
+	border-color: var(--light);
+}
 /* NAVBAR */
 #brand{
 	color: var(--dark);
