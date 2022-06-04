@@ -1,0 +1,89 @@
+
+			
+		
+
+		{% extends 'Ptemplate.html' %}
+		{% block content %}
+		
+		<title>Contact</title>
+			
+		
+		<div class="head-title">
+			<div class="left">
+							
+			</div>
+			
+		</div>
+		<div class="table-data">
+			<div class="order">
+
+				<div>
+					
+				   
+						
+						
+						  <div id="container">
+						   
+							<div id="body_header">
+							  
+							  <h1 id="he">Contact your Doctor</h1>
+							 
+						
+							</div>
+							<div class="form_1">
+							<form action="{{url_for('contact_page')}}" method="POST" id="contact"  class='input'>
+							  <fieldset>
+								<legend><span class="number">1</span>Select  Doctor</legend>
+								<br>
+							 <div>  
+							   <div class="select" id="hf">
+								 <select  name="doctor" id="doctors"  >
+									<option selected disabled >Select doctor</option>
+									{% for doctor in doctors %}
+									<option value="{{doctor.d_id}}">{{doctor.d_name}}</option>
+									{% endfor %}
+								 </select>
+							   </div>
+							     <br><span></span>
+							</div>   
+							  </fieldset>
+							  
+						
+							  <fieldset>
+								<legend><span class="number">2</span>Your Message</legend>
+									<br>
+							  
+							  <div>
+		  
+									<textarea id="Message"  class="message"rows="15" cols="50" name="Message"> </textarea>
+									
+								  
+									
+							
+								 <br><span></span>
+							 </div>
+							</fieldset> 
+							
+							  <button type="submit" class="btn"id="btn2">Send</button>
+							</form>
+						  </div>
+						  
+					   </div>
+					  
+					</div>
+
+			</div>
+			
+		</div>
+		
+	
+			
+		
+		<script src="../static/js/contact.js"></script>
+		{% endblock %}
+				
+		
+					
+			
+
+			

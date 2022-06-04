@@ -1,0 +1,2 @@
+global userType
+userType = "Patient"
