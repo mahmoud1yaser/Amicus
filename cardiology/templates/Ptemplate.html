@@ -6,11 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- Boxicons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../static/css/patientStyle.css">
 
-	<title>Scans</title>
+
 </head>
 <body>
 
@@ -20,7 +21,7 @@
 		<a href="#" class="brand">
 			
 			<i class='bx bxs-user-circle'></i>
-			<span class="text" >User_name </span>
+			<span class="text" >{{user.p_name}} </span>
 		</a>
 		<ul class="side-menu top">
 			<li>
@@ -30,41 +31,38 @@
 				</a>
 			</li>
 			<li class="active">
-				<a href="profile.html">
+				<a href="{{url_for('p_profile')}}">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Profile</span>
 				</a>
 			</li>
-            <li>
-				<a href="Booking.html">
+			<li >
+				<a href="{{url_for('book_appointment')}}">
 					<i class='bx bxs-bookmark-plus' ></i>
 					<span class="text">Book Appointment</span>
 				</a>
 			</li>
-            <li>
+			<li>
 				<a href="https://calendar.google.com/calendar" target="_blank">
 					<i class='bx bxs-calendar' ></i>
 					<span class="text">Reserved Appointments</span>
 				</a>
 			</li>
-           
-            <li>
-				<a href="contact.html" >
+			<li>
+				<a href="{{url_for('contact_page')}}">
 					<i class='bx bxs-message-rounded' ></i>
 					<span class="text">Contact your Doctor</span>
 				</a>
 			</li>
-		
-		
 			
 			<li>
-				<a href="scans.html">
+				<a href="{{url_for('scans_page')}}">
 					<i class='bx bxs-file-find' ></i>
 					<span class="text">Your Scans</span>
 				</a>
 			</li>
 			<li>
-				<a href="p_edit.html">
+				<a href="{{url_for('edit_patient')}}">
 					<i class='bx bxs-pencil' ></i>
 					<span class="text">Edit Profile</span>
 				</a>
@@ -86,7 +84,7 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<h3>website name</h3>
+			<span id="brand"><h3>Website Name</h3></span>
 			<form action="#">
 				<div class="form-input">
 					
@@ -95,10 +93,16 @@
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
-			
+			{% if user.p_photo==None %}
 			<a href="#" class="profile">
-				<img src="../static/img/people.png">
+				<img src="../static/img/profile.png">
 			</a>
+			{% else %} 
+			<a> href="#" class="profile">
+				<img src="{{user.p_photo}}">
+			</a>
+			{% endif %}
+
 		</nav>
 		<!-- NAVBAR -->
 						<!-------------------------------------- Template end ---------------------------->
@@ -106,48 +110,22 @@
 		<main>
 		
 		
-
-			<div class="head-title">
+			  
+			  
+			  
+            {% block content %}
+            <!-- =========== Body =========  -->
+           {% endblock %}
+       
+	
 			
-			</div>
-			<div class="table-data">
-				
-				<div class="todo">
-					<div class="head">
-                    
-						<h3>Your Scans</h3> 
-						
-					</div>
-					
-					<br><button type="button" class="collapsible">Scan 1</button>
-               		<div class="content">
-						<img src="../static/img/scanjpg.jpg" alt="">
-						
-					</div>
-					<button type="button" class="collapsible">Scan 2</button>
-               		<div class="content">
-						<img src="../static/img/scanjpg.jpg" alt="">
-					</div>
-					<button type="button" class="collapsible">Scan 3</button>
-               		<div class="content">
-                        
-						<img src="../static/img/scanjpg.jpg" alt="">
-					</div>
-                    <!-- upload button -->
-                    <div class="upload-btn-wrapper">
-                        <button class="btn">Upload new scan
-                            <input type="file" name="myfile" />
-                        </button>
-                      </div>
-                    
-				</div>
-			</div>
+		
 		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
 	
 
-	<script src="../static/js/script.js"></script>
+	<script src="../static/js/script1.js"></script>
 </body>
 </html>

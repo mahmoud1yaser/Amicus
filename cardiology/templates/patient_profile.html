@@ -1,0 +1,189 @@
+{% extends 'Ptemplate.html' %}
+{% block content %}
+<!-------------------------------------- Template start ---------------------------->
+
+		
+<title>Profile</title>
+			<div class="table-data">
+				<div class="card1" >
+				  <div>
+				{% if user.p_photo==None %}
+				  <img
+					src="../static/img/profile.png"
+					alt="profile-pic"
+					class="profile"
+				  />
+				 {% else %} 
+				 <img
+					src="{{user.p_photo}}"
+					alt="profile-pic"
+					class="profile"/>
+				{% endif %}
+				 <span>{{user.p_name}}</span>
+	  
+				</div>
+			  </div>
+			  
+			  <div class="card2">
+				<h1 class="Info_Doc" style="text-align: left">
+				  Personal Information
+				</h1>
+				
+			   
+				<div class="Information">
+					
+					
+				  <div class="min-info" >
+	  
+					<div class="icon-info icon-1">
+					  <i class="fa-solid fa-id-card"></i>
+				  </div>
+				  <div>
+					<h2>ID</h2>
+					<label for="ID">{{user.p_id}}</label>
+				  </div>
+				</div>
+				  <div class="min-info" >
+	  
+					<div class="icon-info icon-2">
+					  <i class="fa-solid fa-envelope"></i>
+				  </div>
+				  <div>
+					<h2>E-mail</h2>
+					<label for="E-mail">{{user.p_email}}</label>
+				  </div>
+				</div>
+				  <!-- <br /> -->
+				  <div class="min-info" >
+	  
+					<div class="icon-info icon-3">
+					  <i class="fa-solid fa-phone"></i>
+				  </div>
+				  <div>
+					<h2>Phone Number</h2>
+					<label for="Phone-Number">{{user.p_phone}}</label>
+				  </div>
+				</div>
+				  
+	  
+				</div>
+			  </div>
+			  <div class="card2">
+				<h1 class="Info_Doc" style="text-align: left">
+				  Next Appointments
+				</h1>
+				{% if appoints==[] %}
+				<div class="Information">
+				  	
+					<div class="min-info" >
+	
+						<div class="icon-info icon-2">
+						  <i class="fa-solid fa-clock"></i>
+					  </div>
+					
+					  <div>
+						<h2>No appointment reseved</h2>
+						
+					  </div>
+					</div>
+				{% else %}
+				{% for appoint in appoints %}
+				<div class="Information">
+				  	
+					<div class="min-info" >
+	
+						<div class="icon-info icon-2">
+						  <i class="fa-solid fa-clock"></i>
+					  </div>
+					
+					  <div>
+						<h2>Appointment {{i}}</h2>
+						<label for="Working period">{{appoint.date}} {{appoint.Time}}</label>
+					  </div>
+					</div>
+					{% set i=i+1 %}
+					{% endfor %}
+					{% endif %}
+				</div>
+				  <!-- <br /> -->
+				  
+				  
+	
+				</div>
+			  </div>
+			</div>
+			<div class="head-title">
+				<div class="left">
+					<span id="brand" ><h2>Medical Information</h2></span>
+				
+				</div>
+				
+			</div>
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<span><h3>Medical Record</h3></span>
+						
+					</div>
+					{% if MR.diseases_history==Null %}
+					<div>
+						<br><h2> <span>Medical History</span></h2>
+						<label for="di">No Medical History</label>
+					</div>
+					
+					{% else %}
+					<div>
+						<br><h2> <span>Medical History</span></h2>
+						<label for="di">{{MR.diseases_history}}</label>
+					</div>
+					{% endif %}
+					{% if MR.restricted_drugs==Null %}
+					<div>
+						<br><h2><span>Restricted Drugs</span></h2>
+						<label for="di">No Restricted Drugs</label>
+					</div>
+					{% else %}
+					<div>
+						<br><h2><span>Restricted Drugs</span></h2>
+						<label for="di">{{MR.restricted_drugs}}</label>
+					</div>
+					{% endif %}
+				</div>
+				<div class="todo">
+					<div class="head">
+						<span><h3>Prescription</h3></span>
+						
+					</div>
+					{% if PRs==[] %}
+					<br><h3> <span>No prescriptions to display</span> </h3>
+					{% else %}
+					{% for pr in PRs %}
+					<br><button type="button" class="collapsible">Prescription 1 </button>
+               		<div class="content">
+						<div>
+							<br><h3> <span>Doctor name</span> </h3>
+							<label for="di">{{pr.d_name}}</label>
+						</div>
+						<div>
+							<br><h3> <span>Date</span></h3>
+							<label for="di">{{pr.pres_date}}</label>
+						</div>
+						<div>
+							<br><h3><span>Diagnosis</span></h3>
+							<label for="di">{{pr.diagnosis}}</label>
+						</div>
+						<div>
+							<br><h3><span>Medicine</span></h3>
+							<label for="di">{{pr.drugs}}</label>
+						</div>
+					</div>
+					{% endfor %}
+					{% endif %}
+					</div>
+				</div>
+			</div>
+	
+	
+
+
+{% endblock %}
