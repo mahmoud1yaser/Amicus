@@ -6,6 +6,11 @@ from cardiology.forms import RegisterForm, LoginForm
 from flask_login import login_user, logout_user, login_required
 
 
+@app.route('/')
+def home_page():
+    return render_template('home.html')
+
+
 @app.route('/signup', methods=['GET', 'POST'])
 def register_page():
     form = RegisterForm()

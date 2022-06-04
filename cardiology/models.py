@@ -40,6 +40,19 @@ class Doctors(db.Model, UserMixin):
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.d_password, attempted_password)
 
+    def get_id(self):
+        return self.d_id
+
+    @property
+    def password(self):
+        return self.password
+
+    @password.setter
+    def password(self, plain_text_password):
+        self.d_password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
+
+    def check_password_correction(self, attempted_password):
+        return bcrypt.check_password_hash(self.d_password, attempted_password)
 
 class Admins(db.Model, UserMixin):
     a_id = db.Column(db.Integer(), primary_key=True)
@@ -63,6 +76,19 @@ class Admins(db.Model, UserMixin):
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.a_password, attempted_password)
 
+    def get_id(self):
+        return self.a_id
+
+    @property
+    def password(self):
+        return self.password
+
+    @password.setter
+    def password(self, plain_text_password):
+        self.a_password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
+
+    def check_password_correction(self, attempted_password):
+        return bcrypt.check_password_hash(self.a_password, attempted_password)
 
 class Patients(db.Model, UserMixin):
     p_id = db.Column(db.Integer(), primary_key=True)
@@ -74,6 +100,20 @@ class Patients(db.Model, UserMixin):
     p_birth_date = db.Column(db.Date(), nullable=False)
     p_sex = db.Column(db.String(), nullable=False)
     p_photo = db.Column(db.String())
+
+    def get_id(self):
+        return self.p_id
+
+    @property
+    def password(self):
+        return self.password
+
+    @password.setter
+    def password(self, plain_text_password):
+        self.p_password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
+
+    def check_password_correction(self, attempted_password):
+        return bcrypt.check_password_hash(self.p_password, attempted_password)
 
     def get_id(self):
         return self.p_id
