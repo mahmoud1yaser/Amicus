@@ -14,7 +14,6 @@ form.addEventListener('submit',(event)=>{
   })
 function validateForm(){
   var flag = false;
-  try{
   if(doctors.value=='Select your doctor'){
     setError(doctorInput,"Please select your doctor");
     flag = true;
@@ -22,11 +21,11 @@ function validateForm(){
   else{
     clearerror(doctorInput);
     
-  }}
+  }
   
   
   
-  catch{
+
     if(day.value.trim()==''){
       setError(day,"Select day");
       flag = true;
@@ -35,9 +34,9 @@ function validateForm(){
       clearerror(day);
       
     }
-  } return flag;
+   return flag;
 
-}
+  }
 
 
 
