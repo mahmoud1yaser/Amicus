@@ -99,7 +99,11 @@ def edit_patient():
 
     if request.method == 'POST':
 
+        
+        
+        
         p_user.p_username = request.form['username']
+
         p_user.p_passward = request.form['passward']
         p_user.p_email = request.form['email']
         p_user.p_phone = request.form['passward']
