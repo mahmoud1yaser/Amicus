@@ -30,6 +30,7 @@ li {
 	--orange: #FD7238;
 	--light-orange: #FFE0D3;
 	--close: darkred;
+	--black:rgba(8, 8, 8, 0.103);
 }
 
 html {
@@ -42,7 +43,7 @@ body.dark {
 	--grey: #060714;
 	--dark: #FBFBFB;
 	--close: #fff;
-	
+	--black: #3C91E6;
 }
 
 body {
@@ -185,6 +186,9 @@ body {
 /* NAVBAR */
 #brand{
 	color: var(--dark);
+}
+#scan{
+	color:var(--black)
 }
 #content nav {
 	height: 56px;
@@ -729,10 +733,16 @@ label.light {
 	border-color: black;
  } 
 #btn2{
-	margin-left: 7rem;
+	margin-left: 7.5rem;
 	
 	width: 12rem;
 }
+#btn4{
+	margin-left: 27rem;
+	
+	width: 12rem;
+}
+
 
 
 @media screen and (max-width: 768px) {

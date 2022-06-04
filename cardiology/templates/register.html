@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="../static/css/style.css">
-         
+
     <title>Register Page</title>
 </head>
 <body>
@@ -15,84 +15,79 @@
             <div class="form register">
                 <span class="title">Register</span>
 
-                <form action="#">
+                <form method="POST" class="form-register" action="signup">
+                    {{ form.hidden_tag() }}
+
                     <div class="main-inp">
                         <div class="dob-inp">
                    <div class="input-field">
-            
-            <input type="text" placeholder="Enter your Full Name" name="Name"required>
-            <i class="uil uil-chat-bubble-user"></i>
+
+            {{ form.fullname(class="form-control", placeholder="Enter your Full Name") }}            <i class="uil uil-chat-bubble-user"></i>
           </div>
           <div class="input-field">
-            
-            <input type="text" placeholder="Username" name="Username" required>
-             <i class="uil uil-postcard"></i>
+
+            {{ form.username(class="form-control", placeholder="Username") }}             <i class="uil uil-postcard"></i>
           </div>
         </div>
         <div class="dob-inp">
           <div class="input-field">
-            
-            <input type="text" placeholder="E-mail" name="Email" required>
-            <i class="uil uil-envelope icon"></i>
+
+            {{ form.email(class="form-control", placeholder="E-mail") }}            <i class="uil uil-envelope icon"></i>
           </div>
           <div class="input-field">
-            
-            <input type="text" placeholder="Phone Number" name="Phone" required>
-            <i class="uil uil-phone"></i>
+
+            {{ form.phone(class="form-control", placeholder="Phone Number") }}            <i class="uil uil-phone"></i>
           </div>
         </div>
         <div class="dob-inp">
           <div class="input-field">
-           
-            <input type="text" placeholder="Enter your password" name="Password" required>
-             <i class="uil uil-lock icon"></i>
+
+            {{ form.password(class="form-control", placeholder="Enter your password") }}             <i class="uil uil-lock icon"></i>
           </div>
           <div class="input-field">
-           
-            <input type="text" placeholder="Confirm your password" name="Password" required>
-            <i class="uil uil-key-skeleton-alt"></i>
+
+            {{ form.confirm_password(class="form-control", placeholder="Confirm your password") }}            <i class="uil uil-key-skeleton-alt"></i>
           </div>
         </div>
         <div class="dob-inp">
             <div class="input-field " name="Birthdate">
-            
+
                 <span>Birthdate</span>
             </div>
             <div class="input-field" name="Sex">
                 <span>Sex</span>
-                  
+
             </div>
           </div>
         <div class="dob-inp">
             <div class="input-field ">
-            
-              <input type="date"  required>
-            </div>
-            <div class="input-field">
-             
-                <div class="gender-details">
 
-                    <div>
-                    <input type="radio" id="male" name="gender" value="male">
-                    <label for="male">Male</label>
-                </div>
-                <div>
-                    <input type="radio" id="female" name="gender" value="female">
-                    <label for="css">Female</label>
-                </div>
-                  </div>
+            {{ form.birthdate(class="form-control", onkeydown="return false")}}            </div>
+            <div class="input-field">
+
+            <div class="gender-details">
+            {{ form.sex(class="form-control", style="list-style:none") }}
+            </div>
+
             </div>
           </div>
           <div class="input-field button">
-            <input type="submit" value="Register" name="Register">
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
         </div>
-        
+
         </div>
         </form>
-     </div>
+
+                <div class="login-signup">
+                    <span class="text">Already have an account?
+                        <a href= {{ url_for('login_page') }} class="text signup-link"> Signin now</a>
+                    </span>
+                </div>
+
+            </div>
     </div>
     </div>
-    
+
 
     <script src="../static/js/script.js"></script>
 

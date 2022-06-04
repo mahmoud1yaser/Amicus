@@ -30,7 +30,7 @@
 						 
 					
 						</div>
-						<form action="Booking.html" method="post" id="book" class="input-group">
+						<form action="{{url_for('doc_appointments')}}" method="post" id="book" class="input-group">
 						  <fieldset>
 							<legend><span class="number">3</span>Select Time</legend>
 							<br>
@@ -38,27 +38,20 @@
 						   <div class="select" id="df">
 							<select id="Time" name="Time" >
 								<option selected disabled >Select Time</option>
-								<option value="9-00">9:00 am</option>
-								<option value="9-30">9:30 am</option>
-								<option value="10-00">10:00 am </option>
-								<option value="10-30">10:30 am </option>
-								<option value="11-00">11:00 am</option>
-								<option value="11-30">11:30 am</option>
-								<option value="12-00">12:00 pm</option>
-								<option value="12-30">12:30 pm</option>
-								<option value="1-00">1:00 pm</option>
-								<option value="1-30">1:30 pm</option>
+								{% for t in time %} 
+								<option value="{{t}}">{{t}}</option>
+								{% endfor %}
 							</select>
-						</div>
-					  <br>  <span></span>
-					 </div>   
-					   </fieldset>
+						   </div>
+						   <span></span>
+						</div>   
+						  </fieldset>
 						
 					   
 						  <button type="submit" class="btn button2">Book</button>
 						</form>
 					  </div>
-					  <a href="Booking.html" class=" btn btn3" id="hh" > ❮ Back </a>
+					  <a href="{{url_for('book_appointment')}}" class=" btn btn3" id="hh" > ❮ Back </a>
 					
 					</html>
 				</div>

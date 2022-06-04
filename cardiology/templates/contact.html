@@ -31,7 +31,7 @@
 						
 							</div>
 							<div class="form_1">
-							<form action="" method="POST" id="contact"  class='input'>
+							<form action="{{url_for('contact_page')}}" method="POST" id="contact"  class='input'>
 							  <fieldset>
 								<legend><span class="number">1</span>Select  Doctor</legend>
 								<br>
@@ -39,9 +39,9 @@
 							   <div class="select" id="hf">
 								 <select  name="doctor" id="doctors"  >
 									<option selected disabled >Select doctor</option>
-									<option value="doctor1">doctor1</option>
-									<option value="doctor2">doctor2</option>
-									<option value="doctor3">doctor3</option>
+									{% for doctor in doctors %}
+									<option value="{{doctor.d_id}}">{{doctor.d_name}}</option>
+									{% endfor %}
 								 </select>
 							   </div>
 							     <br><span></span>

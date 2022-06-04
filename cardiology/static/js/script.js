@@ -24,7 +24,17 @@ const container = document.querySelector(".container"),
             }) 
         })
     })
-// input date validation
+
+birthdate.max = new Date().toISOString().split("T")[0];
+
+    // // js code to appear signup and login form
+    // signUp.addEventListener("click", ( )=>{
+    //     container.classList.add("active");
+    // });
+    // login.addEventListener("click", ( )=>{
+    //     container.classList.remove("active");
+    // });
+    // input date validation
 var DOB=document.querySelector('#day')
 var date=new Date()
 var tdate=date.getDate()
@@ -39,11 +49,3 @@ if(month<10){
 var year=date.getUTCFullYear()
 var curdate=year+"-"+month+"-"+tdate
 DOB.max=curdate
-
-    // // js code to appear signup and login form
-    // signUp.addEventListener("click", ( )=>{
-    //     container.classList.add("active");
-    // });
-    // login.addEventListener("click", ( )=>{
-    //     container.classList.remove("active");
-    // });

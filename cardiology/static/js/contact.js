@@ -11,7 +11,7 @@ form_2.addEventListener('submit',(event)=>{
   })
 function validateForm_2(){
   var flag = false;
- 
+  
   if(doctor.value=='Select doctor'){
     setError(Input,"Please select your doctor");
     flag = true;
@@ -32,9 +32,10 @@ function validateForm_2(){
       clearerror(messageInput);
       
     }
-  return flag;
+   return flag;
+  }
 
-}
+
 
 
 

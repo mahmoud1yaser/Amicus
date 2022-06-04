@@ -28,7 +28,7 @@
                                  
                             
                                 </div>
-                                <form action="" method="post" id="book"  class='input-group-register'>
+                                <form action="{{url_for('book_appointment')}}" method="post" id="book"  class='input-group-register'>
                                   <fieldset>
                                     <legend><span class="number" >1</span >Select your Doctor</legend>
                                     <br>
@@ -37,12 +37,12 @@
                                    <div class="select" id="hf">
                                     <select id="doctors" name="doctors" >
                                         <option selected disabled >Select your doctor</option>
-                                        <option value="doctor1">doctor1</option>
-                                        <option value="doctor2">doctor2</option>
-                                        <option value="doctor3">doctor3</option>
+                                        {% for doctor in doctors %}
+                                        <option value="{{doctor.d_id}}">{{doctor.d_name}}</option>
+                                        {% endfor %}
                                     </select>
                                    </div>
-							                        <span></span>
+							<span></span>
                                 </div>   
                                   </fieldset>
                             

@@ -7,20 +7,12 @@
 			<div class="table-data">
 				<div class="card1" >
 				  <div>
-				{% if user.p_photo==None %}
-				  <img
-					src="../static/images/profile.png"
-					alt="profile-pic"
-					class="profile"
-				  />
-				 {% else %} 
 				 <img
 					src="{{user.p_photo}}"
 					alt="profile-pic"
 					class="profile"/>
-				{% endif %}
 				 <span>{{user.p_name}}</span>
-	  
+				
 				</div>
 			  </div>
 			  
@@ -97,11 +89,11 @@
 					  </div>
 					
 					  <div>
-						<h2>Appointment {{i}}</h2>
+						<h2>Appointment {{loop.index}}</h2>
 						<label for="Working period">{{appoint.date}} {{appoint.Time}}</label>
 					  </div>
 					</div>
-					{% set i=i+1 %}
+					
 					{% endfor %}
 					{% endif %}
 				</div>
@@ -114,6 +106,7 @@
 			</div>
 			<div class="head-title">
 				<div class="left">
+					<br>
 					<span id="brand" ><h2>Medical Information</h2></span>
 				
 				</div>
