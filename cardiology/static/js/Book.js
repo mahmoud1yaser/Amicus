@@ -14,7 +14,7 @@ form.addEventListener('submit',(event)=>{
   })
 function validateForm(){
   var flag = false;
-  try{
+ 
   if(doctors.value=='Select your doctor'){
     setError(doctorInput,"Please select your doctor");
     flag = true;
@@ -22,11 +22,11 @@ function validateForm(){
   else{
     clearerror(doctorInput);
     
-  }}
+  }
   
   
   
-  catch{
+  
     if(day.value.trim()==''){
       setError(day,"Select day");
       flag = true;
@@ -35,42 +35,12 @@ function validateForm(){
       clearerror(day);
       
     }
-  } return flag;
+   return flag;
 
 }
 
 
 
-
-
-// form.addEventListener('submit',(event)=>{  
-//     event.preventDefault();
-//     validateForm();
-//    })
-
-
-//   function validateForm(){
-//   if(doctors.value=='Select your doctor'){
-//     setError(doctorInput,"Please select your doctor");
-//     // flag = true;
-//   }
-//   else{
-//     clearerror(doctorInput);
-    
-//   }
-//   if(day.value.trim()==''){
-//     setError(day,"Select a day");
-//     // flag = true;
-//   }
-//   else{
-//     clearerror(day);
-    
-//   }
-  
-// }
-
-// }
-  // }
 
 
 

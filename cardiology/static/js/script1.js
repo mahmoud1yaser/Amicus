@@ -88,3 +88,17 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 }
+
+//Edit form function 
+var editformd = document.getElementById("edit");
+function editform(){
+	editformd.style.width="100%";
+	editformd.style.height="100vh";
+}
+
+function closeform(){
+	editformd.style.width="0";
+	editformd.style.height="0";
+}
+
+//End of Edit form function

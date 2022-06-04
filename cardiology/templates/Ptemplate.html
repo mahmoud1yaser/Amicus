@@ -14,6 +14,46 @@
 
 </head>
 <body>
+	<!-- Copy this to Html file under body tag -->
+    <!-- Edit form -->
+    <div class="main-edit-form" id="edit">
+     
+        <div class="edit-form" >
+        
+          <i onclick="closeform()" class="fa-solid fa-xmark"></i>
+          <form>
+            <h1>Edit form</h1>
+            <label>New Username:</label>
+            <div>
+				<i class="fa-solid fa-id-card"></i>
+            <input type="text" placeholder="Old-User-Name">
+            </div>
+         
+			<label>New Phone Number:</label>
+            <div>
+              <i class="fa-solid fa-phone"></i>
+            <input placeholder="Old-Phone Number" type="number">
+            </div>
+            <label>New E-mail:</label>
+            <div>
+              <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="Old-Email">
+            </div>
+            <label>New Password:</label>
+            <div>
+              <i class="fa-solid fa-lock"></i>
+            <input placeholder="Enter Your New Password" type="password">
+            </div>
+            
+            <button type="submit" action="/">Submit</button>
+          </form>
+        </div>
+        
+      </div>
+      <!-- End of Edit form -->
+		
+
+			
 
 
 	<!-- SIDEBAR -->
@@ -62,11 +102,17 @@
 				</a>
 			</li>
 			<li>
+				<a href="#" onclick="editform()">
+				  <i class='bx bxs-pencil' ></i>
+				  <span class="text">Edit profile</span>
+				</a>
+			  </li>
+			<!-- <li>
 				<a href="{{url_for('edit_patient')}}">
 					<i class='bx bxs-pencil' ></i>
 					<span class="text">Edit Profile</span>
 				</a>
-			</li>
+			</li> -->
 			<li>
 				<a href="#" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
@@ -128,4 +174,6 @@
 
 	<script src="../static/js/script1.js"></script>
 </body>
+
+	
 </html>
