@@ -10,24 +10,48 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../static/css/patientStyle.css">
-
+	<link rel = "icon" href = 
+	"../static/images/logoicon.png" 
+			type = "image/x-icon">
+		
 
 </head>
 <body>
-	<!-- Copy this to Html file under body tag -->
+
+	    <!-- Loader -->
+		<div class="loader">
+			<div class="loader-inner">
+			  <div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			  </div>
+			  <div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			  </div>
+			  <div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			  </div>
+			  <div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			  </div>
+			  <div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			  </div>
+			</div>
+		  </div>
+		  <!-- End loader -->
     <!-- Edit form -->
     <div class="main-edit-form" id="edit">
      
         <div class="edit-form" >
         
           <i onclick="closeform()" class="fa-solid fa-xmark"></i>
-          <form  id="form4">
+          <form  id="form4" action="" method="post">
             <h1>Edit form</h1>
             <label>New Username:</label>
 			<div>
           
 				<i class="fa-solid fa-id-card"></i>
-            <input type="text"  id= "username"value="{{user.p_username}}" name="username" >
+            <input type="text"  id= "username" value="{{user.p_username}}" name="username" >
 			
            <span></span>
 		</div>
