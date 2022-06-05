@@ -29,6 +29,8 @@ li {
 	--light-yellow: #FFF2C6;
 	--orange: #FD7238;
 	--light-orange: #FFE0D3;
+	--close: darkred;
+	--black:rgba(8, 8, 8, 0.103);
 }
 
 html {
@@ -40,6 +42,8 @@ body.dark {
 	--light: #0C0C1E;
 	--grey: #060714;
 	--dark: #FBFBFB;
+	--close: #fff;
+	--black: #3C91E6;
 }
 
 body {
@@ -177,11 +181,30 @@ body {
 }
 
 
+#btn5{
+	width: 7rem;
+	margin-top:9.75rem;
 
+}
+#btn6{
+	width:4rem;
+	margin-bottom: 1rem;
+    margin-left: 12rem;
+	background-color: var(--light);
+	color: darkgreen;
+	font-size:x-large ;
 
+   
+}
+#btn6:hover{
+	border-color: var(--light);
+}
 /* NAVBAR */
 #brand{
 	color: var(--dark);
+}
+#scan{
+	color:var(--black)
 }
 #content nav {
 	height: 56px;
@@ -726,10 +749,16 @@ label.light {
 	border-color: black;
  } 
 #btn2{
-	margin-left: 7rem;
+	margin-left: 7.5rem;
 	
 	width: 12rem;
 }
+#btn4{
+	margin-left: 27rem;
+	
+	width: 12rem;
+}
+
 
 
 @media screen and (max-width: 768px) {
@@ -817,7 +846,7 @@ label.light {
   font-size: 17px;
   font-weight: bold;
   color:var(--blue);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   border-radius: 20px;
 }
 
@@ -992,3 +1021,117 @@ label.light {
 		grid-gap: 16px;
 		flex-wrap: wrap;
 	  }
+	  /* Edit Form */
+.main-edit-form{
+    display: block;
+    z-index: 9999;
+    position: absolute;
+    top:0;
+    left:0;
+    background-color: rgba(230,230,230,0.5);
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    transition: 1s all ease;
+  }
+  .edit-form{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 40%;
+	
+    border-radius: 20px;
+    box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
+    -webkit-box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
+    -moz-box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
+    background-color: var(--light);
+    min-height: 50vh;
+    transition: 0.5s all ease;
+    text-align: left;
+    padding: 30px 50px;
+    
+  }
+  .edit-form h1{
+    align-self: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    color:var(--dark);
+  }
+  .edit-form form{
+    position: relative;
+    text-align: left;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 25px;
+  }
+  .edit-form i{
+    position: absolute;
+    top:25px;
+    right: 25px;
+    color:var(--close);
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 999;
+  }
+  .edit-form form div {
+    position: relative;
+    align-items: center;
+    display: flex;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+  .edit-form form button {
+    margin-top: 10px;
+    text-align: center;
+    position: relative;
+    align-items: center;
+    margin-bottom: 10px;
+    width: auto;
+    padding: 10px 25px;
+    align-self: center;
+    border-radius: 20px;
+    background-color: var(--blue);
+    border: 1px solid var(--light-blue);
+    transition: 0.5s;
+    cursor: pointer;
+    font-size: 1.25rem;
+    color:black;
+  }
+  .edit-form form button:hover{
+    background-color: var(--light-blue);
+    border: 1px solid var(--blue);
+  }
+  .edit-form form div i{
+    position: absolute;
+    width: auto;
+    font-size: 20px;
+    top:auto;
+    left:0;
+    color: var(--blue);
+    z-index: -9999;
+  }
+  .edit-form form label{
+    margin-bottom: 10px;
+    font-family: "Roboto";
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color:var(--dark);
+  }
+  .edit-form div input{
+    width: 80%;
+    padding: 10px 30px;
+    outline: none;
+    background-color: transparent;
+    border-style: none none solid none;
+    border-width: 2px ;
+    border-color: var(--dark);;
+    font-size: 1.1rem;
+    color:var(--dark);
+  
+  }
+  
+  /* End of Edit form */

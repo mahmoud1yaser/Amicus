@@ -21,7 +21,8 @@
 		{% for scan in scans %}
 		<br><button type="button" class="collapsible">Scan {{loop.index}}</button>
 		   <div class="content">
-			<p>scan uploding date: {{scan.scan_date.strftime('%Y-%m-%d')}}</p>
+			<span id="scan"><h3>scan uploding date: {{scan.scan_date.strftime('%Y-%m-%d')}}</h3></span>
+			<!-- <h2>scan uploding date: {{scan.scan_date.strftime('%Y-%m-%d')}}</h2> -->
 			<img src="{{scan.scan_path}}" alt="">
 		</div>
 		
@@ -39,7 +40,7 @@
 			<br> 
 			<br> 
 			</div>	
-			<button type="submit" class="btn"id="btn2">save</button>
+			<button type="submit" class="btn"id="btn4">save</button>
 			</form>
 		  </div>
 		
