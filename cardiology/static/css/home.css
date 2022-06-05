@@ -9,8 +9,10 @@
 
 
 *{
+
   --poppins: 'Poppins', sans-serif;
 	--lato: 'Lato', sans-serif;
+
   text-decoration: none;
   outline: none;
   margin: 0; padding: 0;
@@ -544,7 +546,7 @@ header .fa-bars{
     letter-spacing: .2rem;
     opacity: .8;
     background:var(--darkblue);
-   
+
 
   }
 
@@ -603,7 +605,9 @@ header .fa-bars{
   .contact .row .contact-form-container form input, textarea{
     outline: none;
     border:.2rem solid #333;
+
     border-radius:20px ;
+
     height:4rem;
     background:#fff;
     padding:0 1rem;
@@ -622,7 +626,9 @@ header .fa-bars{
   .contact .row .contact-form-container form input[type="submit"]{
     color:var(--darkblue);
     border:.2rem solid #333;
+
     border-radius:20px ;
+
 
     cursor: pointer;
     transition: .2s;
