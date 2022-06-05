@@ -50,3 +50,4 @@ $('.doctor-slider').owlCarousel({
       }
   }
 });
+

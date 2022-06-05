@@ -89,12 +89,13 @@ header .navbar ul li{
 header .navbar ul li a{
   font-size: 2rem;
   color:var(--darkblue);
-  transition: .2s;
+
 }
 
 header .navbar ul li .active,
 header .navbar ul li a:hover{
   color:var(--blue);
+
 }
 
 header .logo{
@@ -252,7 +253,6 @@ header .fa-bars{
 
 .about .row .content{
   padding-left: 5rem;
-  
 }
 
 .about .row .content h3{
@@ -265,6 +265,7 @@ header .fa-bars{
   color:#999;
   padding:2rem 2rem;
   font-weight: bold;
+
 }
 
 .about .row .content button{
@@ -302,11 +303,12 @@ header .fa-bars{
             flex-flow: column;
     width: 100vw;
 }
-  
+
 .doctor .doctor-container {
     width: 90%;
 }
   
+
 .doctor .doctor-container .owl-nav .owl-next, .doctor .doctor-container .owl-nav .owl-prev {
     position: absolute;
     top: 50%;
@@ -318,11 +320,10 @@ header .fa-bars{
     border: none;
     outline: none;
 }
-  
+
 .doctor .doctor-container .owl-nav .owl-next {
     right: 1rem;
 }
-  
 .doctor .doctor-container .owl-nav .owl-prev {
     left: 1rem;
 }
@@ -335,25 +336,25 @@ header .fa-bars{
     border-radius: .5rem;
     position: relative;
   }
-  
+
   .doctor .doctor-container .doctor-slider .doctor-card .image {
     height: 75%;
     width: 100%;
   }
-  
+
   .doctor .doctor-container .doctor-slider .doctor-card .image img {
     height: 100%;
     width: 100%;
     -o-object-fit: cover;
        object-fit: cover;
   }
-  
+
   .doctor .doctor-container .doctor-slider .doctor-card .content {
     height: 25%;
     width: 100%;
     text-align: center;
   }
-  
+
   .doctor .doctor-container .doctor-slider .doctor-card .content h3 {
     font-size: 3rem;
     color: var(--darkblue);
@@ -361,6 +362,7 @@ header .fa-bars{
   }
   
   
+
   .doctor .doctor-container .doctor-slider .doctor-card .info {
     position: absolute;
     top: 0;
@@ -386,25 +388,26 @@ header .fa-bars{
     -webkit-transform: scale(0);
             transform: scale(0);
   }
-  
+
   .doctor .doctor-container .doctor-slider .doctor-card .info h4 {
     font-size: 4rem;
     color: #fff;
   }
-  
+
   .doctor .doctor-container .doctor-slider .doctor-card .info p {
     font-size: 1.2rem;
     padding: 1rem 2rem;
     color: #ccc;
     text-align: center;
   }
-  
+
 
   
   .doctor .doctor-container .doctor-slider .doctor-card .info .share {
     margin-top: 4rem;
   }
   
+
   .doctor .doctor-container .doctor-slider .doctor-card .info .share a {
     font-size: 2rem;
     height: 4rem;
@@ -416,13 +419,14 @@ header .fa-bars{
     margin: 0 .5rem;
     border-radius: 5rem;
   }
-  
+
+
   .doctor .doctor-container .doctor-slider .doctor-card .info .share a:hover {
     text-decoration: none;
     background: #EB4D4B;
     color: #fff;
   }
-  
+
 .doctor .doctor-container .doctor-slider .doctor-card:hover .info {
     -webkit-transform: scale(1);
             transform: scale(1);
@@ -455,6 +459,7 @@ header .fa-bars{
   text-align: center;
   border-radius: 1rem;
   box-shadow: .3rem .3rem 0 .1rem var(--blue),
+
               .5rem .5rem .5rem rgba(0,0,0,.3);
 }
 
@@ -477,6 +482,7 @@ header .fa-bars{
 .services .box-container .box h3{
   font-size: 2rem;
   color:var(--blue);
+
 }
 
 .services .box-container .box p{
@@ -484,6 +490,7 @@ header .fa-bars{
   color:#999;
   padding:1rem 0;
   font-weight: bold;
+
 }
 
 .book .row{
@@ -492,7 +499,7 @@ header .fa-bars{
     flex-wrap: wrap;
     gap:2rem;
 }
- 
+
 .book .row .image{
     flex:1 1 45rem;
 }
@@ -522,6 +529,7 @@ header .fa-bars{
     height:4rem;
     width:20rem;
     background:var(--blue);
+
     color:#fff;
     border:none;
     border-radius: 5rem;
@@ -530,11 +538,12 @@ header .fa-bars{
     font-size: 2rem;
     transition: .2s;
   }
-  
+
   .book .row .content button:hover{
     letter-spacing: .2rem;
     opacity: .8;
     background:var(--darkblue);
+
   }
 
 
@@ -544,25 +553,26 @@ header .fa-bars{
     align-items: center;
     justify-content: space-around;
   }
-  
+
   .contact .row .contact-info .box{
     margin:4rem 2rem;
   }
-  
+
   .contact .row .contact-info .box h3{
     font-size: 2rem;
     color:#333;
   }
-  
+
   .contact .row .contact-info .box h3 i{
     color:var(--blue);
   }
   
+
   .contact .row .contact-info .box p{
     padding-left: 3rem;
     font-size: 1.7rem;
     color:#aaa;
-    
+
   }
   
   .contact .row .contact-form-container{
@@ -575,12 +585,13 @@ header .fa-bars{
     color:var(--darkblue);
   } 
   
+
   .contact .row .contact-form-container .inputBox{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
   }
-  
+
   .contact .row .contact-form-container .inputBox input{
     width: 49%;
   }
@@ -588,28 +599,30 @@ header .fa-bars{
   .contact .row .contact-form-container form input, textarea{
     outline: none;
     border:.2rem solid #333;
+
     height:4rem;
     background:#fff;
     padding:0 1rem;
     margin:1rem 0;
     font-size: 1.8rem;
   }
-  
+
   .contact .row .contact-form-container form textarea{
     width:100%;
     padding:1rem;
     resize: none;
     height:20%;
   }
-  
+
   .contact .row .contact-form-container form input[type="submit"]{
     color:var(--darkblue);
     border:.2rem solid #333;
+
     cursor: pointer;
     transition: .2s;
     width:20rem;
   }
-  
+
   .contact .row .contact-form-container form input[type="submit"]:hover{
     color:#fff;
     background:var(--blue);
