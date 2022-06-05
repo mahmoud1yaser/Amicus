@@ -9,7 +9,10 @@
 
 
 *{
-  font-family: 'Roboto', sans-serif;
+
+  --poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+
   text-decoration: none;
   outline: none;
   margin: 0; padding: 0;
@@ -544,6 +547,7 @@ header .fa-bars{
     opacity: .8;
     background:var(--darkblue);
 
+
   }
 
 
@@ -590,15 +594,19 @@ header .fa-bars{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    border-radius:20px ;
   }
 
   .contact .row .contact-form-container .inputBox input{
     width: 49%;
+    border-radius:20px ;
   }
   
   .contact .row .contact-form-container form input, textarea{
     outline: none;
     border:.2rem solid #333;
+
+    border-radius:20px ;
 
     height:4rem;
     background:#fff;
@@ -612,11 +620,15 @@ header .fa-bars{
     padding:1rem;
     resize: none;
     height:20%;
+    border-radius:20px ;
   }
 
   .contact .row .contact-form-container form input[type="submit"]{
     color:var(--darkblue);
     border:.2rem solid #333;
+
+    border-radius:20px ;
+
 
     cursor: pointer;
     transition: .2s;

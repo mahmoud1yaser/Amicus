@@ -30,7 +30,7 @@ li {
 	--orange: #FD7238;
 	--light-orange: #FFE0D3;
 	--close: darkred;
-	--black:rgba(8, 8, 8, 0.103);
+	--black:#342E37;
 }
 
 html {
@@ -183,13 +183,13 @@ body {
 
 #btn5{
 	width: 7rem;
-	margin-top:9.75rem;
+	margin-top:12rem;
 
 }
 #btn6{
-	width:4rem;
+	width:3rem;
 	margin-bottom: 1rem;
-    margin-left: 12rem;
+    margin-left: 15rem;
 	background-color: var(--light);
 	color: darkgreen;
 	font-size:x-large ;
