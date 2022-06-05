@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_records, p_Messages, Scans, Prescription
 from cardiology import app, db, doctor
 from datetime import datetime, timedelta
-from cardiology.my_functions import parse_time, generate_gcalendar_link, availabe_appointments, save_picture
+from cardiology.my_functions import parse_time, generate_gcalendar_link, availabe_appointments, save_picture, sorting_appointments
 from flask_login import current_user, login_required
 # ---------------------------------
 p_user = current_user
@@ -15,17 +15,20 @@ doc = 0
 
 # ---------------------------------
 
-@app.route('/PatientProfile')
+@app.route('/PatientProfile', methods=['GET', 'POST'])
 @login_required
 def p_profile():
-    i = 1
     # p_user.p_photo = save_picture(request.files['photo'], 'profile_pics')
     sidebar_active='p_profile'
     MR = Medical_records.query.filter_by(p_id=p_user.p_id).first()
-    PRs = Medical_records.query.filter_by(p_id=p_user.p_id).all()
+    PRs = Prescription.query.filter_by(p_id=p_user.p_id).all()
     appoints = Appointments.query.filter_by(p_id=p_user.p_id).all()
+    appoints = sorting_appointments(appoints, 'patient')
     PRs.reverse()
-    return render_template('patient_profile.html', user=p_user, MR=MR, PRs=PRs, appoints=appoints, i=i, active=sidebar_active)
+    if request.method == 'POST':
+        pic_path = scan_path = save_picture(request.files['myfile'], 'profile_pics')
+        p_user.p_photo
+    return render_template('patient_profile.html', user=p_user, MR=MR, PRs=PRs, appoints=appoints, active=sidebar_active)
 
 
 @app.route('/BookAppointment', methods=['GET', 'POST'])
@@ -36,6 +39,7 @@ def book_appointment():
     if request.method == 'POST':
         doc = Doctors.query.filter_by(d_id=request.form['doctors']).first()
         day = request.form['date']
+        
         return redirect(url_for('doc_appointments'))
 
     return render_template('Booking.html', user=p_user, doctors=doctors, active=sidebar_active)
@@ -104,12 +108,12 @@ def edit_patient():
     if request.method == 'POST':
                     
         p_user.p_username = request.form['username']
-        p_user.p_passward = request.form['passward']
+        p_user.passward = request.form['passward']
         p_user.p_email = request.form['email']
         p_user.p_phone = request.form['phone']
+        db.session.commit()
         flash('profile is updated successfully')
 
-    return render_template('p_edit.html', user=p_user)
 
 
 

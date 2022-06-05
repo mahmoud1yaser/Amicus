@@ -1,0 +1,85 @@
+{% extends 'DoctorTemplate.html' %}
+{% block content %}
+<title>Add Prescription</title>
+<div class="head-title">
+  <div class="left"></div>
+</div>
+<div class="table-data">
+  <div class="order">
+    <div>
+      <div id="container">
+        <div id="body_header">
+          <h1 id="he">Add Prescription</h1>
+        </div>
+
+        <div class="form_1">
+          <form
+            action=""
+            method="POST"
+            id="contact_id"
+            class="input-group-register"
+          >
+            <fieldset>
+              <legend>
+                <span class="number">1</span>Patient Information
+              </legend>
+              <br />
+              <p>Diagnoses</p>
+              <br />
+              <div>
+                <textarea
+                  id="textarea_1"
+                  name="comment"
+                  rows="5"
+                  cols="100"
+                ></textarea>
+                <br /><span></span>
+              </div>
+
+              <br />
+              <p>Medicine</p>
+              <br />
+              <div>
+                <textarea
+                  id="textarea"
+                  name="comment"
+                  rows="5"
+                  cols="100"
+                ></textarea>
+                <br /><span></span>
+              </div>
+
+              <br />
+            </fieldset>
+
+            <fieldset>
+              <legend>
+                <span class="number">2</span>Write Prescription
+              </legend>
+              <br />
+
+              <div>
+                <textarea
+                  id="Message"
+                  class="message"
+                  rows="15"
+                  cols="50"
+                  name="Message"
+                >
+                </textarea>
+                <br /><span></span>
+              </div>
+            </fieldset>
+
+            <button type="submit" class="btn" id="btn2">Send</button>
+          </form>
+          <a href="Doctor_Patients.html" class="btn btn3" id="hh">
+            ❮ Back
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

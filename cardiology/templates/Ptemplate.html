@@ -11,7 +11,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../static/css/patientStyle.css">
 	<link rel = "icon" href = 
-	"../static/images/logoicon.png" 
+	"../static/images/logoicon.webp" 
 			type = "image/x-icon">
 		
 
@@ -45,13 +45,13 @@
         <div class="edit-form" >
         
           <i onclick="closeform()" class="fa-solid fa-xmark"></i>
-          <form  id="form4">
+          <form  id="form4" action="" method="post">
             <h1>Edit form</h1>
             <label>New Username:</label>
 			<div>
           
 				<i class="fa-solid fa-id-card"></i>
-            <input type="text"  id= "username"value="{{user.p_username}}" name="username" >
+            <input type="text"  id= "username" value="{{user.p_username}}" name="username" >
 			
            <span></span>
 		</div>
@@ -177,7 +177,7 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<span id="brand"><h3>Website Name</h3></span>
+			<span id="brand"><h3>MedCare</h3></span>
 			<form action="#">
 				<div class="form-input">
 					
