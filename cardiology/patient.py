@@ -10,7 +10,7 @@ p_user = current_user
 doctors = Doctors.query.all()
 day = 0
 doc = 0
-medicl_record = 0
+
 
 
 # ---------------------------------
@@ -20,30 +20,31 @@ medicl_record = 0
 def p_profile():
     i = 1
     # p_user.p_photo = save_picture(request.files['photo'], 'profile_pics')
-
+    sidebar_active='p_profile'
     MR = Medical_records.query.filter_by(p_id=p_user.p_id).first()
     PRs = Medical_records.query.filter_by(p_id=p_user.p_id).all()
     appoints = Appointments.query.filter_by(p_id=p_user.p_id).all()
     PRs.reverse()
-    return render_template('patient_profile.html', user=p_user, MR=MR, PRs=PRs, appoints=appoints, i=i)
+    return render_template('patient_profile.html', user=p_user, MR=MR, PRs=PRs, appoints=appoints, i=i, active=sidebar_active)
 
 
 @app.route('/BookAppointment', methods=['GET', 'POST'])
 @login_required
 def book_appointment():
     global doc, day
-
+    sidebar_active='book_appointment'
     if request.method == 'POST':
         doc = Doctors.query.filter_by(d_id=request.form['doctors']).first()
         day = request.form['date']
         return redirect(url_for('doc_appointments'))
 
-    return render_template('Booking.html', user=p_user, doctors=doctors)
+    return render_template('Booking.html', user=p_user, doctors=doctors, active=sidebar_active)
 
 
 @app.route('/AvailableAppointment', methods=['GET', 'POST'])
 @login_required
 def doc_appointments():
+    sidebar_active='book_appointment'    
     if request.method == 'POST':
         hour = request.form['Time']
         p_date, p_time = parse_time(day, hour)
@@ -51,22 +52,23 @@ def doc_appointments():
                                d_name=doc.d_name, d_id=doc.d_id, date=p_date, Time=p_time)
         db.session.add(appoint)
         db.session.commit()
-        google_calendar = generate_gcalendar_link("Appointment with dr {doc.d_name} at cardiology department",
-                                                  "", p_time,
-                                                  timedelta(p_time.split(':')[0], p_time.split(':')[1]) + timedelta(
-                                                      minutes=30))
-        flash(Markup(
-            f'A new appointment is created, <a href="{google_calendar}" target="_blank">save the appointment to your calendar</a>'),
-              'success')
+        # google_calendar = generate_gcalendar_link("Appointment with dr {doc.d_name} at cardiology department",
+        #                                           "", p_time,
+        #                                           timedelta(p_time.split(':')[0], p_time.split(':')[1]) + timedelta(
+        #                                               minutes=30))
+        # flash(Markup(
+            # f'A new appointment is created, <a href="{google_calendar}" target="_blank">save the appointment to your calendar</a>'),
+            #   'success')
         return redirect(url_for('book_appointment'))
 
     available_time = availabe_appointments(doc, day)
-    return render_template('book2.html', user=p_user, time=available_time)
+    return render_template('book2.html', user=p_user, time=available_time, active=sidebar_active)
 
 
 @app.route('/contact', methods=['POST', 'GET'])
 @login_required
 def contact_page():
+    sidebar_active='contact_page'
     if request.method == 'POST':
         _text = request.form['Message']
         doc = Doctors.query.filter_by(d_id=request.form['doctor']).first()
@@ -76,12 +78,13 @@ def contact_page():
         db.session.commit()
         # flash('Message is sent successfully')
 
-    return render_template('contact.html', user=p_user, doctors=doctors)
+    return render_template('contact.html', user=p_user, doctors=doctors, active=sidebar_active)
 
 
 @app.route('/scans', methods=['POST', 'GET'])
 @login_required
 def scans_page():
+    sidebar_active='scans_page'
     i = 1
     if request.method == 'POST':
         scan_path = save_picture(request.files['myfile'], 'scans')
@@ -91,7 +94,7 @@ def scans_page():
         # flash('Your scan is uploaded')
 
     patient_scans = Scans.query.filter_by(p_id=p_user.p_id).all()
-    return render_template('scans.html', user=p_user, scans=patient_scans, i=i)
+    return render_template('scans.html', user=p_user, scans=patient_scans, i=i, active=sidebar_active)
 
 
 # needs validation
