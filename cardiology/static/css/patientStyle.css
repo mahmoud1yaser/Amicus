@@ -448,6 +448,7 @@ h3 span{
 	grid-gap: 24px;
 	margin-top: 24px;
 	width: 100%;
+
 	color: var(--dark);
 }
 #content main .table-data > div {

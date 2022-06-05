@@ -1,0 +1,75 @@
+{% extends 'AdminTemplate.html' %}
+{% block content %}
+<Title>Add doctor</Title>
+<div class="table-data">
+	<div class="order1">
+	  <div class="head">
+		<i class='bx bxs-user-plus'></i>
+		<h3>Add Doctor</h3>
+	  </div>
+		<div class="add-form" >
+	  <form>
+		<label> Name:</label>
+		<div>
+		  <i class="fa-solid fa-id-badge"></i>
+		<input type="text" placeholder="Name">
+		</div>
+		<label> UserName:</label>
+			<div>
+			  <i class="fa-solid fa-user-circle"></i>
+			<input placeholder="User-Name" type="text">
+			</div>
+			<label> Phone:</label>
+			<div>
+			  <i class="fa-solid fa-phone"></i>
+			<input placeholder="Phone" type="text">
+			</div>
+			<label> BirthDate:</label>
+			<div>
+			  <i class="fa-solid fa-user-circle"></i>
+			<input placeholder="Birth-Date" type="date">
+			</div>
+			<label> Sex:</label>
+			<div>
+			<input type="radio" id="female" name="sex" value="female">
+                <label for="Female">Female</label><br>
+                <input type="radio" id="male" name="sex" value="Male">
+                <label for="Male">Male</label><br>
+			</div>
+			
+<label> E-mail:</label>
+<div>
+  <i class="fa-solid fa-envelope"></i>
+<input type="email" placeholder="Email">
+</div>
+<label> Password:</label>
+<div>
+  <i class="fa-solid fa-lock"></i>
+<input placeholder="Password" type="password">
+</div>
+<label> Position:</label>
+<div>
+  <i class="fa-solid fa-user-doctor"></i>
+<input type="text" placeholder="Position">
+</div>
+<label> Salary:</label>
+<div>
+  <i class="fa-solid fa-dollar-sign"></i>
+<input type="text" placeholder="Salary">
+</div>
+<label> Workperiod:</label>
+<div>
+  <i class="fa-solid fa-clock"></i>
+<input type="text" placeholder="Work-Period">
+</div>
+			
+
+<button type="submit" action="/">Add</button>
+</form>
+		</div>
+	 
+
+</div>
+	  
+</div>
+{% endblock %}

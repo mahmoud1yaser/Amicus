@@ -1,0 +1,193 @@
+{% extends 'AdminTemplate.html' %}
+{% block content %}
+<Title>Profile</Title>
+<div class="table-data">
+	<div class="card1">
+		<img src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d5363c18112a02ce22d0c46f8570147&auto=format&fit=crop&w=635&q=80%20635w" alt="profile-pic" class="profile">
+		<h1>bkj</h1>
+		<div class="upload-btn-wrapper">
+			<form action="" method="" enctype="">
+			
+			<button class="btn" id="btn5" >Edit
+				<input type="file" name="myfile" />
+			</button>
+		
+		
+	
+			<button type="submit"  id="btn6" action="/" ><i class="fa-solid fa-check"></i></button>
+		
+		</form>  
+		</div>
+	</div>
+	<div class="card2">
+		<h1><i class='bx bx-medal' ></i> Best 4 Doctors</h1>
+		<div class="bars">
+		<div class="bar">
+			<div class="info">
+			  <span>John </span>
+			</div>
+			<div class="progress-line">
+			  <span id="span1"></span>
+			</div>
+		  </div>
+		  <div class="bar">
+			<div class="info">
+			  <span>John</span>
+			</div>
+			<div class="progress-line">
+			  <span id="span2" ></span>
+			</div>
+		  </div>
+		  <div class="bar">
+			<div class="info">
+			  <span>John</span>
+			</div>
+			<div class="progress-line">
+			  <span id="span3"></span>
+			</div>
+		  </div>
+		  <div class="bar">
+			<div class="info">
+			  <span>John</span>
+			</div>
+			<div class="progress-line">
+			  <span id="span4"></span>
+			</div>
+		  </div>
+		</div>
+
+	</div>
+</div>
+
+<div class="container">
+ <ul class="box-info">
+	<li>
+		<i class='bx bxs-user' ></i>
+		<span class="text">
+			<div class="counter" data-target="102000">0</div>
+			<p>Doctors</p>
+		</span>
+	</li>
+	<li>
+		<i class='bx bxs-group' ></i>
+		<span class="text">
+			<div class="counter" data-target="2834">0</div>
+			<p>Patients</p>
+		</span>
+	</li>
+	<li>
+		<i class='bx bxs-first-aid' ></i>
+		<span class="text">
+			<div class="counter" data-target="2543">0</div>
+			<p>Appointments</p>
+		</span>
+	</li>
+</ul>
+</div>
+
+
+
+<div class="table-data" id="staff">
+	<div class="order">
+		<div class="head">
+			<i class='fa fa-medkit' ></i>
+			
+			<h3>Hospital Staff</h3>
+			<a href="../templates/add_doctor.html" >
+				<i class='bx bxs-user-plus'></i>
+
+			</a>
+			
+		
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Phone Number</th>
+					<th>Email</th>
+					<th>Job Title</th>
+					<th>Patients No</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><p>John Doe</p></td>
+					<td>01-10-2021</td>
+					<td>doctor@gmail.com</td>
+					<td>Specialist</td>
+					<td class="patientsN">700</td>
+					<td><a href="../templates/admin_doctor.html" class="btn-view">View </a></td>
+					<td> <a class="btn-Delete"> Delete </a></td>
+				</tr>
+				<tr>
+					<td><p>John Doe</p></td>
+					<td>01-10-2021</td>
+					<td>doctor@gmail.com</td>
+					<td>Specialist</td>
+					<td class="patientsN">700</td>
+					<td><a href="../templates/admin_doctor.html" class="btn-view">View </a></td>
+					<td> <a class="btn-Delete"> Delete </a></td>
+				</tr>
+				<tr>
+					<td><p>John Doe</p></td>
+					<td>01-10-2021</td>
+					<td>doctor@gmail.com</td>
+					<td>Specialist</td>
+					<td class="patientsN">700</td>
+					<td><a href="../templates/admin_doctor.html" class="btn-view">View </a></td>
+					<td> <a class="btn-Delete"> Delete </a></td>
+				</tr>
+				<tr>
+					<td><p>John Doe</p></td>
+					<td>01-10-2021</td>
+					<td>doctor@gmail.com</td>
+					<td>Specialist</td>
+					<td class="patientsN">700</td>
+					<td><a href="../templates/admin_doctor.html" class="btn-view">View </a></td>
+					<td> <a class="btn-Delete"> Delete </a></td>
+				</tr>
+				<tr>
+					<td><p>John Doe</p></td>
+					<td>01-10-2021</td>
+					<td>doctor@gmail.com</td>
+					<td>Specialist</td>
+					<td class="patientsN">700</td>
+					<td><a href="../templates/admin_doctor.html" class="btn-view">View </a></td>
+					<td> <a class="btn-Delete"> Delete </a></td>
+				</tr>
+				<tr>
+					<td><p>John Doe</p></td>
+					<td>01-10-2021</td>
+					<td>doctor@gmail.com</td>
+					<td>Specialist</td>
+					<td class="patientsN">700</td>
+					<td><a href="../templates/admin_doctor.html" class="btn-view">View </a></td>
+					<td> <a class="btn-Delete"> Delete </a></td>
+				</tr>
+				<tr>
+					<td><p>John Doe</p></td>
+					<td>01-10-2021</td>
+					<td>doctor@gmail.com</td>
+					<td>Specialist</td>
+					<td class="patientsN">700</td>
+					<td><a href="../templates/admin_doctor.html" class="btn-view">View </a></td>
+					<td> <a class="btn-Delete"> Delete </a></td>
+				</tr>
+				<tr>
+					<td><p>John Doe</p></td>
+					<td>01-10-2021</td>
+					<td>doctor@gmail.com</td>
+					<td>Specialist</td>
+					<td class="patientsN">700</td>
+					<td><a href="../templates/admin_doctor.html" class="btn-view">View </a></td>
+					<td> <a class="btn-Delete"> Delete </a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+{% endblock %}

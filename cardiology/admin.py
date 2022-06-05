@@ -1,4 +1,4 @@
-from crypt import methods
+
 from flask import render_template, redirect, url_for, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_records, p_Messages, Scans, Prescription
@@ -13,12 +13,12 @@ patients = Patients.query.all()
 
 @app.route('/AdminDashboard')
 def admin_dashboard():
-    return render_template('.html', user=a_user, docs=docs)
+    return render_template('admin.html', user=a_user, docs=docs)
 
 
 @app.route('/DepartmentPatients')
 def dep_patients():
-    return render_template('.html', patients=patients, user=a_user)
+    return render_template('admin_patient.html', patients=patients, user=a_user)
 
 
 # needs validation
@@ -36,12 +36,12 @@ def add_doctors():
         db.session.commit()
         flash(f'doctor {new_doc.d_name} account is created')
 
-    return render_template('.html', user=a_user)
+    return render_template('add_doctor.html', user=a_user)
 
 
 # needs validation
 @app.route('/EditDoctorInfo', methods=['GET', 'POST'])
-def edit_doc():
+def edit_doctor():
     if request.method == 'POST':
         edited_doc = Doctors.query.filter_by(d_id=request.form['id'])
         edited_doc.d_username = request.form['username']
@@ -54,3 +54,13 @@ def edit_doc():
         flash(f'doctor {edited_doc.u_name} account is updated')
 
     return render_template('.html', user=a_user, )
+
+
+@app.route('/AddAdmin')
+def add_admin():
+    return render_template('.html')
+
+
+@app.route('/DoctorInfo')
+def doc_info():
+    return render_template('admin_doctor.html')

@@ -7,7 +7,7 @@ from cardiology.my_functions import  save_picture, doct_patient
 from flask_login import current_user, login_required
 
 #-------------------------------------
-d_user = Doctors.query.filter_by(d_id=1).first()
+d_user = Doctors.query.filter_by(d_id=2).first()
 selected_patient = Patients.query.filter_by(p_id=3).first()
 
 #-------------------------------------
