@@ -1,9 +1,10 @@
 from flask import render_template, redirect, url_for, request, flash, Markup
 from flask_sqlalchemy import SQLAlchemy
 from cardiology.models import Doctors, Patients, Admins
-from cardiology import app, db, settings
+from cardiology import app, db, settings, patient
 from cardiology.forms import RegisterForm, LoginForm
 from flask_login import login_user, logout_user, login_required
+
 
 
 @app.route('/')
@@ -74,7 +75,13 @@ def login_page():
             ):
                 login_user(attempted_patient)
                 print(f'Success! You are logged in as: {attempted_patient.p_username}')
-                return redirect(url_for('#'))
+                return redirect(url_for('p_profile'))
             else:
                 print('Username and password are not match! Please try again')
     return render_template('signin.html', form=form)
+
+@app.route('/logout')
+def logout_page():
+    logout_user()
+    flash("You have been logged out!", category='info')
+    return redirect(url_for("home_page"))

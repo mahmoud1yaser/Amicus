@@ -24,7 +24,7 @@ class Doctors(db.Model, UserMixin):
     d_salary = db.Column(db.Float())
     d_workperiod = db.Column(db.String())
     d_position = db.Column(db.String())
-    d_photo = db.Column(db.String())
+    d_photo = db.Column(db.String(), default='../static/images/profile.png')
 
     def get_id(self):
         return self.d_id
@@ -35,24 +35,12 @@ class Doctors(db.Model, UserMixin):
 
     @password.setter
     def password(self, plain_text_password):
-        self.d_password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
+        self.d_password = bcrypt.generate_password_hash(
+            plain_text_password).decode('utf-8')
 
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.d_password, attempted_password)
 
-    def get_id(self):
-        return self.d_id
-
-    @property
-    def password(self):
-        return self.password
-
-    @password.setter
-    def password(self, plain_text_password):
-        self.d_password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
-
-    def check_password_correction(self, attempted_password):
-        return bcrypt.check_password_hash(self.d_password, attempted_password)
 
 class Admins(db.Model, UserMixin):
     a_id = db.Column(db.Integer(), primary_key=True)
@@ -60,7 +48,7 @@ class Admins(db.Model, UserMixin):
     a_password = db.Column(db.String(length=60), nullable=False)
     a_name = db.Column(db.String(), nullable=False)
     a_email = db.Column(db.String(length=50), nullable=False, unique=True)
-    a_photo = db.Column(db.String())
+    a_photo = db.Column(db.String(), default='../static/images/profile.png')
 
     def get_id(self):
         return self.a_id
@@ -71,24 +59,12 @@ class Admins(db.Model, UserMixin):
 
     @password.setter
     def password(self, plain_text_password):
-        self.a_password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
+        self.a_password = bcrypt.generate_password_hash(
+            plain_text_password).decode('utf-8')
 
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.a_password, attempted_password)
 
-    def get_id(self):
-        return self.a_id
-
-    @property
-    def password(self):
-        return self.password
-
-    @password.setter
-    def password(self, plain_text_password):
-        self.a_password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
-
-    def check_password_correction(self, attempted_password):
-        return bcrypt.check_password_hash(self.a_password, attempted_password)
 
 class Patients(db.Model, UserMixin):
     p_id = db.Column(db.Integer(), primary_key=True)
@@ -99,7 +75,7 @@ class Patients(db.Model, UserMixin):
     p_phone = db.Column(db.String(length=11), nullable=False)
     p_birth_date = db.Column(db.Date(), nullable=False)
     p_sex = db.Column(db.String(), nullable=False)
-    p_photo = db.Column(db.String())
+    p_photo = db.Column(db.String(), default='../static/images/profile.png')
 
     def get_id(self):
         return self.p_id
@@ -110,21 +86,8 @@ class Patients(db.Model, UserMixin):
 
     @password.setter
     def password(self, plain_text_password):
-        self.p_password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
-
-    def check_password_correction(self, attempted_password):
-        return bcrypt.check_password_hash(self.p_password, attempted_password)
-
-    def get_id(self):
-        return self.p_id
-
-    @property
-    def password(self):
-        return self.password
-
-    @password.setter
-    def password(self, plain_text_password):
-        self.p_password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
+        self.p_password = bcrypt.generate_password_hash(
+            plain_text_password).decode('utf-8')
 
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.p_password, attempted_password)
@@ -141,7 +104,8 @@ class Appointments(db.Model):
 
 
 class Medical_records(db.Model):
-    p_id = db.Column(db.Integer(), db.ForeignKey('patients.p_id'), primary_key=True)
+    p_id = db.Column(db.Integer(), db.ForeignKey(
+        'patients.p_id'), primary_key=True)
     p_name = db.Column(db.String(), db.ForeignKey('patients.p_name'))
     d_id = db.Column(db.Integer(), db.ForeignKey('doctors.d_id'))
     d_name = db.Column(db.String(), db.ForeignKey('doctors.d_name'))
@@ -167,6 +131,7 @@ class Prescription(db.Model):
     d_name = db.Column(db.String(), db.ForeignKey('doctors.d_name'))
     diagnosis = db.Column(db.String(), nullable=False)
     drugs = db.Column(db.String(), nullable=False)
+    pres_date = db.Column(db.Date())
 
 
 class Scans(db.Model):

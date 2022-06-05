@@ -2,7 +2,7 @@ import datetime
 from cardiology.models import Appointments
 import os
 import secrets
-
+import re
 
 
 def parse_time(day, time):
