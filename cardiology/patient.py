@@ -4,9 +4,9 @@ from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_r
 from cardiology import app, db, doctor
 from datetime import datetime, timedelta
 from cardiology.my_functions import parse_time, generate_gcalendar_link, availabe_appointments, save_picture
-
+from flask_login import current_user, login_required
 # ---------------------------------
-p_user = Patients.query.filter_by(p_id=1).first()
+p_user = current_user
 doctors = Doctors.query.all()
 day = 0
 doc = 0
@@ -16,8 +16,11 @@ medicl_record = 0
 # ---------------------------------
 
 @app.route('/PatientProfile')
+@login_required
 def p_profile():
     i = 1
+    # p_user.p_photo = save_picture(request.files['photo'], 'profile_pics')
+
     MR = Medical_records.query.filter_by(p_id=p_user.p_id).first()
     PRs = Medical_records.query.filter_by(p_id=p_user.p_id).all()
     appoints = Appointments.query.filter_by(p_id=p_user.p_id).all()
@@ -26,6 +29,7 @@ def p_profile():
 
 
 @app.route('/BookAppointment', methods=['GET', 'POST'])
+@login_required
 def book_appointment():
     global doc, day
 
@@ -38,6 +42,7 @@ def book_appointment():
 
 
 @app.route('/AvailableAppointment', methods=['GET', 'POST'])
+@login_required
 def doc_appointments():
     if request.method == 'POST':
         hour = request.form['Time']
@@ -60,6 +65,7 @@ def doc_appointments():
 
 
 @app.route('/contact', methods=['POST', 'GET'])
+@login_required
 def contact_page():
     if request.method == 'POST':
         _text = request.form['Message']
@@ -74,6 +80,7 @@ def contact_page():
 
 
 @app.route('/scans', methods=['POST', 'GET'])
+@login_required
 def scans_page():
     i = 1
     if request.method == 'POST':
@@ -89,18 +96,17 @@ def scans_page():
 
 # needs validation
 @app.route('/EditPatientProfile', methods=['POST', 'GET'])
+@login_required
 def edit_patient():
     if request.method == 'POST':
-
-        
-        
-        
+                    
         p_user.p_username = request.form['username']
-
         p_user.p_passward = request.form['passward']
         p_user.p_email = request.form['email']
-        p_user.p_phone = request.form['passward']
-        p_user.p_photo = save_picture(request.files['photo'], 'profile_pics')
+        p_user.p_phone = request.form['phone']
         flash('profile is updated successfully')
 
     return render_template('p_edit.html', user=p_user)
+
+
+

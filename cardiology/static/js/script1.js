@@ -67,13 +67,30 @@ window.addEventListener('resize', function () {
 
 const switchMode = document.getElementById('switch-mode');
 
-switchMode.addEventListener('change', function () {
-	if(this.checked) {
-		document.body.classList.add('dark');
+
+//dark mode
+switchMode.addEventListener("change", function () {
+	if (this.checked) {
+	  document.body.classList.add("dark");
+	  localStorage.setItem("mode", "dark");
 	} else {
-		document.body.classList.remove('dark');
+	  document.body.classList.remove("dark");
+	  localStorage.setItem("mode", "light");
 	}
-})
+  })
+
+  document.body.onload = function () {
+	var mode = localStorage.getItem("mode");
+	if (mode == "dark") {
+		switchMode.checked=true
+	  document.body.classList.add("dark");
+	} else {
+	  document.body.classList.remove("dark");
+	  switchMode.checked=false
+  
+	}
+  };
+  //end dark mode
 var coll = document.getElementsByClassName("collapsible");
 var i;
 // prescription collaps
@@ -88,3 +105,17 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 }
+//Edit form function 
+var editformd = document.getElementById("edit");
+function editform(){
+	editformd.style.width="100%";
+	editformd.style.height="100vh";
+}
+
+function closeform(){
+	editformd.style.width="0";
+	editformd.style.height="0";
+}
+
+//End of Edit form function
+
