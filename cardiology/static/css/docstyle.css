@@ -1,13 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap");
-input[type=number]::-webkit-inner-spin-button,  input[type=number]::-webkit-outer-spin-button {      -webkit-appearance: none;     -moz-appearance: none;     appearance: none;  }
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;900&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:"Roboto";
 }
 
 a {
@@ -19,12 +15,12 @@ li {
 }
 
 :root {
-  --poppins: 'Poppins', sans-serif;
-	--lato: 'Lato', sans-serif;
+  --poppins: "Poppins", sans-serif;
+  --lato: "Lato", sans-serif;
 
   --light: #f9f9f9;
   --blue: #3c91e6;
-  --light-blue: #f4f7f8;
+  --light-blue: #cfe8ff;
   --grey: #eee;
   --dark-grey: #aaaaaa;
   --dark: #342e37;
@@ -35,25 +31,16 @@ li {
   --light-orange: #ffe0d3;
   --close: darkred;
 }
-body.dark {
-  /* --light: #1E1E1E;
-  --light-blue: #060714;
 
-  --grey: #121212; */
-  --light-blue: #060714;
-	--light: #0C0C1E;
-	--grey: #060714;
-  --dark: #FBFBFB;
-  --close: #fff;
-  --black: #3C91E6;
-}
-
-body {
-  background: var(--grey);
-  overflow-x: hidden;
-}
 html {
   overflow-x: hidden;
+}
+
+body.dark {
+  --light: #0c0c1e;
+  --grey: #060714;
+  --dark: #fbfbfb;
+  --close: #fff;
 }
 /* Loader */
 .loader {
@@ -141,16 +128,32 @@ html {
   top: 35px;
 }
 
-@keyframes spin {
-  0%, 15% {
-  transform: rotate(0);
+body {
+  background: var(--grey);
+  overflow-x: hidden;
 }
-100% {
-  transform: rotate(360deg);
+#content  .btn-edit {
+	margin-right: 10px;
+	width: auto;
+	height: 36px;
+	padding: 0;
+	border-radius: 36px;
+	background: var(--blue);
+	color: var(--light-blue);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-gap: 10px;
+	font-weight: 500;
+	cursor: pointer;
+	/* border: 2px solid var(--blue);
+	transition: 0.5s; */
 }
+
+#content  .btn-edit:hover {
+	background: var(--light-blue);
+	color: var(--blue);
 }
-/* End loader */
-/* Edit Form */
 .main-edit-form{
   display: block;
   z-index: 9999;
@@ -169,22 +172,20 @@ html {
   left:50%;
   transform: translate(-50%,-50%);
   width: 40%;
-  min-width:500px;
   border-radius: 20px;
   box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
   -webkit-box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
   -moz-box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
   background-color: var(--light);
-  height: 90vh;
+  min-height: 50vh;
   transition: 0.5s all ease;
   text-align: left;
   padding: 30px 50px;
-  overflow-y: auto;
   
 }
 .edit-form h1{
   align-self: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   text-transform: uppercase;
   color:var(--dark);
 }
@@ -192,17 +193,17 @@ html {
   position: relative;
   text-align: left;
   width: 100%;
-
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  padding: 10px 15px;
+  padding: 20px 25px;
 }
 .edit-form i{
   position: absolute;
   top:25px;
   right: 25px;
   color:var(--close);
-  font-size: 25px;
+  font-size: 30px;
   cursor: pointer;
   z-index: 999;
 }
@@ -210,10 +211,8 @@ html {
   position: relative;
   align-items: center;
   display: flex;
-  flex-direction: column;
   margin-bottom: 30px;
   width: 100%;
-  align-items: flex-start;
 }
 .edit-form form button {
   margin-top: 10px;
@@ -229,7 +228,7 @@ html {
   border: 1px solid var(--light-blue);
   transition: 0.5s;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   color:black;
 }
 .edit-form form button:hover{
@@ -240,7 +239,7 @@ html {
   position: absolute;
   width: auto;
   font-size: 20px;
-  top:5px;
+  top:auto;
   left:0;
   color: var(--blue);
   z-index: -9999;
@@ -248,26 +247,23 @@ html {
 .edit-form form label{
   margin-bottom: 10px;
   font-family: "Roboto";
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   font-weight: bold;
   color:var(--dark);
 }
 .edit-form div input{
   width: 80%;
-  padding: 5px 25px;
+  padding: 10px 30px;
   outline: none;
   background-color: transparent;
   border-style: none none solid none;
   border-width: 2px ;
   border-color: var(--dark);;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color:var(--dark);
 
 }
-
-/* End of Edit form */
-
 /* SIDEBAR */
 #sidebar {
   position: fixed;
@@ -277,6 +273,7 @@ html {
   height: 100%;
   background: var(--light);
   z-index: 2000;
+  font-family: var(--lato);
   transition: 0.3s ease;
   overflow-x: hidden;
   scrollbar-width: none;
@@ -302,7 +299,6 @@ html {
   padding-bottom: 20px;
   box-sizing: content-box;
 }
-
 #sidebar .brand .bx {
   min-width: 60px;
   display: flex;
@@ -382,9 +378,6 @@ html {
 /* SIDEBAR */
 
 /* CONTENT */
-h2{
-  color: var(--dark);
-}
 #content {
   position: relative;
   width: calc(100% - 280px);
@@ -404,6 +397,7 @@ h2{
   display: flex;
   align-items: center;
   grid-gap: 24px;
+  font-family: var(--lato);
   position: sticky;
   top: 0;
   left: 0;
@@ -522,30 +516,10 @@ h2{
 /* NAVBAR */
 
 /* MAIN */
-
-#btn5{
-	width: 7rem;
-	margin-top:20rem;
-
-}
-
-#btn6{
-	width:3rem;
-
-    border-radius: 20px;
-	background-color: var(--light);
-	border-color: #eee;
-	color: darkgreen;
-	font-size:x-large ;
-
-   
-}
-#btn6:hover{
-	border-color: var(--light);
-}
 #content main {
   width: 100%;
   padding: 36px 24px;
+  font-family: var(--poppins);
   max-height: calc(100vh - 56px);
   overflow-y: auto;
 }
@@ -648,7 +622,6 @@ h2{
   font-weight: 500;
 }
 
-
 #content main .box-info {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -692,15 +665,11 @@ h2{
 #content main .box-info li .text p {
   color: var(--dark);
 }
-h3 span{
-  color: var(--dark);
-  }
-  
+
 #content main .table-data {
   display: flex;
   grid-gap: 24px;
   margin-top: 24px;
-  
   width: 100%;
   color: var(--dark);
 }
@@ -729,33 +698,35 @@ h3 span{
 #content main .table-data .order {
   flex-grow: 1;
   flex-basis: 500px;
-  overflow-y: auto;
-
+  overflow-y: scroll;
+	max-height: 462px;
 }
 
 #content main .table-data .order table {
   width: 100%;
   border-collapse: collapse;
+  text-align: center;
 }
 #content main .table-data .order table th {
   padding-bottom: 12px;
   font-size: 13px;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid var(--grey);
 }
-.view{
-  
-  text-align: center;
-}
 #content main .table-data .order table td {
-  padding: 16px 0;
+	padding: 16px 0;
+	align-items: center;
+	grid-gap: 6px;
+	padding-left: 3px;
+	align-items: center;
 }
-#content main .table-data .order table tr td:first-child {
+
+/* #content main .table-data .order table tr td:first-child {
   display: flex;
   align-items: center;
   grid-gap: 12px;
   padding-left: 6px;
-}
+} */
 #content main .table-data .order table td img {
   width: 36px;
   height: 36px;
@@ -765,6 +736,7 @@ h3 span{
 #content main .table-data .order table tbody tr:hover {
   background: var(--grey);
 }
+
 #content main .table-data .order table tr td .status {
   font-size: 10px;
   padding: 6px 16px;
@@ -775,14 +747,12 @@ h3 span{
 #content main .table-data .order table tr td .status {
   background: var(--blue);
   color: var(--light-blue);
-    border: 2px solid var(--blue);
-
   font-size: 1rem;
   font-weight: 500;
   transition: .5s;
 }
 #content main .table-data .order table tr td .status:hover {
-  background: var(--grey);
+  background: var(--light-blue);
   color: var(--blue);
   border: 2px solid var(--blue);
   font-size: 1rem;
@@ -790,10 +760,9 @@ h3 span{
 
 
 
+
 #content main .table-data .todo {
   flex-grow: 1;
-  overflow-y: auto;
-  max-height: 500px;
   flex-basis: 300px;
 }
 
@@ -847,22 +816,21 @@ h3 span{
 }
 #content main .table-data .card1 div span {
   color: var(--dark);
+  font-family: roboto;
   font-size: 1.5rem;
   font-weight: 500;
-
 }
 #content main .table-data .card2 {
   position: relative;
   flex-basis: 35%;
   text-align: left;
-  max-height: 500px;
-
   float: left;
 }
 #content main .table-data .card2 h1 {
   position: relative;
   color: var(--dark);
-  font-weight: 300;
+  font-family: roboto;
+  weight: 300;
 }
 .card2 h1:after {
   position: absolute;
@@ -881,7 +849,8 @@ h3 span{
 #content main .table-data .card2 p {
   color: var(--dark);
   font-size: 12px;
-  font-weight: 100;
+  weight: 100;
+  font-family: roboto;
   text-align: left;
 }
 /* MAIN */
@@ -952,314 +921,4 @@ h3 span{
     min-width: 420px;
   }
 }
-#textarea{
-  resize: none;
-  border-radius: 20px;
-}
-#textarea_1{
-  resize: none;
-  border-radius: 20px;
-}
-#search{
-  background-color: var(--orange);
-  color: var(--light);
-  font-weight: 500;
-  transition: .5s;
 
-  /* border: 2px solid var(--orange); */
-
-}
-#search:hover{
-  background-color: var(--light-orange);
-  border: 2px solid var(--orange);
-}
-
-
-
-/* Style the button that is used to open and close the collapsible content */
-.collapsible {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 17px;
-  font-weight: bold;
-  border-radius: 20px;
-  color: var(--blue);
-  margin-bottom: 20px;
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active,
-.collapsible:hover {
-  background-color: #ccc;
-}
-
-/* Style the collapsible content. Note: hidden by default */
-.content {
-  border-radius: 20px;
-  padding: 0 18px;
-  background-color:var(--light);
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
-.collapsible:after {
-  content: "\02795"; /* Unicode character for "plus" sign (+) */
-  font-size: 13px;
-  color: white;
-  float: right;
-  margin-left: 5px;
-}
-
-.active:after {
-  content: "\2796"; /* Unicode character for "minus" sign (-) */
-}
-
-#book {
-  max-width: 300px;
-  margin: 10px auto;
-  padding: 10px 20px;
-  background: #f4f7f8;
-  border-radius: 8px;
-  
-  box-shadow: var(--blue);
-  
-}
-
-h1 {
-  margin: 0 0 30px 0;
-  text-align: center;
-}
-
-
-input[type="date"],
-
-
-textarea,
-select {
-  background: rgba(255,255,255,0.1);
-  border: none;
-  font-size: 16px;
-  height: auto;
-  margin: auto;
-  outline: 0;
-  padding: 8px;
-  width: 100%;
-  background-color: #e8eeef;
-  color: black;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-
-}
-
-input[type="radio"],
-input[type="checkbox"]
-
-{
-  margin: 0 4px 8px 0;
-}
-
-select {
-  padding: 6px;
-  height: 32px;
-  border-radius: 2px;
-}
-
-.btn {
-	
-	color: var(--light);
-	background-color: var(--blue);
-	transition: .5s;
-	margin-top: 1rem;
-	padding: 8px 20px;
-  border-color:var(--blue) ;
-	border-width: 0px;
-	font-size: 15px;
-	font-weight: bold;
-	border-radius: 20px;
-	cursor: pointer;
-	opacity: 1;
-	
-	text-align: center;
-	
-  }
-   .btn:hover{
-	background-color: var(--grey);
-  border: 2px solid var(--blue);
-	color: var(--blue);
-	
-  }
-#btn1{
-	margin-left: 10rem;
-}
-
-#btn1:hover{
-	
-	color: var(--blue);
-}
-.button2{
-
-	margin-left:8.5rem;
-	width:10.5rem;
-
-}
-#hh{
-	padding-left: 1rem;
-	padding-right: 1rem;
-}
-#button2:hover{
-	background-color: var(--grey);
-	
-	color: var(--blue);
-
-}
-.btn3{
-	padding: 4px 1px 4px 40px;
-    margin-bottom: 2rem;
-	border: 1px solid;
-	text-align: center;
-	background-color: var(--blue);
-	font-size: 18px;
-	cursor: pointer;
-}
-
- 
-#he{
-	font-size: xx-large;
-}
-fieldset {
-  margin-bottom: 15px;
-  border: none;
-}
-
-legend {
-  font-size: 1.4em;
-  margin-bottom: 10px;
-  /* color: var(--light); */
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-label.light {
-  font-weight: 300;
-  display: inline;
-}
-
-.number {
-  background-color: var(--blue);
-  margin-right: 2rem;
-  color: #fff;
-  height: 30px;
-  width: 30px;
-  display: inline-block;
-  font-size: 0.8em;
-  margin-right: 4px;
-  line-height: 30px;
-  text-align: center;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
-  border-radius: 100%;
-}
-.bx-menu:before {
-    content: "\edc2";
-    font-size: 2rem !important;
-}
-
-
-
-  #book {
-    max-width: 480px;
-  }
-
-
-/* contact form */
-
-
-#contact {
-  	margin: 10px auto;
-	padding: 10px 20px;
-	background: var(--light);
-	border-radius: 20px;
-	
-	box-shadow: var(--blue);
-	
-  }
-  #contact {
-    max-width: 480px;
-  }
-  #contact_id{
-  max-width: 728px;
-  margin: 10px auto;
-	padding: 10px 20px;
-	background: var(--grey);
-	border-radius: 20px;
-	
-	box-shadow: var(--blue);
-	
-  }
-
-  #Message{
-	resize: none;
-	border-radius: 20px;
-	border-width: 2.5px;
-	border-color: black;
- } 
-#btn2{
-	margin-left: 15rem;
-	width: 12rem;
-}
-#button_MD{
-	margin-left: 8rem;
-
-}
-
-.input-field {
-  padding: 10px 0;
-  margin:10px 0;
-  border-style: none none solid none;
-  border-bottom: 1px solid #999;
-  outline: none;
-  background: transparent;
-  color: var(--black);
-  padding-bottom: 5px ;
-  flex-basis: 45%;
-  font-size: 15px;
-}
-
-
-.error span {
-  color: var(--red);
-  margin-top: 1px;}
-.error{
-visibility: visible;
-}
-
-.upload-btn-wrapper {
-	position: relative;
-	overflow: hidden;
-	display: inline-block;
-  }
-
-    .upload-btn-wrapper input[type=file] {
-      font-size: 100px;
-      position: absolute;
-      left: 0;
-      top: 0;
-      opacity: 0;
-      }
-
-
-  
-      
-
-
-      #hh{
-        padding-left: 1rem;
-        padding-right: 1rem;
-        }

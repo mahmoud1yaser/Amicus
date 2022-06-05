@@ -183,14 +183,16 @@ body {
 
 #btn5{
 	width: 7rem;
-	margin-top:12rem;
+	margin-top:20rem;
 
 }
+
 #btn6{
 	width:3rem;
 	margin-bottom: 1rem;
-    margin-left: 15rem;
+    border-radius: 20px;
 	background-color: var(--light);
+	border-color: #eee;
 	color: darkgreen;
 	font-size:x-large ;
 

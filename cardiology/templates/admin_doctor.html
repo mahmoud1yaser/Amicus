@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Boxicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- My CSS -->
+    <link rel="stylesheet" href="../static/css/docstyle.css" />
+    <!-- <link rel="stylesheet" href="box.css"> -->
+
+    <title>profile</title>
+  </head>
+  <body>
+    <!-- Loader -->
+  <div class="loader">
+    <div class="loader-inner">
+      <div class="loader-line-wrap">
+        <div class="loader-line"></div>
+      </div>
+      <div class="loader-line-wrap">
+        <div class="loader-line"></div>
+      </div>
+      <div class="loader-line-wrap">
+        <div class="loader-line"></div>
+      </div>
+      <div class="loader-line-wrap">
+        <div class="loader-line"></div>
+      </div>
+      <div class="loader-line-wrap">
+        <div class="loader-line"></div>
+      </div>
+    </div>
+  </div>
+  <!-- End loader -->
+    <div class="main-edit-form" id="edit">
+     
+      <div class="edit-form" >
+      
+        <i onclick="closeform()" class="fas fa-solid fa fa-xmark"></i>
+        <form>
+        <h1>Edit form</h1>
+        <label>New E-mail:</label>
+        <div>
+          <i class="fa-solid fa-envelope"></i>
+        <input type="email" placeholder="Old-Email">
+        </div>
+        <label>New Password:</label>
+        <div>
+          <i class="fa-solid fa-lock"></i>
+        <input placeholder="Enter Your New Password" type="password">
+        </div>
+        <label>New Position:</label>
+        <div>
+          <i class="fa-solid fa-user-doctor"></i>
+        <input type="text" placeholder="Old-Position">
+        </div>
+        <label>New Salary:</label>
+        <div>
+          <i class="fa-solid fa-dollar-sign"></i>
+        <input type="text" placeholder="Old-Salary">
+        </div>
+        <label>New Workperiod:</label>
+        <div>
+          <i class="fa-solid fa-clock"></i>
+        <input type="text" placeholder="Old-Work-Period">
+        </div>
+        
+        <button type="submit" action="/">Submit</button>
+        </form>
+      </div>
+      
+      </div>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+      <a href="#" class="brand">
+        <i class="bx bxs-user-circle"></i>
+        <span class="text">AdminName</span>
+      </a>
+     <ul class="side-menu top">
+			<li>
+				<a href="../templates/admin.html">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="../templates/admin_patient.html">
+					<i class='bx bxs-user-pin' ></i>
+					<span class="text">Patients</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="../templates/admin.html #staff">
+					<i class='bx bxs-user-pin' ></i>
+					<span class="text">Doctors</span>
+				</a>
+			</li>
+      <li >
+				<a href="../templates/add_doctor.html">
+					<i class='bx bxs-user-plus' ></i>
+					<span class="text">Add Doctors</span>
+				</a>
+			</li>
+      <li>
+				<a href="../templates/add_admin.html">
+					<i class='bx bxs-user-plus' ></i>
+					<span class="text">Add Admin</span>
+				</a>
+			</li>
+			
+		
+		
+		</ul>
+		<ul class="side-menu ">
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+    </section>
+    <!-- SIDEBAR -->
+
+    <!-- CONTENT -->
+    <section id="content">
+      <!-- NAVBAR -->
+      <nav>
+        <i class="bx bx-menu"></i>
+        <a href="#" class="nav-link">MedCare</a>
+        <form action="#">
+          <div class="form-input">
+            <input type="" placeholder="" />
+            <button type="submit" class="search-btn">
+              <i class="bx bx-search"></i>
+            </button>
+          </div>
+        </form>
+        <input type="checkbox" id="switch-mode" hidden />
+        <label for="switch-mode" class="switch-mode"></label>
+       
+        <a href="#" class="profile">
+          <img src="../static/images/people.png" />
+        </a>
+      </nav>
+      <!-- NAVBAR -->
+
+      <!-- MAIN -->
+      <main>
+        <div class="table-data">
+          <div class="card1" >
+            <div>
+            <img
+              src="../static/img/download.png"
+              alt="profile-pic"
+              class="profile"
+            />
+           <span>Dr/ Mohamed Ahmed</span>
+           <a href="#edit" onclick="editform()" class="btn-edit"> Edit </a>
+
+          </div>
+        </div>
+        <div class="card2">
+          <h1 class="Info_Doc" style="text-align: left">
+            Personal Information
+          </h1>
+          
+         
+          <div class="Information">
+              
+              
+            <div class="min-info" >
+
+              <div class="icon-info icon-1">
+                <i class="fa-solid fa-id-card"></i>
+            </div>
+            <div>
+              <h2>ID</h2>
+              <label for="ID">ID</label>
+            </div>
+          </div>
+            <div class="min-info" >
+
+              <div class="icon-info icon-2">
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div>
+              <h2>E-mail</h2>
+              <label for="E-mail">E-mail</label>
+            </div>
+          </div>
+            <!-- <br /> -->
+            <div class="min-info" >
+
+              <div class="icon-info icon-3">
+                <i class="fa-solid fa-phone"></i>
+            </div>
+            <div>
+              <h2>Phone Number</h2>
+              <label for="Phone-Number">Phone Number</label>
+            </div>
+          </div>
+          
+            
+
+          </div>
+        </div>
+          <div class="card2">
+            <h1 class="Info_Doc" style="text-align: left">
+              Job Information
+            </h1>
+
+            <div class="Information">
+
+              
+              
+              <div class="min-info" >
+
+                <div class="icon-info icon-1">
+                  <i class="fa-solid fa-user-doctor"></i>
+              </div>
+              <div>
+                <h2>Position</h2>
+                <label for="Position">Position</label>
+              </div>
+            </div>
+              <div class="min-info" >
+
+                <div class="icon-info icon-2">
+                  <i class="fa-solid fa-clock"></i>
+              </div>
+              <div>
+                <h2>Working period</h2>
+                <label for="Working period">Working period</label>
+              </div>
+            </div>
+              <!-- <br /> -->
+              <div class="min-info" >
+
+                <div class="icon-info icon-3">
+                  <i class="fa-solid fa-dollar-sign"></i>
+              </div>
+              <div>
+                <h2>Salary</h2>
+                <label for="Salary">Salary</label>
+              </div>
+            </div>
+              
+
+            </div>
+          </div>
+        </div>
+        
+        <div class="table-data">
+          <div class="order">
+            <div class="head">
+              <h3>Patients</h3>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Patient Photo</th>
+                  <th>Patient Name</th>
+                  <th>ID</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <img src="image/people.png" />
+                  </td>
+                  <td><p>John Doe</p></td>
+                  <td>ID</td>
+                  <td>Email</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="image/people.png" />
+                    </td>
+                    <td><p>John Doe</p></td>
+                    <td>ID</td>
+                    <td>Email</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="image/people.png" />
+                      </td>
+                      <td><p>John Doe</p></td>
+                      <td>ID</td>
+                      <td>Email</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <img src="image/people.png" />
+                        </td>
+                        <td><p>John Doe</p></td>
+                        <td>ID</td>
+                        <td>Email</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="image/people.png" />
+                          </td>
+                          <td><p>John Doe</p></td>
+                          <td>ID</td>
+                          <td>Email</td>
+                          </tr>
+                <tr>
+                  <td>
+                    <img src="image/people.png" />
+                  </td>
+                  <td><p>John Doe</p></td>
+                  <td>ID</td>
+                  <td>Email</td>
+                  </tr>
+                <tr>
+                  <td>
+                    <img src="image/people.png" />
+                  </td>
+                  <td><p>John Doe</p></td>
+                  <td>ID</td>
+                  <td>Email</td>
+                  </tr>
+                <tr>
+                  <td>
+                    <img src="image/people.png" />
+                  </td>
+                  <td><p>John Doe</p></td>
+                  <td>ID</td>
+                  <td>Email</td>
+                  </tr>
+                <tr>
+                  <td>
+                    <img src="image/people.png" />
+                  </td>
+                  <td><p>John Doe</p></td>
+                  <td>ID</td>
+                  <td>Email</td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+      </main>
+      <!-- MAIN -->
+    </section>
+    <!-- CONTENT -->
+
+    <script src="../static/js/docscript.js"></script>
+  </body>
+</html>
