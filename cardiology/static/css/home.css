@@ -9,10 +9,15 @@
 
 
 *{
+<<<<<<< HEAD
 
   --poppins: 'Poppins', sans-serif;
 	--lato: 'Lato', sans-serif;
 
+=======
+  --poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+>>>>>>> rawan
   text-decoration: none;
   outline: none;
   margin: 0; padding: 0;
@@ -546,7 +551,11 @@ header .fa-bars{
     letter-spacing: .2rem;
     opacity: .8;
     background:var(--darkblue);
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> rawan
 
   }
 
@@ -605,9 +614,13 @@ header .fa-bars{
   .contact .row .contact-form-container form input, textarea{
     outline: none;
     border:.2rem solid #333;
+<<<<<<< HEAD
 
     border-radius:20px ;
 
+=======
+    border-radius:20px ;
+>>>>>>> rawan
     height:4rem;
     background:#fff;
     padding:0 1rem;
@@ -626,10 +639,15 @@ header .fa-bars{
   .contact .row .contact-form-container form input[type="submit"]{
     color:var(--darkblue);
     border:.2rem solid #333;
+<<<<<<< HEAD
 
     border-radius:20px ;
 
 
+=======
+    border-radius:20px ;
+
+>>>>>>> rawan
     cursor: pointer;
     transition: .2s;
     width:20rem;

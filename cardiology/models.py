@@ -12,7 +12,11 @@ def user_loader(id):
         return Admins.query.get(int(id))
 
 
+<<<<<<< HEAD
 class Doctors(db.Model, UserMixin):
+=======
+class Doctors(db.Model):
+>>>>>>> rawan
     d_id = db.Column(db.Integer(), primary_key=True)
     d_username = db.Column(db.String(length=30), nullable=False, unique=True)
     d_password = db.Column(db.String(length=150), nullable=False)
@@ -35,14 +39,22 @@ class Doctors(db.Model, UserMixin):
 
     @password.setter
     def password(self, plain_text_password):
+<<<<<<< HEAD
         self.d_password = bcrypt.generate_password_hash(
             plain_text_password).decode('utf-8')
+=======
+        self.d_password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
+>>>>>>> rawan
 
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.d_password, attempted_password)
 
 
+<<<<<<< HEAD
 class Admins(db.Model, UserMixin):
+=======
+class Admins(db.Model):
+>>>>>>> rawan
     a_id = db.Column(db.Integer(), primary_key=True)
     a_username = db.Column(db.String(length=30), nullable=False, unique=True)
     a_password = db.Column(db.String(length=60), nullable=False)
@@ -59,14 +71,22 @@ class Admins(db.Model, UserMixin):
 
     @password.setter
     def password(self, plain_text_password):
+<<<<<<< HEAD
         self.a_password = bcrypt.generate_password_hash(
             plain_text_password).decode('utf-8')
+=======
+        self.a_password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
+>>>>>>> rawan
 
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.a_password, attempted_password)
 
 
+<<<<<<< HEAD
 class Patients(db.Model, UserMixin):
+=======
+class Patients(db.Model):
+>>>>>>> rawan
     p_id = db.Column(db.Integer(), primary_key=True)
     p_username = db.Column(db.String(length=30), nullable=False, unique=True)
     p_password = db.Column(db.String(length=60), nullable=False)
@@ -86,8 +106,12 @@ class Patients(db.Model, UserMixin):
 
     @password.setter
     def password(self, plain_text_password):
+<<<<<<< HEAD
         self.p_password = bcrypt.generate_password_hash(
             plain_text_password).decode('utf-8')
+=======
+        self.p_password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
+>>>>>>> rawan
 
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.p_password, attempted_password)
@@ -104,8 +128,12 @@ class Appointments(db.Model):
 
 
 class Medical_records(db.Model):
+<<<<<<< HEAD
     p_id = db.Column(db.Integer(), db.ForeignKey(
         'patients.p_id'), primary_key=True)
+=======
+    p_id = db.Column(db.Integer(), db.ForeignKey('patients.p_id'), primary_key=True)
+>>>>>>> rawan
     p_name = db.Column(db.String(), db.ForeignKey('patients.p_name'))
     d_id = db.Column(db.Integer(), db.ForeignKey('doctors.d_id'))
     d_name = db.Column(db.String(), db.ForeignKey('doctors.d_name'))

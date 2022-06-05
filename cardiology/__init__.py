@@ -12,6 +12,10 @@ login_manager = LoginManager(app)
 login_manager.login_view = "login_page"
 login_manager.login_message_category = "info"
 
+<<<<<<< HEAD
 from cardiology import patient, doctor, home, models
+=======
+from cardiology import patient, doctor, home
+>>>>>>> rawan
 
  
