@@ -17,80 +17,71 @@
       rel="stylesheet"
     />
     <!-- My CSS -->
-    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/DoctorStyle.css" />
     <!-- <link rel="stylesheet" href="box.css"> -->
 
-    <title>Scans</title>
+    <title>Appointments</title>
   </head>
   <body>
-    <!-- Loader -->
-    <div class="loader">
-      <div class="loader-inner">
-        <div class="loader-line-wrap">
-          <div class="loader-line"></div>
-        </div>
-        <div class="loader-line-wrap">
-          <div class="loader-line"></div>
-        </div>
-        <div class="loader-line-wrap">
-          <div class="loader-line"></div>
-        </div>
-        <div class="loader-line-wrap">
-          <div class="loader-line"></div>
-        </div>
-        <div class="loader-line-wrap">
-          <div class="loader-line"></div>
+      <!-- Loader -->
+      <div class="loader">
+        <div class="loader-inner">
+          <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+          </div>
+          <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+          </div>
+          <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+          </div>
+          <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+          </div>
+          <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- End loader -->
+      <!-- End loader -->
     <!-- Copy this to Html file under body tag -->
     <!-- Edit form -->
     <div class="main-edit-form" id="edit">
-      <div class="edit-form">
+     
+      <div class="edit-form" >
+      
         <i onclick="closeform()" class="fa-solid fa-xmark"></i>
         <form id="form_3">
           <h1>Edit form</h1>
           <label>New Username:</label>
           <div>
-            <i class="fa-solid fa-user"></i>
-            <input
-              id="E-Username"
-              type="text"
-              placeholder="Old-User-Name"
-            /><br />
-            <span></span>
+          <i  class="fa-solid fa-user"></i>
+          <input id="E-Username" type="text" placeholder="Old-User-Name"><br>
+          <span></span>
           </div>
           <label>NEW PHONE NUMBER:</label>
           <div>
             <i class="fa-solid fa-phone"></i>
-            <input
-              id="E-Phonenumber"
-              type="text"
-              placeholder="Old-Phone-Number"
-            /><br />
-            <span></span>
+          <input id="E-Phonenumber" type="text" placeholder="Old-Phone-Number"><br>
+          <span></span>  
           </div>
           <label>New E-mail:</label>
           <div>
             <i class="fa-solid fa-envelope"></i>
-            <input id="E-Email" type="email" placeholder="Old-Email" /><br />
-            <span></span>
+          <input id="E-Email" type="email" placeholder="Old-Email"><br>
+          <span></span>
           </div>
           <label>New Password:</label>
           <div>
             <i class="fa-solid fa-lock"></i>
-            <input
-              id="E-Password"
-              placeholder="Enter Your New Password"
-              type="password"
-            /><br />
-            <span></span>
+          <input id="E-Password" placeholder="Enter Your New Password" type="password"><br>
+          <span></span>
           </div>
-
+          
           <button type="submit" action="/">Submit</button>
         </form>
       </div>
+      
     </div>
 
     <!-- End of Edit form -->
@@ -108,18 +99,16 @@
           </a>
         </li>
         <li>
-          <a href="Doctor.html">
+          <a href="#">
             <i class="bx bxs-dashboard"></i>
             <span class="text">Profile</span>
           </a>
         </li>
         <li>
-          <a href="Appointments.html">
-            <i
-              class="fa-solid fa-calendar-check"
-              style="margin-left: 15px; margin-right: 10px"
-            ></i>
-            <span class="text">Appointments</span>
+          <a href="Doc_Appointments.html">
+            <i class="fa-solid fa-calendar-check" style="margin-left: 15px;
+            margin-right: 10px;"></i>
+             <span class="text">Appointments</span>
           </a>
         </li>
         <li>
@@ -162,42 +151,79 @@
       <!-------------------------------------- Template end ---------------------------->
       <!-- MAIN -->
       <main>
-        <div class="head-title"></div>
-        <div class="table-data">
-          <div class="todo">
-            <div class="head">
-              <h3>Your Scans</h3>
-            </div>
+  <div class="table-data">
+  <div class="order">
+ <div class="head">
+   <h3>Appointments</h3>
+ <!-- <button type="button" class="btn" id="search"><i class="bx bx-search"></i></button>
+                                                  
+   <input type="text"  id="id" placeholder="ID" class="input-field">
+    <i class="bx bx-filter"></i> -->
+  </div>
+  <table id="tabels" class="tabel">
+ <thead>
+  <tr>
+  <th>Patient Names</th>
+  <th>Date</th>
+   <th>Time</th>
+  </tr>
+  </thead>
+ <tbody >
+   <tr>
+  <td>
+  <p>
+    <label for="Patient">Patient</label>
+   </p>
+   </td>
+   <td>ID</td>
+ <td >Time</td>
+    </tr>
+ <tr>
+  <td>
+    <p>
+    <label for="Patient">Patient</label>
+</p>
+  </td>
+   <td>ID</td>
+   <td >Time</td>
+</tr>
+  <tr>
+ <td>
+ <p>
+   <label for="Patient">Patient</label>
+  </p>
+ </td>
+ <td>ID</td>
+ <td >Time</td>
+ </tr>
+ <tr>
+ <td>
+ <p>
+   <label for="Patient">Patient</label>
+   </p>
+  </td>
+   <td>ID</td>
+   <td >Time</td>
+</tr>
+  <tr>
+  <td>
+ <p>
+   <label for="Patient">Patient</label>
+  </p>
+ </td>
+ <td>ID</td>
+ <td >Time</td>
+ </tr>
+ </tbody>
+ </table>
 
-            <br /><button type="button" class="collapsible">Scan 1</button>
-            <div class="content" id="scan">
-              <img
-                src="../static/images/4d44e39511097c8cf85d031bda1d770f.jpg"
-                alt=""
-              />
-            </div>
-            <button type="button" class="collapsible">Scan 2</button>
-            <div class="content">
-              <img
-                src="../static/images/cbe0cef3e37f00adca5c0dfcbe70069d.jpg"
-                alt=""
-              />
-            </div>
-            <button type="button" class="collapsible">Scan 3</button>
-            <div class="content">
-              <img
-                src="../static/images/cbe0cef3e37f00adca5c0dfcbe70069d.jpg"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-        <a href="Patients.html" class="btn btn3" id="hh"> ❮ Back </a>
+</div>
+
       </main>
       <!-- MAIN -->
     </section>
     <!-- CONTENT -->
 
-    <script src="../static/js/script.js"></script>
+    <script src="../static/js/scriptJs.js"></script>
   </body>
 </html>
