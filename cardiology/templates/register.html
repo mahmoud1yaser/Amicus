@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <title>Register Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="forms">
+            <div class="form register">
+                <span class="title">Register</span>
+
+                <form method="POST" class="form-register" action="signup">
+                    {{ form.hidden_tag() }}
+
+                    <div class="main-inp">
+                        <div class="dob-inp">
+                   <div class="input-field">
+
+            {{ form.fullname(class="form-control", placeholder="Enter your Full Name") }}            <i class="uil uil-chat-bubble-user"></i>
+          </div>
+          <div class="input-field">
+
+            {{ form.username(class="form-control", placeholder="Username") }}             <i class="uil uil-postcard"></i>
+          </div>
+        </div>
+        <div class="dob-inp">
+          <div class="input-field">
+
+            {{ form.email(class="form-control", placeholder="E-mail") }}            <i class="uil uil-envelope icon"></i>
+          </div>
+          <div class="input-field">
+
+            {{ form.phone(class="form-control", placeholder="Phone Number") }}            <i class="uil uil-phone"></i>
+          </div>
+        </div>
+        <div class="dob-inp">
+          <div class="input-field">
+
+            {{ form.password(class="form-control", placeholder="Enter your password") }}             <i class="uil uil-lock icon"></i>
+          </div>
+          <div class="input-field">
+
+            {{ form.confirm_password(class="form-control", placeholder="Confirm your password") }}            <i class="uil uil-key-skeleton-alt"></i>
+          </div>
+        </div>
+        <div class="dob-inp">
+            <div class="input-field " name="Birthdate">
+
+                <span>Birthdate</span>
+            </div>
+            <div class="input-field" name="Sex">
+                <span>Sex</span>
+
+            </div>
+          </div>
+        <div class="dob-inp">
+            <div class="input-field ">
+
+            {{ form.birthdate(class="form-control", onkeydown="return false")}}            </div>
+            <div class="input-field">
+
+            <div class="gender-details">
+            {{ form.sex(class="form-control", style="list-style:none") }}
+            </div>
+
+            </div>
+          </div>
+          <div class="input-field button">
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        </div>
+
+        </div>
+        </form>
+
+                <div class="login-signup">
+                    <span class="text">Already have an account?
+                        <a href= {{ url_for('login_page') }} class="text signup-link"> Signin now</a>
+                    </span>
+                </div>
+
+            </div>
+    </div>
+    </div>
+
+
+    <script src="../static/js/script.js"></script>
+
+</body>
+</html>
