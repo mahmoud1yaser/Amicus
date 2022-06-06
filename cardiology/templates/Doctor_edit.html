@@ -1,0 +1,49 @@
+{% extends 'DoctorTemplate.html' %}
+{% block content %}
+<title>Edit your profile</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Edit form -->
+<!--    <div class="main-edit-form" id="edit">-->
+
+     <div class="edit-form" >
+        <!-- <div> -->
+         
+          <form method="POST" class="form-register" action="EditDoctorInformation" id="form4">
+                      {{ form.hidden_tag() }}
+            <h1>Edit form</h1>
+            <label>New Username:</label>
+            <div >
+				<i class="fa-solid fa-id-card"></i>
+            {{ form.username(class="form-control", value="{{user.d_username}}" , id="username") }}
+            <span></span>
+            </div>
+
+			<label>New Phone Number:</label>
+            <div>
+              <i class="fa-solid fa-phone"></i>
+            {{ form.phone(class="form-control", value="{{user.d_phone}}" , id="phone") }}
+          <span></span>
+            </div>
+            <label>New E-mail:</label>
+            <div>
+              <i class="fa-solid fa-envelope"></i>
+            {{ form.email(class="form-control", value="{{user.d_email}}" ,id="Email") }}
+           <span></span>
+            </div>
+            <label>New Password:</label>
+            <div>
+              <i class="fa-solid fa-lock"></i>
+            {{ form.password(class="form-control", label="Enter your new password" ,id="password") }}
+             <span></span>         
+          </div>
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+          </form>
+        </div>
+        <script src="../static/js/Edit.js"></script>
+
+<!--    </div>-->
+
+    <!-- End of Edit form -->
+
+{% endblock %}

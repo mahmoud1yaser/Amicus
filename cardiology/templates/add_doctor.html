@@ -1,4 +1,7 @@
 {% extends 'AdminTemplate.html' %}
+{%block name%}
+{{ current_user.a_name }}
+{%endblock%}
 {% block content %}
 <Title>Add doctor</Title>
 <div class="table-data">
@@ -8,64 +11,58 @@
 		<h3>Add Doctor</h3>
 	  </div>
 		<div class="add-form" >
-	  <form>
-		<label> Name:</label>
-		<div>
-		  <i class="fa-solid fa-id-badge"></i>
-		<input type="text" placeholder="Name">
-		</div>
-		<label> UserName:</label>
-			<div>
-			  <i class="fa-solid fa-user-circle"></i>
-			<input placeholder="User-Name" type="text">
-			</div>
-			<label> Phone:</label>
-			<div>
-			  <i class="fa-solid fa-phone"></i>
-			<input placeholder="Phone" type="text">
-			</div>
-			<label> BirthDate:</label>
-			<div>
-			  <i class="fa-solid fa-user-circle"></i>
-			<input placeholder="Birth-Date" type="date">
-			</div>
-			<label> Sex:</label>
-			<div>
-			<input type="radio" id="female" name="sex" value="female">
-                <label for="Female">Female</label><br>
-                <input type="radio" id="male" name="sex" value="Male">
-                <label for="Male">Male</label><br>
-			</div>
-			
-<label> E-mail:</label>
-<div>
-  <i class="fa-solid fa-envelope"></i>
-<input type="email" placeholder="Email">
-</div>
-<label> Password:</label>
-<div>
-  <i class="fa-solid fa-lock"></i>
-<input placeholder="Password" type="password">
-</div>
-<label> Position:</label>
-<div>
-  <i class="fa-solid fa-user-doctor"></i>
-<input type="text" placeholder="Position">
-</div>
-<label> Salary:</label>
-<div>
-  <i class="fa-solid fa-dollar-sign"></i>
-<input type="text" placeholder="Salary">
-</div>
-<label> Workperiod:</label>
-<div>
-  <i class="fa-solid fa-clock"></i>
-<input type="text" placeholder="Work-Period">
-</div>
-			
-
-<button type="submit" action="/">Add</button>
-</form>
+			<form method="POST" class="form-register" action="AddDoctor">
+				{{ form.hidden_tag() }}
+				<label> Name:</label>
+				<div>
+					{{ form.fullname(class="form-control", placeholder="Name") }}
+				</div>
+				<label> UserName:</label>
+				<div>
+					{{ form.username(class="form-control", placeholder="Username") }}
+				</div>
+				<label> Phone:</label>
+				<div>
+					{{ form.phone(class="form-control", placeholder="Phone Number") }}
+				</div>
+				<label> BirthDate:</label>
+				<div>
+					{{ form.birthdate(class="form-control", onkeydown="return false") }}
+				</div>
+				<label> Sex:</label>
+				<div class="gender-details">
+					{{ form.sex(class="form-control", style="list-style:none") }}
+				</div>
+				<label> E-mail:</label>
+				<div>
+					{{ form.email(class="form-control", placeholder="Email") }}
+				</div>
+				<label> Password:</label>
+				<div>
+					{{ form.password(class="form-control", placeholder="Password") }}
+				</div>
+				<label> Position:</label>
+				<div>
+				</div>
+				<div>
+					{{ form.position(class="form-control")}}
+				</div>
+				<label> Salary:</label>
+				<div>
+					{{ form.salary(class="form-control", placeholder="Salary") }}
+				</div>
+				<label>Work period From:</label>
+				<div>
+					{{ form.work_periodFrom(class="form-control") }}
+				</div>
+				<label>Work period To:</label>
+				<div>
+					{{ form.work_periodTo(class="form-control") }}
+				</div>
+				<div>
+					{{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+				</div>
+			</form>
 		</div>
 	 
 
