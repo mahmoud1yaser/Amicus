@@ -1,0 +1,127 @@
+{% extends 'AdminTemplate.html' %}
+{%block name%}
+{{ current_user.a_name }}
+{%endblock%}
+{% block content %}
+<Title>Patients</Title>
+<div class="table-data">
+			
+	<div class="order">
+		<div class="head">
+			<i class=' fa-solid fa-users' ></i>
+			
+			<h3> Patients</h3>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Id</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>John Doe</td>
+					<td>01-10-2021</td>
+					<td class="view"><a class="status" href="">View more</a></td>
+				</tr>  
+				<tr>
+					<td>John Doe</td>
+					<td>01-10-2021</td>
+					<td class="view"><a class="status" href="">View more</a></td>
+				</tr>  
+				<tr>
+					<td>John Doe</td>
+					<td>01-10-2021</td>
+					<td class="view"><a class="status" href="">View more</a></td>
+				</tr>  
+				<tr>
+					<td>John Doe</td>
+					<td>01-10-2021</td>
+					<td class="view"><a class="status" href="">View more</a></td>
+				</tr>  
+				<tr>
+					<td>John Doe</td>
+					<td>01-10-2021</td>
+					<td class="view"><a class="status" href="">View more</a></td>
+				</tr>  
+				<tr>
+					<td>John Doe</td>
+					<td>01-10-2021</td>
+					<td class="view"><a class="status" href="">View more</a></td>
+				</tr>  
+			</tbody>
+		</table>
+
+	</div>             
+
+<div class="card2">
+	<h1 class="Info_Doc" style="text-align: left">
+		John
+	  </h1>
+
+	  <div class="Information">
+		<div class="min-info" >
+
+			<div class="icon-info icon-1">
+			  <i class="fa-solid fa-id-card"></i>
+		  </div>
+		  <div>
+			<h2>ID</h2>
+			<label for="ID">ID</label>
+		  </div>
+		</div>
+		  <div class="min-info" >
+
+			<div class="icon-info icon-2">
+			  <i class="fa-solid fa-envelope"></i>
+		  </div>
+		  <div>
+			<h2>E-mail</h2>
+			<label for="E-mail">E-mail</label>
+		  </div>
+		</div>
+		  <!-- <br /> -->
+		  <div class="min-info" >
+
+			<div class="icon-info icon-3">
+			  <i class="fa-solid fa-phone"></i>
+		  </div>
+		  <div>
+			<h2>Phone Number</h2>
+			<label for="Phone-Number">Phone Number</label>
+		  </div>
+		</div>
+		<div class="min-info" >
+
+			<div class="icon-info icon-1">
+				<i class="fa-solid fa-id-badge"></i>
+			</div>
+		  <div>
+			<h2> Age</h2>
+			<label for="Phone-Number"> Age</label>
+		  </div>
+		</div>
+		<div class="min-info" >
+
+			<div class="icon-info icon-2">
+				<i class="fa-solid fa-user-md"></i>
+			</div>
+		  <div>
+			<h2>SuperVisor Doctors</h2>
+			<label for="Phone-Number">SuperVisor Doctors</label>
+		  </div>
+		</div>
+
+		
+	  </div>
+		
+
+	  </div>
+	
+	
+</div>
+</div>
+
+{% endblock %}

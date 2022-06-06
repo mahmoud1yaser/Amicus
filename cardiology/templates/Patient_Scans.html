@@ -1,0 +1,29 @@
+{% extends 'DoctorTemplate.html' %}
+{% block content %}
+<title>Scans</title>
+<div class="head-title"></div>
+        <div class="table-data">
+          <div class="todo">
+            <div class="head">
+              <h3>Your Scans</h3>
+            </div>
+
+            {% if scans==[] %}
+            
+            <label for="di">No Scans to Display</label>
+            
+            {% else %}
+            {% for scan in scans %}
+            <br><button type="button" class="collapsible">Scan {{loop.index}}</button>
+              <div class="content">
+              <span id="scan"><h3>Scan Uploding Date: {{scan.scan_date.strftime('%Y-%m-%d')}}</h3></span>
+              <!-- <h2>scan uploding date: {{scan.scan_date.strftime('%Y-%m-%d')}}</h2> -->
+              <img src="{{scan.scan_path}}" alt="">
+            </div>
+            
+            {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+        <a href="{{url_for('patient_info')}}" class="btn btn3" id="hh"> ❮ Back </a>
+{% endblock %}

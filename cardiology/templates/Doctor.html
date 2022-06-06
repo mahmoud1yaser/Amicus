@@ -1,0 +1,193 @@
+
+{% extends 'DoctorTemplate.html' %}
+{% block content %}
+<title>profile</title>
+<div class="table-data">
+  <div class="card1">
+    <div>
+      <img
+        src='{{user.d_photo}}'
+        alt="profile-pic"
+        class="profile"/>
+
+       <br><span>{{user.d_name}}</span>
+       
+      <div class="upload-btn-wrapper">
+        <button class="btn" id="btn5"  style="margin-top: 10rem;">Edit
+          <input type="file" name="myfile" />
+        </button>
+        <button type="submit" class="btn" id="btn6" action="/" ><i class="fa-solid fa-check"></i></button>
+        </div>
+
+    </div>
+    
+  </div>
+  <div class="card2">
+    <h1 class="Info_Doc" style="text-align: left">
+      Personal Information
+    </h1>
+
+    <div class="Information">
+      <div class="min-info">
+        <div class="icon-info icon-1">
+          <i class="fa-solid fa-id-card"></i>
+        </div>
+        <div>
+          <h2>ID</h2>
+          <label for="ID">{{user.d_id}}</label>
+        </div>
+      </div>
+      <div class="min-info">
+        <div class="icon-info icon-2">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div>
+          <h2>E-mail</h2>
+          <label for="E-mail">{{user.d_email}}</label>
+        </div>
+      </div>
+      <!-- <br /> -->
+      <div class="min-info">
+        <div class="icon-info icon-3">
+          <i class="fa-solid fa-phone"></i>
+        </div>
+        <div>
+          <h2>Phone Number</h2>
+          <label for="Phone-Number">{{user.d_phone}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card2">
+    <h1 class="Info_Doc" style="text-align: left">Job Information</h1>
+
+    <div class="Information">
+      <div class="min-info">
+        <div class="icon-info icon-1">
+          <i class="fa-solid fa-user-doctor"></i>
+        </div>
+        <div>
+          <h2>Position</h2>
+          <label for="Position">{{user.d_position}}</label>
+        </div>
+      </div>
+      <div class="min-info">
+        <div class="icon-info icon-2">
+          <i class="fa-solid fa-clock"></i>
+        </div>
+        <div>
+          <h2>Working period</h2>
+          <label for="Working period">{{user.d_workperiod}}</label>
+        </div>
+      </div>
+      <!-- <br /> -->
+      <div class="min-info">
+        <div class="icon-info icon-3">
+          <i class="fa-solid fa-dollar-sign"></i>
+        </div>
+        <div>
+          <h2>Salary</h2>
+          <label for="Salary">{{user.d_salary}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="table-data">
+  <div class="order">
+    <div class="head">
+      <h3>Patients</h3>
+      <form action={{url_for('doc_profile')}} method="post">
+      <button type="submit" class="btn" id="search"><i class="bx bx-search"></i></button>
+
+      
+      <input type="text"  id="id" placeholder=" Any ID" name="p_id" class="input-field">
+    </form>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Patient name</th>
+          <th>ID</th>
+          <th></th>
+        </tr>
+      </thead>
+      {% if patients==[] %}
+      <div>
+        <label for="di">No Patients to Display</label>
+      </div>
+      {% else %}
+      <tbody>
+        {% for patient in patients %}
+        <tr>
+          <td>
+            <p>
+              <label for="Patient">{{patient.p_name}}</label>
+            </p>
+          </td>
+          <td>{{patient.p_id}}</td>
+
+          <td class="view">
+            <form action="{{url_for('view_more')}}" method="post">
+              <button  class="status" type="submit" value="{{patient.p_id}}" name="gg" >View more</button></form></td>
+        </tr>
+        {% endfor %}
+        
+
+        
+      </tbody>
+      {% endif %}
+    </table>
+  </div>
+  <div class="todo">
+    <div class="head">
+      <span><h3>Inbox</h3></span>
+    </div>
+    {% if msgs==[] %}
+    <div>
+      
+      <label for="di">No Messages to Display</label>
+    </div>
+    {% else %}
+    {% for msg in msgs %}
+    <br /><button type="button" class="collapsible">Messages_1</button>
+    <div class="content">
+      <div>
+        <br />
+        <h3><span>Patient Name</span></h3>
+        <label for="di"> {{msg.p_name}}</label>
+      </div>
+      <div>
+        <br />
+        <h3><span>Patient Email</span></h3>
+        <label for="di"> {{Patients.query.filter_by(p_id=msg.p_id).first().p_email}}</label>
+      </div>
+      <div>
+        <br />
+        <h3><span>Patient Number</span></h3>
+        <label for="di"> {{Patients.query.filter_by(p_id=msg.p_id).first().p_phon}}</label>
+      </div>
+      <div>
+        <br />
+        <h3><span>Patient ID</span></h3>
+        <label for="di"> {{msg.p_id}}</label>
+      </div>
+      <div>
+        <br />
+        <h3><span>Message</span></h3>
+        <textarea
+          disabled
+          id="textarea"
+          name="comment"
+          rows="5"
+          cols="100"
+          value="{{msg.message}}"
+        ></textarea>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

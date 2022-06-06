@@ -1,0 +1,242 @@
+<!-------------------------------------- Template start ---------------------------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../static/css/patientStyle.css">
+	<link rel = "icon" href = 
+	"../static/images/logoicon.webp" 
+			type = "image/x-icon">
+		
+
+</head>
+<body>
+	<!-- Copy this to Html file under body tag -->
+    <!-- Edit form -->
+
+		
+
+			
+
+	    <!-- Loader -->
+		<div class="loader">
+			<div class="loader-inner">
+			  <div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			  </div>
+			  <div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			  </div>
+			  <div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			  </div>
+			  <div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			  </div>
+			  <div class="loader-line-wrap">
+				<div class="loader-line"></div>
+			  </div>
+			</div>
+		  </div>
+		  <!-- End loader -->
+    <!-- Edit form -->
+    <div class="main-edit-form" id="edit">
+     
+        <div class="edit-form" >
+        
+          <i onclick="closeform()" class="fa-solid fa-xmark"></i>
+          <form  id="form4" action="" method="post">
+            <h1>Edit form</h1>
+            <label>New Username:</label>
+			<div>
+          
+				<i class="fa-solid fa-id-card"></i>
+            <input type="text"  id= "username" value="{{user.p_username}}" name="username" >
+			
+           <span></span>
+		</div>
+         
+			<label>New Phone Number:</label>
+           
+			<div>
+              <i class="fa-solid fa-phone"></i>
+            <input value="{{user.p_phone}}" name="phone" type="number"  id="phone">
+			<span></span>    
+		</div>
+			
+		
+            <label>New E-mail:</label>
+			<div>
+            
+              <i class="fa-solid fa-envelope"></i>
+            <input type="email" value="{{user.p_email}}" name="email" id="Email">
+           
+			<span></span>
+		   </div>
+            <label>New Password:</label>
+			<div>
+              <i class="fa-solid fa-lock"></i>
+            <input placeholder="Enter Your New Password" type="password" id="password">
+            <span></span>
+		</div>
+            
+            <button type="submit" action="/">Submit</button>
+          </form>
+        </div>
+        
+      </div>
+      <!-- End of Edit form -->
+		
+
+			
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			
+			<i class='bx bxs-user-circle'></i>
+			<span class="text" >{{user.p_name}} </span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+
+				<a href="{{url_for("home_page")}}" target="_blank" >
+					<i class='bx bxs-home-heart' ></i>
+					<span class="text">Home</span>
+				</a>
+			</li>
+			{% if active=='p_profile' %}
+			<li class="active">
+			{% else %}
+			<li >
+			{% endif %}
+				<a href="{{url_for('p_profile')}}">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Profile</span>
+				</a>
+			</li>
+			{% if active=='book_appointment' %}
+			<li class="active">
+			{% else %}
+			<li >
+			{% endif %}
+				<a href="{{url_for('book_appointment')}}">
+					<i class='bx bxs-bookmark-plus' ></i>
+					<span class="text">Book Appointment</span>
+				</a>
+			</li>
+
+			<li >
+				<a href="https://calendar.google.com/calendar" target="_blank">
+					<i class='bx bxs-calendar' ></i>
+					<span class="text">Reserved Appointments</span>
+				</a>
+			</li>
+			{% if active=='contact_page' %}
+			<li class="active">
+			{% else %}
+			<li >
+			{% endif %}
+				<a href="{{url_for('contact_page')}}">
+					<i class='bx bxs-message-rounded' ></i>
+					<span class="text">Contact your Doctor</span>
+				</a>
+			</li>
+			
+			{% if active=='scans_page' %}
+			<li class="active">
+			{% else %}
+			<li >
+			{% endif %}
+				<a href="{{url_for('scans_page')}}">
+					<i class='bx bxs-file-find' ></i>
+					<span class="text">Your Scans</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{url_for('edit_patient')}}"">
+
+				  <i class='bx bxs-pencil' ></i>
+				  <span class="text">Edit profile</span>
+				</a>
+			  </li>
+
+			<li>
+				<a href={{url_for("logout_page")}} class="logout">
+
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<span id="brand"><h3>MedCare</h3></span>
+			<form action="#">
+				<div class="form-input">
+					
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			
+			<a href="#" class="profile">
+				<img src="{{user.p_photo}}">
+			</a>
+
+		</nav>
+		<!-- NAVBAR -->
+						<!-------------------------------------- Template end ---------------------------->
+		<!-- MAIN -->
+		<main>
+		
+		 {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+           {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">
+                  <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  {{ message }}
+              </div>
+           {% endfor %}
+        {% endif %}
+      {% endwith %}
+			  
+			  
+			  
+            {% block content %}
+            <!-- =========== Body =========  -->
+           {% endblock %}
+       
+	
+			
+		
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script src="../static/js/script1.js"></script>
+	<script src="../static/js/Edit.js"></script>
+</body>
+
+	
+</html>

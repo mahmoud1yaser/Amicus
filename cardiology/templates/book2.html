@@ -1,0 +1,72 @@
+{% extends 'Ptemplate.html' %}
+{% block content %}
+
+<title>Booking</title>
+	
+
+		
+			
+		
+
+	<div class="head-title">
+		<div class="left">
+						
+		</div>
+		
+	</div>
+	<div class="table-data">
+		<div class="order">
+
+			<div id="back">
+				
+				
+					
+					
+					  <div id="container">
+					   
+						<div id="body_header">
+						  
+							<h1 id="he">Book now</h1>
+						 
+					
+						</div>
+						<form action="{{url_for('doc_appointments')}}" method="post" id="book" class="input-group">
+						  <fieldset>
+							<legend><span class="number">3</span>Select Time</legend>
+							<br>
+						 <div>  
+						   <div class="select" id="df">
+							<select id="Time" name="Time" >
+								<option selected disabled >Select Time</option>
+								{% for t in time %} 
+								<option value="{{t}}">{{t}}</option>
+								{% endfor %}
+							</select>
+						   </div>
+						   <span></span>
+						</div>   
+						  </fieldset>
+						
+					   
+						  <button type="submit" class="btn button2">Book</button>
+						</form>
+					  </div>
+					  <a href="{{url_for('book_appointment')}}" class=" btn btn3" id="hh" > ❮ Back </a>
+					
+					</html>
+				</div>
+
+		</div>
+		
+	</div>
+	
+
+
+	
+
+<script src="../static/js/Book1.js"></script>
+{% endblock %}
+		
+
+			
+	
