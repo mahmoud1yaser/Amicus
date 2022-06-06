@@ -5,28 +5,57 @@ from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_r
 from cardiology import app, db
 from cardiology.forms import editDoctorForm_foreign, addDoctorForm, addAdminForm, editAdminForm
 from datetime import datetime
-from cardiology.my_functions import parse_time, save_picture
+from cardiology.my_functions import parse_time, save_picture, count_patients, doct_patient
 from flask_login import current_user, login_required
 
-a_user = Admins.query.filter_by(a_id=1)
+ 
 docs = Doctors.query.all()
 patients = Patients.query.all()
+appoints = Appointments.query.all()
 
 
-@app.route('/AdminDashboard')
+@app.route('/AdminDashboard', methods=['GET', 'POST'])
 @login_required
 def admin_dashboard():
+    session['patient_id'] = 0
     if session["role"] == "Admin":
-        return render_template('admin.html', current_user=current_user)
+        if request.method == 'POST':
+            session['doc_id']= request.form['id']
+             
+            return redirect(url_for('view_selected_doctor'))
+        dnumber = len(docs)
+        pnumber = len(patients)
+        appoinumber = len(appoints)
+        doctor_pnumber = count_patients(docs)
+        return render_template('admin.html', current_user=current_user, docs=docs, dnumber=dnumber, pnumber=pnumber, appoinumber=appoinumber, doctor_pnumber=doctor_pnumber)
     else:
         render_template('page403.html')
 
 
-@app.route('/DoctorPatients')
+@app.route('/updateadminpic', methods=['GET', 'POST'])
+@login_required
+def update_adminPic():
+    if session["role"] == "Admin":
+        if request.method == 'POST':
+            new_path= save_picture(request.files['myfile'], 'profile_pics')
+            current_user.a_photo = new_path
+            db.session.commit()
+            return redirect(url_for('admin_dashboard'))
+
+@app.route('/AdminPatients', methods=['GET', 'POST'])
 @login_required
 def view_doctor_patients():
+    p = 0
     if session["role"] == "Admin":
-        return render_template('admin_patient.html', current_user=current_user)
+        if int(session['patient_id']) != 0:
+            p = Patients.query.filter_by(p_id = int(session['patient_id'])).first()
+           
+        if request.method == 'POST':
+            session['patient_id'] = int(request.form['id'])
+            return redirect(url_for('view_doctor_patients'))
+            
+    
+        return render_template('admin_patient.html', current_user=current_user, patients=patients, p=p, selected_id=int(session['patient_id']), )
     else:
         render_template('page403.html')
 
@@ -35,7 +64,10 @@ def view_doctor_patients():
 @login_required
 def view_selected_doctor():
     if session["role"] == "Admin":
-        return render_template('admin_doctor.html', current_user=current_user)
+        doct= Doctors.query.filter_by(d_id=int(session['doc_id'])).first()
+        appoint = Appointments.query.filter_by(d_id=doct.d_id).all()
+        doc_patients = doct_patient(appoint)
+        return render_template('admin_doctor.html', current_user=current_user, doc=doct, doc_patients=doc_patients)
     else:
         render_template('page403.html')
 

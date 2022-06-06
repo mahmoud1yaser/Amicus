@@ -14,22 +14,18 @@
 				
 					<br><span>{{user.p_name}}</span>
 				
-				<div class="upload-btn-wrapper">
-					<form action="" method="" enctype="">
-					
-					<button class="btn" id="btn5" >Edit
-						<input type="file" name="myfile" />
-					</button>
-				
-				
-			
-					<button type="submit"  id="btn6" action="/" ><i class="fa-solid fa-check"></i></button>
-				
-				</form>  
-				</div>
-				 
-				 
-				 
+					<form action="{{url_for('p_profile')}}" method="post" enctype="multipart/form-data">
+						<div class="upload-btn-wrapper">
+						  <button class="btn">Edit
+							<input type="file" name="myfile" />
+						  </button>
+						</div>
+						
+						
+						  <button type="submit" class="btn" id="btn6"  ><i class="fa-solid fa-check"></i></button>
+						
+						</form>
+
 				</div>
 			  </div>
 			  

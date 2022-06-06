@@ -3,24 +3,34 @@
 {{ current_user.a_name }}
 {%endblock%}
 {% block content %}
+<script type="text/javascript">
+	$(function(){
+	  $('.bars li .bar').each(function(key, bar){
+		var percentage = $(this).data('percentage');
+		$(this).animate({
+		  'height' : percentage + '%'
+		},1000);
+	  });
+	});
+	</script>
+
 <Title>Profile</Title>
 <div class="table-data">
 	<div class="card1">
-		<img src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d5363c18112a02ce22d0c46f8570147&auto=format&fit=crop&w=635&q=80%20635w" alt="profile-pic" class="profile">
+		<img src="{{current_user.a_photo}}" alt="profile-pic" class="profile">
 		<h1>{{current_user.a_name}}</h1>
-		<div class="upload-btn-wrapper">
-			<form action="" method="" enctype="">
-			
-			<button class="btn" id="btn5" >Edit
+		<form action="{{url_for('update_adminPic')}}" method="post" enctype="multipart/form-data">
+			<div class="upload-btn-wrapper">
+			  <button class="btn">Edit
 				<input type="file" name="myfile" />
-			</button>
-		
-		
-	
-			<button type="submit"  id="btn6" action="/" ><i class="fa-solid fa-check"></i></button>
-		
-		</form>  
-		</div>
+			  </button>
+			</div>
+			
+			
+			  <button type="submit" class="btn" id="btn6"  ><i class="fa-solid fa-check"></i></button>
+			
+			
+			</form>
 	</div>
 	<div class="card2">
 		<h1><i class='bx bx-medal' ></i> Best 4 Doctors</h1>
@@ -67,21 +77,21 @@
 	<li>
 		<i class='bx bxs-user' ></i>
 		<span class="text">
-			<div class="counter" data-target="102000">0</div>
+			<div class="counter" data-target="102000">{{dnumber}}</div>
 			<p>Doctors</p>
 		</span>
 	</li>
 	<li>
 		<i class='bx bxs-group' ></i>
 		<span class="text">
-			<div class="counter" id="paN" data-target="2834">0</div>
+			<div class="counter" id="paN" data-target="2834">{{pnumber}}</div>
 			<p>Patients</p>
 		</span>
 	</li>
 	<li>
 		<i class='bx bxs-first-aid' ></i>
 		<span class="text">
-			<div class="counter" data-target="2543">0</div>
+			<div class="counter" data-target="2543">{{appoinumber}}</div>
 			<p>Appointments</p>
 		</span>
 	</li>
@@ -116,78 +126,20 @@
 				</tr>
 			</thead>
 			<tbody>
+				{% for doc in docs %}
 				<tr>
-					<td><p>John Doe</p></td>
-					<td>01-10-2021</td>
-					<td>doctor@gmail.com</td>
-					<td>Specialist</td>
-					<td class="patientsN">700</td>
-					<td><a href="{{url_for('view_selected_doctor')}}" class="btn-view">View </a></td>
-					<td> <a class="btn-Delete"> Delete </a></td>
+					<td><p>{{doc.d_name}}</p></td>
+					<td>{{doc.d_phone}}</td>
+					<td>{{doc.d_email}}</td>
+					<td>{{doc.d_position}}</td>
+					<td class="patientsN">{{doctor_pnumber[loop.index]}}</td>
+					<td><form action={{url_for('admin_dashboard')}} method="post">
+						<button type="submit" class="btn-view" name="id" value="{{doc.d_id}}">View More</button> 
+						<form></td>
+					
 				</tr>
-				<tr>
-					<td><p>John Doe</p></td>
-					<td>01-10-2021</td>
-					<td>doctor@gmail.com</td>
-					<td>Specialist</td>
-					<td class="patientsN">700</td>
-					<td><a href="{{url_for('view_selected_doctor')}}" class="btn-view">View </a></td>
-					<td> <a class="btn-Delete"> Delete </a></td>
-				</tr>
-				<tr>
-					<td><p>John Doe</p></td>
-					<td>01-10-2021</td>
-					<td>doctor@gmail.com</td>
-					<td>Specialist</td>
-					<td class="patientsN">700</td>
-					<td><a href="{{url_for('view_selected_doctor')}}" class="btn-view">View </a></td>
-					<td> <a class="btn-Delete"> Delete </a></td>
-				</tr>
-				<tr>
-					<td><p>John Doe</p></td>
-					<td>01-10-2021</td>
-					<td>doctor@gmail.com</td>
-					<td>Specialist</td>
-					<td class="patientsN">700</td>
-					<td><a href="{{url_for('view_selected_doctor')}}" class="btn-view">View </a></td>
-					<td> <a class="btn-Delete"> Delete </a></td>
-				</tr>
-				<tr>
-					<td><p>John Doe</p></td>
-					<td>01-10-2021</td>
-					<td>doctor@gmail.com</td>
-					<td>Specialist</td>
-					<td class="patientsN">700</td>
-					<td><a href="{{url_for('view_selected_doctor')}}" class="btn-view">View </a></td>
-					<td> <a class="btn-Delete"> Delete </a></td>
-				</tr>
-				<tr>
-					<td><p>John Doe</p></td>
-					<td>01-10-2021</td>
-					<td>doctor@gmail.com</td>
-					<td>Specialist</td>
-					<td class="patientsN">700</td>
-					<td><a href="{{url_for('view_selected_doctor')}}" class="btn-view">View </a></td>
-					<td> <a class="btn-Delete"> Delete </a></td>
-				</tr>
-				<tr>
-					<td><p>John Doe</p></td>
-					<td>01-10-2021</td>
-					<td>doctor@gmail.com</td>
-					<td>Specialist</td>
-					<td class="patientsN">700</td>
-					<td><a href="{{url_for('view_selected_doctor')}}" class="btn-view">View </a></td>
-					<td> <a class="btn-Delete"> Delete </a></td>
-				</tr>
-				<tr>
-					<td><p>John Doe</p></td>
-					<td>01-10-2021</td>
-					<td>doctor@gmail.com</td>
-					<td>Specialist</td>
-					<td class="patientsN">700</td>
-					<td><a href="{{url_for('view_selected_doctor')}}" class="btn-view">View </a></td>
-					<td> <a class="btn-Delete"> Delete </a></td>
-				</tr>
+				{% endfor %}
+				
 			</tbody>
 		</table>
 	</div>

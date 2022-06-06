@@ -68,13 +68,13 @@
 				</a>
 			</li>
 			<li>
-				<a href="{{url_for('admin_dashboard')}} #staff">
+				<a href="/AdminDashboard #staff">
 					<i class='bx bxs-user-pin' ></i>
 					<span class="text">Doctors</span>
 				</a>
 			</li>
 			<li>
-				<a href="{{url_for('add_doctors')}}">
+				<a href="{{url_for('add_doctor')}}">
 
 					<i class='bx bxs-user-plus' ></i>
 					<span class="text">Add Doctors</span>
@@ -128,7 +128,7 @@
 			<label for="switch-mode" class="switch-mode"></label>
 
 			<a href="#" class="profile">
-				<img src="../static/img/people.png">
+				<img src="{{current_user.a_photo}}">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -156,16 +156,7 @@
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-	<script type="text/javascript">
-		$(function(){
-		  $('.bars li .bar').each(function(key, bar){
-			var percentage = $(this).data('percentage');
-			$(this).animate({
-			  'height' : percentage + '%'
-			},1000);
-		  });
-		});
-		</script>
+	
 
 	<script src="../static/js/admin.js"></script>
 	<script src="../static/js/docscript.js"></script>
