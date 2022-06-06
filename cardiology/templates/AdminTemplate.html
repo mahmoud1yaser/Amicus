@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../static/css/admin.css">
+
+	<link rel = "icon" href =
+	"../static/images/logoicon.webp"
+			type = "image/x-icon">
+
+
+</head>
+<body>
+
+	<!-- Loader -->
+<!--	<div class="loader">-->
+<!--		<div class="loader-inner">-->
+<!--		  <div class="loader-line-wrap">-->
+<!--			<div class="loader-line"></div>-->
+<!--		  </div>-->
+<!--		  <div class="loader-line-wrap">-->
+<!--			<div class="loader-line"></div>-->
+<!--		  </div>-->
+<!--		  <div class="loader-line-wrap">-->
+<!--			<div class="loader-line"></div>-->
+<!--		  </div>-->
+<!--		  <div class="loader-line-wrap">-->
+<!--			<div class="loader-line"></div>-->
+<!--		  </div>-->
+<!--		  <div class="loader-line-wrap">-->
+<!--			<div class="loader-line"></div>-->
+<!--		  </div>-->
+<!--		</div>-->
+<!--	  </div>-->
+	  <!-- End loader -->
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="{{url_for('admin_dashboard')}}" class="brand">
+			<i class='bx bxs-user-circle'></i>
+			<span class="text">
+				{% block name %}
+				{% endblock %}
+			</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="{{url_for('admin_dashboard')}}">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+
+				<a href="{{url_for('view_doctor_patients')}}">
+
+					<i class='bx bxs-user-pin' ></i>
+					<span class="text">Patients</span>
+				</a>
+			</li>
+			<li>
+				<a href="/AdminDashboard #staff">
+					<i class='bx bxs-user-pin' ></i>
+					<span class="text">Doctors</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{url_for('add_doctor')}}">
+
+					<i class='bx bxs-user-plus' ></i>
+					<span class="text">Add Doctors</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{url_for('add_admin')}}">
+					<i class='bx bxs-user-plus' ></i>
+					<span class="text">Add Admin</span>
+				</a>
+			</li>
+			<li>
+
+				<a href="{{url_for('edit_admin')}}" >
+				  <i class='bx bxs-pencil' ></i>
+				  <span class="text">Edit profile</span>
+				</a>
+			  </li>
+
+
+
+
+		</ul>
+		<ul class="side-menu ">
+
+			<li>
+				<a href="{{url_for('logout_page')}}" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<a href="#" class="nav-link">MedCare</a>
+			<form action="#">
+				<div class="form-input">
+					<input type="" placeholder="">
+					<button type="submit" class="search-btn"></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+
+			<a href="#" class="profile">
+				<img src="{{current_user.a_photo}}">
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+
+			 {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+           {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">
+                  <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  {{ message }}
+              </div>
+           {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+            {% block content %}
+            <!-- =========== Body =========  -->
+           {% endblock %}
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	<script src="../static/js/admin.js"></script>
+
+    <script src="../static/js/docscript.js"></script>
+
+	
+
+
+</body>
+</html>

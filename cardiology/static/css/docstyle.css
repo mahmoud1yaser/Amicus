@@ -1,0 +1,511 @@
+
+
+body {
+  background: var(--grey);
+  overflow-x: hidden;
+}
+#content  .btn-edit {
+	margin-right: 10px;
+	width: auto;
+	height: 36px;
+	padding: 0;
+	border-radius: 36px;
+	background: var(--blue);
+	color: var(--light-blue);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-gap: 10px;
+	font-weight: 500;
+	cursor: pointer;
+	/* border: 2px solid var(--blue);
+	transition: 0.5s; */
+}
+
+#content  .btn-edit:hover {
+	background: var(--light-blue);
+	color: var(--blue);
+}
+.main-edit-form-doc{
+  display: block;
+  z-index: 9999;
+  position: absolute;
+  top:0;
+  left:0;
+  background-color: rgba(230,230,230,0.5);
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  transition: 1s all ease;
+}
+.edit-form-doc{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width: 40%;
+  border-radius: 20px;
+  box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
+  -webkit-box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
+  -moz-box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
+  background-color: var(--light);
+  min-height: 50vh;
+  transition: 0.5s all ease;
+  text-align: left;
+  padding: 30px 50px;
+  
+}
+.edit-form-doc h1{
+  align-self: center;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  color:var(--dark);
+}
+.edit-form-doc form{
+  position: relative;
+  text-align: left;
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 25px;
+}
+.edit-form-doc i{
+  position: absolute;
+  top:25px;
+  right: 25px;
+  color:var(--close);
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 999;
+}
+.edit-form-doc form div {
+  position: relative;
+  align-items: center;
+  display: flex;
+  margin-bottom: 30px;
+  width: 100%;
+}
+.edit-form-doc form button {
+  margin-top: 10px;
+  text-align: center;
+  position: relative;
+  align-items: center;
+  margin-bottom: 10px;
+  width: auto;
+  padding: 10px 25px;
+  align-self: center;
+  border-radius: 20px;
+  background-color: var(--blue);
+  border: 1px solid var(--light-blue);
+  transition: 0.5s;
+  cursor: pointer;
+  font-size: 1.25rem;
+  color:black;
+}
+.edit-form-doc form button:hover{
+  background-color: var(--light-blue);
+  border: 1px solid var(--blue);
+}
+.edit-form-doc form div i{
+  position: absolute;
+  width: auto;
+  font-size: 20px;
+  top:auto;
+  left:0;
+  color: var(--blue);
+  z-index: -9999;
+}
+.edit-form-doc form label{
+  margin-bottom: 10px;
+  font-family: "Roboto";
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color:var(--dark);
+}
+.edit-form-doc div input{
+  width: 80%;
+  padding: 10px 30px;
+  outline: none;
+  background-color: transparent;
+  border-style: none none solid none;
+  border-width: 2px ;
+  border-color: var(--dark);;
+  font-size: 1.1rem;
+  color:var(--dark);
+
+}
+
+.bx-menu:before {
+  content: "\edc2";
+  font-size: 2rem !important;
+}
+/* SIDEBAR */
+
+
+
+
+.Information-doc {
+  position: relative;
+  display: grid;
+  background: var(--white);
+  float: left;
+  text-align: left;
+  padding-top: 10px;
+  margin-top: 30px;
+}
+
+.min-info-doc{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+}
+.min-info-doc .icon-info{
+  position: relative;
+  margin-right: 10px; 
+  width: 40px;
+  height: 40px;
+  background-color: var(--blue);
+  border: 3px solid var(--blue);
+  border-radius: 50%;
+}
+.min-info-doc .icon-1{
+  background-color: var(--light-blue);
+  border: 3px solid var(--light-blue);
+}
+.min-info-doc .icon-1 i{
+  color: var(--blue);
+}
+.min-info-doc .icon-2{
+  background-color: var(--light-orange);
+  border: 3px solid var(--light-orange);
+}
+
+.min-info-doc .icon-2 i{
+  color: var(--orange);
+}
+.min-info-doc .icon-3{
+  background-color: var(--light-yellow);
+  border: 3px solid var(--light-yellow);
+}
+
+.min-info-doc .icon-3 i{
+  color: var(--yellow);
+}
+.min-info-doc i{
+   position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50% ,-50%);
+  font-size: 25px;
+}
+
+#content main .head-title .btn-download {
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 36px;
+  background: var(--blue);
+  color: var(--light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 10px;
+  font-weight: 500;
+}
+
+#content main .box-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 24px;
+  margin-top: 36px;
+}
+#content main .box-info li {
+  padding: 24px;
+  background: var(--light);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  grid-gap: 24px;
+}
+#content main .box-info li .bx {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#content main .box-info li:nth-child(1) .bx {
+  background: var(--light-blue);
+  color: var(--blue);
+}
+#content main .box-info li:nth-child(2) .bx {
+  background: var(--light-yellow);
+  color: var(--yellow);
+}
+#content main .box-info li:nth-child(3) .bx {
+  background: var(--light-orange);
+  color: var(--orange);
+}
+#content main .box-info li .text h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--dark);
+}
+#content main .box-info li .text p {
+  color: var(--dark);
+}
+
+#content main .table-data-doc {
+  display: flex;
+  grid-gap: 24px;
+  margin-top: 24px;
+  width: 100%;
+  color: var(--dark);
+}
+#content main .table-data-doc > div {
+  border-radius: 20px;
+  background: var(--light);
+  padding: 24px;
+  overflow-x: auto;
+}
+
+#content main .table-data-doc .head {
+  display: flex;
+  align-items: center;
+  grid-gap: 16px;
+  margin-bottom: 24px;
+}
+#content main .table-data-doc .head h3 {
+  margin-right: auto;
+  font-size: 24px;
+  font-weight: 600;
+}
+#content main .table-data-doc .head .bx {
+  cursor: pointer;
+}
+
+#content main .table-data-doc .order-doc {
+  flex-grow: 1;
+  flex-basis: 500px;
+  overflow-y: scroll;
+	max-height: 462px;
+}
+
+#content main .table-data-doc .order-doc table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+#content main .table-data-doc .order-doc table th {
+  padding-bottom: 12px;
+  font-size: 13px;
+  text-align: center;
+  border-bottom: 1px solid var(--grey);
+}
+#content main .table-data-doc .order-doc table td {
+	padding: 16px 0;
+	align-items: center;
+	grid-gap: 6px;
+	padding-left: 3px;
+	align-items: center;
+}
+
+#content main .table-data-doc .order-doc table td img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+#content main .table-data-doc .order-doc table tbody tr:hover {
+  background: var(--grey);
+}
+
+#content main .table-data-doc .order-doc table tr td .status {
+  font-size: 10px;
+  padding: 6px 16px;
+  color: var(--light);
+  border-radius: 20px;
+  font-weight: 700;
+}
+#content main .table-data-doc .order-doc table tr td .status {
+  background: var(--blue);
+  color: var(--light-blue);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: .5s;
+}
+#content main .table-data-doc .order-doc table tr td .status:hover {
+  background: var(--light-blue);
+  color: var(--blue);
+  border: 2px solid var(--blue);
+  font-size: 1rem;
+}
+
+
+
+
+#content main .table-data .todo {
+  flex-grow: 1;
+  flex-basis: 300px;
+}
+
+#content main .table-data .card {
+  flex-grow: 1;
+  flex-basis: 200px;
+}
+#content main .table-data .todo .todo-list {
+  width: 100%;
+}
+#content main .table-data .todo .todo-list li {
+  width: 100%;
+  margin-bottom: 16px;
+  background: var(--grey);
+  border-radius: 10px;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#content main .table-data .todo .todo-list li .bx {
+  cursor: pointer;
+}
+#content main .table-data .todo .todo-list li.completed {
+  border-left: 10px solid var(--blue);
+}
+#content main .table-data .todo .todo-list li.not-completed {
+  border-left: 10px solid var(--orange);
+}
+#content main .table-data .todo .todo-list li:last-child {
+  margin-bottom: 0;
+}
+#content main .table-data-doc .card1 {
+  position: relative;
+  flex-basis: 25%;
+  text-align: center;
+  vertical-align: middle;
+}
+#content main .table-data-doc .card1 div {
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#content main .table-data-doc .card1 img {
+  border-radius: 100%;
+
+  margin-bottom: 10px;
+  width: 174px; 
+  height: 163px;
+}
+#content main .table-data-doc .card1 div span {
+  color: var(--dark);
+  font-family: roboto;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+#content main .table-data-doc .card2 {
+  position: relative;
+  flex-basis: 35%;
+  text-align: left;
+  float: left;
+}
+#content main .table-data-doc .card2 h1 {
+  position: relative;
+  color: var(--dark);
+  font-family: roboto;
+  weight: 300;
+}
+.card2 h1:after {
+  position: absolute;
+  bottom:-10px;
+  left:0;
+  content: '';
+  height: 2px;
+  width: calc(100%);
+  background-color: var(--blue);
+
+}
+.card2 h2{
+  font-size: 1.25rem;
+}
+
+#content main .table-data .card2 p {
+  color: var(--dark);
+  font-size: 12px;
+  weight: 100;
+  font-family: roboto;
+  text-align: left;
+}
+/* MAIN */
+/* CONTENT */
+
+@media screen and (max-width: 768px) {
+  #sidebar {
+    width: 200px;
+  }
+
+  #content {
+    width: calc(100% - 60px);
+    left: 200px;
+  }
+
+  #content nav .nav-link {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #content nav form .form-input input {
+    display: none;
+  }
+
+  #content nav form .form-input button {
+    width: auto;
+    height: auto;
+    background: transparent;
+    border-radius: none;
+    color: var(--dark);
+  }
+
+  #content nav form.show .form-input input {
+    display: block;
+    width: 100%;
+  }
+  #content nav form.show .form-input button {
+    width: 36px;
+    height: 100%;
+    border-radius: 0 36px 36px 0;
+    color: var(--light);
+    background: var(--red);
+  }
+
+  #content nav form.show ~ .notification,
+  #content nav form.show ~ .profile {
+    display: none;
+  }
+
+  #content main .box-info {
+    grid-template-columns: 1fr;
+  }
+
+  #content main .table-data .head {
+    min-width: 420px;
+  }
+  #content main .table-data .order table {
+    min-width: 420px;
+  }
+  #content main .table-data .todo .todo-list {
+    min-width: 420px;
+  }
+  #content main .table-data .card {
+    min-width: 420px;
+  }
+  #content main .table-data .details {
+    min-width: 420px;
+  }
+}
+

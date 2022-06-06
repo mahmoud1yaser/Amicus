@@ -1,0 +1,48 @@
+{% extends 'DoctorTemplate.html' %}
+{% block content %}
+<title>Appointments</title>
+<div class="table-data">
+  <div class="order">
+ <div class="head">
+   <h3>Appointments</h3>
+ <!-- <button type="button" class="btn" id="search"><i class="bx bx-search"></i></button>
+                                                  
+   <input type="text"  id="id" placeholder="ID" class="input-field">
+    <i class="bx bx-filter"></i> -->
+  </div>
+  <table id="tabels" class="tabel">
+ 
+ <tbody >
+   
+  {% if appoints==[] %}
+  <label for="di">No Appointments to Display</label>
+  {% else %}
+  <thead>
+    <tr>
+    <th>Patient Names</th>
+    <th>Date</th>
+     <th>Time</th>
+    </tr>
+    </thead>
+  <tbody >
+  {% for appoint in appoints %}
+   <tr>
+  <td>
+  <p>
+    <label for="Patient">{{appoint.p_name}}</label>
+   </p>
+   </td>
+   <td>{{appoint.date}}</td>
+ <td >{{appoint.Time}}</td>
+    </tr>
+  {% endfor %}
+  
+
+ </tbody>
+ {% endif %}
+ </tbody>
+ </table>
+
+</div>
+{% endblock %}
+

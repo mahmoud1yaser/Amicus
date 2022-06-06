@@ -118,4 +118,20 @@ function closeform(){
 }
 
 //End of Edit form function
+//loder function
 
+document.body.onload = function () {
+	var mode = localStorage.getItem("mode");
+	if (mode == "dark") {
+	  switchMode.checked = true;
+	  document.body.classList.add("dark");
+	} else {
+	  document.body.classList.remove("dark");
+	  switchMode.checked = false;
+	}
+	setTimeout(loader,1500);
+  };
+function loader(){
+	document.querySelector('.loader').style.display='none';
+	
+  }

@@ -11,15 +11,21 @@
 					src="{{user.p_photo}}"
 					alt="profile-pic"
 					class="profile"/>
-				 <span>{{user.p_name}}</span>
-				 <div class="upload-btn-wrapper">
-					<button class="btn" id="btn5">Edit
-						<input type="file" name="myfile" />
-					</button>
-					<button type="submit" class="btn" id="btn6" action="/"><i class="fa-solid fa-check"></i></button>
-				  </div>
-				 
-				 
+				
+					<br><span>{{user.p_name}}</span>
+				
+					<form action="{{url_for('p_profile')}}" method="post" enctype="multipart/form-data">
+						<div class="upload-btn-wrapper">
+						  <button class="btn">Edit
+							<input type="file" name="myfile" />
+						  </button>
+						</div>
+						
+						
+						  <button type="submit" class="btn" id="btn6"  ><i class="fa-solid fa-check"></i></button>
+						
+						</form>
+
 				</div>
 			  </div>
 			  
@@ -86,15 +92,15 @@
 					  </div>
 					</div>
 				{% else %}
-				{% for appoint in appoints %}
+				
 				<div class="Information">
-				  	
+					{% for appoint in appoints %}
 					<div class="min-info" >
-	
+						
 						<div class="icon-info icon-2">
 						  <i class="fa-solid fa-clock"></i>
 					  </div>
-					
+					  
 					  <div>
 						<h2>Appointment {{loop.index}}</h2>
 						<label for="Working period">{{appoint.date}} {{appoint.Time}}</label>
@@ -111,10 +117,11 @@
 				</div>
 			  </div>
 			</div>
+			<br>
 			<div class="head-title">
 				<div class="left">
-					<br>
-					<span id="brand" ><h2>Medical Information</h2></span>
+				
+				<span id="brand" ><h2>Medical Information</h2></span>
 				
 				</div>
 				

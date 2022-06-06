@@ -1,0 +1,103 @@
+{% extends 'AdminTemplate.html' %}
+{%block name%}
+{{ current_user.a_name }}
+{%endblock%}
+{% block content %}
+<Title>Patients</Title>
+<div class="table-data">
+			
+	<div class="order">
+		<div class="head">
+			<i class=' fa-solid fa-users' ></i>
+			
+			<h3> Patients</h3>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Id</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for patient in patients %}
+				<tr>
+					<td>{{patient.p_name}}</td>
+					<td>{{patient.p_id}}</td>
+					<td class="view">
+						<form action="{{url_for('view_doctor_patients')}}" method="post" enctype="multipart/form-data">
+						<button type="submit" class="btn-edit" name="id" value="{{patient.p_id}}">View More</button>
+					</form></td>
+				</tr>  
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>             
+
+<div class="card2">
+	{% if selected_id == 0 %}
+	
+	<label>No Patient selected to View</label>
+	{% else %}
+	<h1 class="Info_Doc" style="text-align: left">
+		{{p.p_name}}
+	  </h1>
+
+	  <div class="Information">
+		<div class="min-info" >
+
+			<div class="icon-info icon-1">
+			  <i class="fa-solid fa-id-card"></i>
+		  </div>
+		  <div>
+			<h2>ID</h2>
+			<label for="ID">{{p.p_id}}</label>
+		  </div>
+		</div>
+		  <div class="min-info" >
+
+			<div class="icon-info icon-2">
+			  <i class="fa-solid fa-envelope"></i>
+		  </div>
+		  <div>
+			<h2>E-mail</h2>
+			<label for="E-mail">{{p.p_email}}</label>
+		  </div>
+		</div>
+		  <!-- <br /> -->
+		  <div class="min-info" >
+
+			<div class="icon-info icon-3">
+			  <i class="fa-solid fa-phone"></i>
+		  </div>
+		  <div>
+			<h2>Phone Number</h2>
+			<label for="Phone-Number">{{p.p_phone}}</label>
+		  </div>
+		</div>
+		<div class="min-info" >
+
+			<div class="icon-info icon-1">
+				<i class="fa-solid fa-id-badge"></i>
+			</div>
+		  <div>
+			<h2> Birthdate</h2>
+			<label for="Phone-Number"> {{p.p_birth_date}}</label>
+		  </div>
+		</div>
+		<div class="min-info" >
+
+	
+		
+	  </div>
+		
+	  {% endif %}
+	  </div>
+	
+	
+</div>
+</div>
+
+{% endblock %}

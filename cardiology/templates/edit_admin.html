@@ -1,0 +1,35 @@
+{% extends 'AdminTemplate.html' %}
+{%block name%}
+{{ current_user.a_name }}
+{%endblock%}
+{% block content %}
+ <div class="table-data">
+        <div class="order1">
+          <div class="head">
+            <i class='bx bxs-user-plus'></i>
+            <h3>Edit Admin</h3>
+          </div>
+            <div class="add-form" >
+                  <form method="POST" class="form-register" action="EditAdminInfo">
+                            {{ form.hidden_tag() }}
+                <label>New Name:</label>
+                <div>
+                {{ form.fullname(class="form-control", placeholder="Please enter your new name") }}
+                </div>
+                <label>New E-mail:</label>
+                <div>
+                {{ form.email(class="form-control", placeholder="Please enter your new email") }}
+                </div>
+                <label>New Password:</label>
+                <div>
+                {{ form.password(class="form-control", placeholder="Please enter your new password") }}
+                </div>
+                {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+              </form>
+            </div>
+
+
+</div>
+
+</div>
+{% endblock %}

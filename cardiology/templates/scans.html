@@ -2,9 +2,9 @@
 {% block content %}
 
 <title>Your Scans</title>
-<div class="head-title">
+<!-- <div class="head-title">
 			
-</div>
+</div> -->
 <div class="table-data">
 	
 	<div class="todo">
@@ -15,34 +15,34 @@
 		</div>
 		{% if scans==[] %}
 		
-			<p>No Scans to Display</p>
+		<label for="di">No Scans to Display</label>
 		
 		{% else %}
 		{% for scan in scans %}
 		<br><button type="button" class="collapsible">Scan {{loop.index}}</button>
 		   <div class="content">
-			<span id="scan"><h3>scan uploding date: {{scan.scan_date.strftime('%Y-%m-%d')}}</h3></span>
+			<span id="scan"><h3>Scan Uploding Date: {{scan.scan_date.strftime('%Y-%m-%d')}}</h3></span>
 			<!-- <h2>scan uploding date: {{scan.scan_date.strftime('%Y-%m-%d')}}</h2> -->
 			<img src="{{scan.scan_path}}" alt="">
 		</div>
 		
-		{% set i=i+1 %}
 		{% endfor %}
 		{% endif %}
 		
-		<div class="upload-btn-wrapper">
+		
 			<form action="{{url_for('scans_page')}}" method="post" enctype="multipart/form-data">
-			<div>
+				<div>
+				<div class="upload-btn-wrapper">
+				
 			<button class="btn">Upload new scan
 				<input type="file" name="myfile" />
 			</button>
-			<br> 
-			<br> 
-			<br> 
+		</div>
+		<button type="submit" class="btn"id="btn4">save</button>
 			</div>	
-			<button type="submit" class="btn"id="btn4">save</button>
+			
 			</form>
-		  </div>
+		  
 		
 	</div>
 </div> 

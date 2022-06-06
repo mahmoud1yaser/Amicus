@@ -1,5 +1,8 @@
 import datetime
-from cardiology.models import Appointments
+
+from sqlalchemy import true
+from cardiology import patient
+from cardiology.models import Appointments, Patients
 import os
 import secrets
 import re
@@ -36,4 +39,40 @@ def save_picture(form_picture, folder_name):
     saving_path = f'../static/{folder_name}/{picture_fn}'
     return saving_path
 
-# def sorting_appointments(appontments):
+def sorting_appointments(appointments, type):
+    appoints = [x for x in appointments if x.date>=datetime.date.today()]
+    appoints = sorted(appoints, key= lambda x:parse_time2(x.date,x.Time))
+
+    if type=='patient':
+        if len(appoints)>=3:
+            return appoints[0:3]
+        else:
+            return appoints[0:len(appoints)]
+    return appoints
+
+
+def doct_patient(appointments):
+    patients=[]
+    for i in appointments:
+        p= Patients.query.filter_by(p_id=i.p_id).first()
+        patients.append(p)
+    patients = list(set(patients))
+    return patients
+
+
+
+
+def parse_time2(day, time):
+    d = str(day).split('-')
+    t = str(time).split(':')
+    x = datetime.datetime(int(d[0]), int(d[1]), int(d[2]),int(t[0]), int(t[1]))
+    y = datetime.time(int(t[0]), int(t[1]))
+    return x    
+
+def count_patients(doctors):
+    num=[0]
+    for doc in doctors :
+        a = Appointments.query.filter_by(d_id=doc.d_id).all()
+        p = doct_patient(a)
+        num.append(len(p))
+    return num

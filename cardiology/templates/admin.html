@@ -1,0 +1,142 @@
+{% extends 'AdminTemplate.html' %}
+{%block name%}
+{{ current_user.a_name }}
+{%endblock%}
+{% block content %}
+
+
+<Title>Profile</Title>
+<div class="table-data">
+	<div class="card1">
+		<img src="{{current_user.a_photo}}" alt="profile-pic" class="profile">
+		<h1>{{current_user.a_name}}</h1>
+		<form action="{{url_for('update_adminPic')}}" method="post" enctype="multipart/form-data">
+			<div class="upload-btn-wrapper">
+			  <button class="btn">Edit
+				<input type="file" name="myfile" />
+			  </button>
+			</div>
+			
+			
+			  <button type="submit" class="btn" id="btn6"  ><i class="fa-solid fa-check"></i></button>
+			
+			
+			</form>
+	</div>
+	<div class="card3">
+		<h1><i class='bx bx-medal' ></i> Best 4 Doctors</h1>
+		<div class="bars">
+		<div class="bar">
+			<div class="info">
+			  <span>John </span>
+			</div>
+			<div class="progress-line">
+			  <span id="span1"></span>
+			</div>
+		  </div>
+		  <div class="bar">
+			<div class="info">
+			  <span>John</span>
+			</div>
+			<div class="progress-line">
+			  <span id="span2" ></span>
+			</div>
+		  </div>
+		  <div class="bar">
+			<div class="info">
+			  <span>John</span>
+			</div>
+			<div class="progress-line">
+			  <span id="span3"></span>
+			</div>
+		  </div>
+		  <div class="bar">
+			<div class="info">
+			  <span>John</span>
+			</div>
+			<div class="progress-line">
+			  <span id="span4"></span>
+			</div>
+		  </div>
+		</div>
+
+	</div>
+</div>
+
+<div class="container">
+ <ul class="box-info">
+	<li>
+		<i class='bx bxs-user' ></i>
+		<span class="text">
+			<div class="counter" data-target="{{dnumber}}">{{dnumber}}</div>
+			<p>Doctors</p>
+		</span>
+	</li>
+	<li>
+		<i class='bx bxs-group' ></i>
+		<span class="text">
+			<div class="counter" id="paN" data-target="{{pnumber}}">{{pnumber}}</div>
+			<p>Patients</p>
+		</span>
+	</li>
+	<li>
+		<i class='bx bxs-first-aid' ></i>
+		<span class="text">
+			<div class="counter" data-target="{{appoinumber}}">{{appoinumber}}</div>
+			<p>Appointments</p>
+		</span>
+	</li>
+</ul>
+</div>
+
+
+
+<div class="table-data" id="staff">
+	<div class="order">
+		<div class="head">
+			<i class='fa fa-medkit' ></i>
+			
+			<h3>Hospital Staff</h3>
+			<a href="{{url_for('add_doctor')}}" >
+				<i class='bx bxs-user-plus'></i>
+
+			</a>
+			
+		
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Phone Number</th>
+					<th>Email</th>
+					<th>Job Title</th>
+					<th>Patients No</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for doc in docs %}
+				<tr>
+					<td><p>{{doc.d_name}}</p></td>
+					<td>{{doc.d_phone}}</td>
+					<td>{{doc.d_email}}</td>
+					<td>{{doc.d_position}}</td>
+					<td class="patientsN">{{doctor_pnumber[loop.index]}}</td>
+					<td><form action={{url_for('admin_dashboard')}} method="post">
+						<button type="submit" class="btn-view" name="id" value="{{doc.d_id}}">View More</button> 
+						<form></td>
+					<td>					
+						 <button type="submit" class="btn-Delete" name="id" value="{{doc.d_id}}">Delete </button> 
+					</td>
+					
+				</tr>
+				{% endfor %}
+				
+			</tbody>
+		</table>
+	</div>
+</div>
+
+{% endblock %}
