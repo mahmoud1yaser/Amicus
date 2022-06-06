@@ -44,6 +44,7 @@ body.dark {
 	--dark: #FBFBFB;
 	--close: #fff;
 	--black: #3C91E6;
+	--close: darkred;
 }
 
 body {
@@ -1237,3 +1238,19 @@ label.light {
   }
   }
   /* End loader */
+  #btn7{
+	  color: var(--close);
+cursor: pointer;
+	 font-size: x-large;
+	 border-radius: 20px;
+	 width: 3rem;
+	 border-color: var(--light);
+  }
+  #btn7:hover
+  {
+	  background-color: var(--dark-grey);
+
+  }
+  #alert{
+	  color: var(--dark);
+  }
