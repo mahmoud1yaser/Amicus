@@ -25,9 +25,7 @@ def doc_profile():
         doc_patients = doct_patient(doc_appoints)
         doc_msgs = p_Messages.query.filter_by(d_id=current_user.d_id).all()
         if request.method == 'POST':
-            patient_id = request.form['p_id']
-            session['selected_patient'] = Patients.query.filter_by(
-                p_id=int(patient_id)).first()
+            session['patient_id'] = int(request.form['p_id'])
             return redirect(url_for('patient_info'))
         return render_template('Doctor.html', user=current_user, patients=doc_patients, msgs=doc_msgs)
     else:
@@ -51,9 +49,7 @@ def view_more():
     if session["role"] == "Doctor":
         global selected_patient
         if request.method == 'POST':
-            patient_id = request.form['gg']
-            session['selected_patient'] = Patients.query.filter_by(
-                p_id=int(patient_id)).first()
+            session['patient_id'] = int(request.form['gg'])
             return redirect(url_for('patient_info'))
     else:
         render_template('page403.html')
@@ -63,12 +59,16 @@ def view_more():
 @login_required
 def patient_info():
     if session["role"] == "Doctor":
-        MR = Medical_records.query.filter_by(p_id=session['selected_patient'].p_id).first()
-        PRs = Prescription.query.filter_by(p_id=session['selected_patient'].p_id).all()
-        appoints = Appointments.query.filter_by(p_id=session['selected_patient'].p_id).all()
+        MR = Medical_records.query.filter_by(p_id=Patients.query.filter_by(
+                p_id=int(session['patient_id'])).first().p_id).first()
+        PRs = Prescription.query.filter_by(p_id=Patients.query.filter_by(
+                p_id=int(session['patient_id'])).first().p_id).all()
+        appoints = Appointments.query.filter_by(p_id=Patients.query.filter_by(
+                p_id=int(session['patient_id'])).first().p_id).all()
         appoints = sorting_appointments(appoints, 'patient')
         PRs.reverse()
-        return render_template('Doctor_Patients.html', user=current_user, patient=session['selected_patient'], MR=MR, PRs=PRs,
+        return render_template('Doctor_Patients.html', user=current_user, patient=Patients.query.filter_by(
+                p_id=int(session['patient_id'])).first(), MR=MR, PRs=PRs,
                                appoints=appoints)
     else:
         render_template('page403.html')
@@ -79,14 +79,18 @@ def patient_info():
 def add_MR():
     if session["role"] == "Doctor":
         if request.method == 'POST':
-            if Medical_records.query.filter_by(p_id=session['selected_patient'].p_id).all() == []:
-                new_MR = Medical_records(p_id=session['selected_patient'].p_id, p_name=session['selected_patient'].p_name, d_id=current_user.d_id,
+            if Medical_records.query.filter_by(p_id=Patients.query.filter_by(
+                p_id=int(session['patient_id'])).first().p_id).all() == []:
+                new_MR = Medical_records(p_id=Patients.query.filter_by(
+                p_id=int(session['patient_id'])).first().p_id, p_name=Patients.query.filter_by(
+                p_id=int(session['patient_id'])).first().p_name, d_id=current_user.d_id,
                                          d_name=current_user.d_name, diseases_history=request.form['medical_history'],
                                          restricted_drugs=request.form['restricted_drugs'])
                 db.session.add(new_MR)
             else:
                 mr = Medical_records.query.filter_by(
-                    p_id=session['selected_patient'].p_id).first()
+                    p_id=Patients.query.filter_by(
+                p_id=int(session['patient_id'])).first().p_id).first()
                 mr.restricted_drugs = request.form['restricted_drugs']
                 mr.diseases_history = request.form['medical_history']
             db.session.commit()
@@ -103,7 +107,9 @@ def add_MR():
 def add_PR():
     if session["role"] == "Doctor":
         if request.method == 'POST':
-            new_PR = Prescription(p_id=session['selected_patient'].p_id, p_name=session['selected_patient'].p_name, d_id=current_user.d_id,
+            new_PR = Prescription(p_id=Patients.query.filter_by(
+                p_id=int(session['patient_id'])).first().p_id, p_name=Patients.query.filter_by(
+                p_id=int(session['patient_id'])).first().p_name, d_id=current_user.d_id,
                                   d_name=current_user.d_name, diagnosis=request.form[
                     'diagnosis'], drugs=request.form['drugs'],
                                   pres_date=date.today())
@@ -154,7 +160,8 @@ def edit_doc():
 @login_required
 def patient_scans():
     if session["role"] == "Doctor":
-        patient_scans = Scans.query.filter_by(p_id=session['selected_patient'].p_id).all()
+        patient_scans = Scans.query.filter_by(p_id=Patients.query.filter_by(
+                p_id=int(session['patient_id'])).first().p_id).all()
         return render_template('Patient_Scans.html', user=current_user, scans=patient_scans)
     else:
         render_template('page403.html')
