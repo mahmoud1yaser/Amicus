@@ -1,3 +1,5 @@
+birthdate.max = new Date().toISOString().split("T")[0];
+
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
 allSideMenu.forEach(item=> {
@@ -85,7 +87,7 @@ counters.forEach(counter => {
 
 		// Lower inc to slow and higher to slow
 		const inc =Math.round(target / speed) ;
-	
+
 
 		// console.log(inc);
 		// console.log(count);
@@ -116,7 +118,7 @@ document.body.onload = function () {
   };
   function loader(){
 	document.querySelector('.loader').style.display='none';
-	
+
   }
 
 
@@ -139,5 +141,5 @@ console.log(nums)
 for(var i=0; i<4; i++){
 	r.style.setProperty(`--spans${i+1}`, `${Math.ceil(((nums[i].innerHTML)/tot)*100)}%`);
 	r.style.setProperty(`--span${i+1}`, `'${Math.ceil(((nums[i].innerHTML)/tot)*100)}%'`);
-	
+
 }
