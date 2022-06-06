@@ -6,6 +6,7 @@ from cardiology.forms import RegisterForm, LoginForm
 from flask_login import login_user, logout_user, login_required
 
 
+
 @app.route('/')
 def home_page():
     logout_user()
@@ -77,6 +78,7 @@ def login_page():
             ):
                 login_user(attempted_patient)
                 flash(f'Success! You are logged in as: {attempted_patient.p_username}', category='success')
+
                 return redirect(url_for('p_profile'))
             else:
                 flash('Username and password are not match! Please try again', category='danger')

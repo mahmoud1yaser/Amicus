@@ -26,6 +26,7 @@ def view_doctor_patients():
     return render_template('admin_patient.html', current_user=current_user)
 
 
+
 @app.route('/DoctorView')
 @login_required
 def view_selected_doctor():
