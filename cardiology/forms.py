@@ -95,7 +95,7 @@ class addDoctorForm(FlaskForm):
     submit = SubmitField(label='Add Doctor')
 
 
-class editDoctorForm(FlaskForm):
+class editDoctorForm_foreign(FlaskForm):
 
     def validate_username(self, username_to_check):
         doctorName = Doctors.query.filter_by(d_username=username_to_check.data).first()
@@ -168,17 +168,17 @@ class editAdminForm(FlaskForm):
 
 class editPatientForm(FlaskForm):
     def validate_username(self, username_to_check):
-        patientName = Doctors.query.filter_by(p_username=username_to_check.data).first()
+        patientName = Patients.query.filter_by(p_username=username_to_check.data).first()
         if patientName:
             raise ValidationError('Username already exists! Please try a different username')
 
     def validate_email(self, email_address_to_check):
-        patientEmail = Doctors.query.filter_by(p_email=email_address_to_check.data).first()
+        patientEmail = Patients.query.filter_by(p_email=email_address_to_check.data).first()
         if patientEmail:
             raise ValidationError('Email Address already exists! Please try a different email address')
 
     def validate_phone(self, phone_to_check):
-        patientPhone = Doctors.query.filter_by(p_phone=phone_to_check.data).first()
+        patientPhone = Patients.query.filter_by(p_phone=phone_to_check.data).first()
         if patientPhone:
             raise ValidationError('Phone number already exists! Please try a different phone number')
 
@@ -189,3 +189,28 @@ class editPatientForm(FlaskForm):
                     DataRequired()])
     password = PasswordField(validators=[DataRequired(), Length(min=6)])
     submit = SubmitField(label='Update Patient')
+
+
+class editDoctorForm_primary(FlaskForm):
+    def validate_username(self, username_to_check):
+        doctorName = Doctors.query.filter_by(d_username=username_to_check.data).first()
+        if doctorName:
+            raise ValidationError('Username already exists! Please try a different username')
+
+    def validate_email(self, email_address_to_check):
+        doctorEmail = Doctors.query.filter_by(d_email=email_address_to_check.data).first()
+        if doctorEmail:
+            raise ValidationError('Email Address already exists! Please try a different email address')
+
+    def validate_phone(self, phone_to_check):
+        doctorPhone = Doctors.query.filter_by(d_phone=phone_to_check.data).first()
+        if doctorPhone:
+            raise ValidationError('Phone number already exists! Please try a different phone number')
+
+    username = StringField(validators=[DataRequired(), Length(min=2, max=30)])
+    email = StringField(validators=[Email(), DataRequired()])
+    phone = IntegerField(
+        validators=[NumberRange(min=100000000, max=10000000000, message="Please enter a valid phone number"),
+                    DataRequired()])
+    password = PasswordField(validators=[DataRequired(), Length(min=6)])
+    submit = SubmitField(label='Update Doctor')

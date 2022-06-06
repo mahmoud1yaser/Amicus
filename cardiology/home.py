@@ -32,7 +32,7 @@ def register_page():
         session["role"] = "Patient"
         login_user(patient_to_create)
         flash(f"Account created successfully! You are now logged in as {patient_to_create.p_username}", category='success')
-        return redirect(url_for('login_page'))
+        return redirect(url_for('p_profile'))
     if form.errors != {}:  # If there are not errors from the validations
         for err_msg in form.errors.values():
             flash(f'There was an error with creating a user: {err_msg}', category='danger')
@@ -66,7 +66,7 @@ def login_page():
             ):
                 login_user(attempted_doctor)
                 flash(f'Success! You are logged in as: {attempted_doctor.d_username}', category='success')
-                return redirect(url_for('#'))
+                return redirect(url_for('doc_profile'))
             else:
                 flash('Username and password are not match! Please try again', category='danger')
         else:
