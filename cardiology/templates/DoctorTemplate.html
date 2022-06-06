@@ -52,46 +52,7 @@
   </div>
   <!-- End loader -->
    <!-- Copy this to Html file under body tag -->
-    <!-- Edit form -->
-    <div class="main-edit-form" id="edit">
-     
-      <div class="edit-form" >
-      
-        <i onclick="closeform()" class="fa-solid fa-xmark"></i>
-        <form id="form_3" action="{{url_for('edit_doc')}}" method="post">
-          <h1>Edit form</h1>
-          <label>New Username:</label>
-          <div>
-          <i  class="fa-solid fa-user"></i>
-          <input id="E-Username" type="text"  value="{{user.d_username}}" name="username"><br>
-          <span></span>
-          </div>
-          <label>New Phone Number:</label>
-          <div>
-            <i class="fa-solid fa-phone"></i>
-          <input id="E-Phonenumber" type="text" value="{{user.d_phone}}" name="phone""><br>
-          <span></span>  
-          </div>
-          <label>New E-mail:</label>
-          <div>
-            <i class="fa-solid fa-envelope"></i>
-          <input id="E-Email" type="email" value="{{user.d_email}}" name="email"><br>
-          <span></span>
-          </div>
-          <label>New Password:</label>
-          <div>
-            <i class="fa-solid fa-lock"></i>
-          <input id="E-Password" placeholder="Enter Your New Password" type="password"><br>
-          <span></span>
-          </div>
-          
-          <button type="submit" action="/">Submit</button>
-        </form>
-      </div>
-      
-    </div>
 
-    <!-- End of Edit form -->
     <!-- SIDEBAR -->
     <section id="sidebar">
       <a href="#" class="brand">

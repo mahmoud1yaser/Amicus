@@ -17,6 +17,12 @@
 
 </head>
 <body>
+	<!-- Copy this to Html file under body tag -->
+    <!-- Edit form -->
+
+		
+
+			
 
 	    <!-- Loader -->
 		<div class="loader">
@@ -100,6 +106,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li>
+
 				<a href="{{url_for("home_page")}}" target="_blank" >
 					<i class='bx bxs-home-heart' ></i>
 					<span class="text">Home</span>
@@ -154,14 +161,16 @@
 				</a>
 			</li>
 			<li>
-				<a href="#" onclick="editform()">
+				<a href="{{url_for('edit_patient')}}"">
+
 				  <i class='bx bxs-pencil' ></i>
 				  <span class="text">Edit profile</span>
 				</a>
 			  </li>
 
 			<li>
-				<a href={{url_for("home_page")}} class="logout">
+				<a href={{url_for("logout_page")}} class="logout">
+
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -197,7 +206,18 @@
 		<!-- MAIN -->
 		<main>
 		
-		
+		 {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+           {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">
+                  <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  {{ message }}
+              </div>
+           {% endfor %}
+        {% endif %}
+      {% endwith %}
 			  
 			  
 			  

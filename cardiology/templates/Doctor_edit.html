@@ -1,0 +1,43 @@
+{% extends 'DoctorTemplate.html' %}
+<!--{% block content %}-->
+
+    <!-- Edit form -->
+<!--    <div class="main-edit-form" id="edit">-->
+
+<!--      <div class="edit-form" >-->
+        <div>
+<!--          <i onclick="closeform()" class="fa-solid fa-xmark"></i>-->
+          <form method="POST" class="form-register" action="EditDoctorInformation">
+                      {{ form.hidden_tag() }}
+            <h1>Edit form</h1>
+            <label>New Username:</label>
+            <div>
+				<i class="fa-solid fa-id-card"></i>
+            {{ form.username(class="form-control", value="{{user.d_username}}") }}
+            </div>
+
+			<label>New Phone Number:</label>
+            <div>
+              <i class="fa-solid fa-phone"></i>
+            {{ form.phone(class="form-control", value="{{user.d_phone}}") }}
+            </div>
+            <label>New E-mail:</label>
+            <div>
+              <i class="fa-solid fa-envelope"></i>
+            {{ form.email(class="form-control", value="{{user.d_email}}") }}
+            </div>
+            <label>New Password:</label>
+            <div>
+              <i class="fa-solid fa-lock"></i>
+            {{ form.password(class="form-control", label="Enter your new password") }}
+            </div>
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+          </form>
+        </div>
+
+<!--    </div>-->
+
+    <!-- End of Edit form -->
+
+<!--{% endblock %}-->

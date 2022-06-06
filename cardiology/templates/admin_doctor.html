@@ -1,4 +1,7 @@
 {% extends 'AdminTemplate.html' %}
+{%block name%}
+{{ current_user.a_name }}
+{%endblock%}
 {% block content %}
 <Title>Doctors</Title>
 <div class="table-data">
@@ -10,7 +13,7 @@
       class="profile"
     />
    <span>Dr/ Mohamed Ahmed</span>
-   <a href="#edit" onclick="editform()" class="btn-edit"> Edit </a>
+   <a href={{url_for('edit_doctor')}} class="btn-edit"> Edit </a>
 
   </div>
 </div>
@@ -18,11 +21,11 @@
   <h1 class="Info_Doc" style="text-align: left">
     Personal Information
   </h1>
-  
- 
+
+
   <div class="Information">
-      
-      
+
+
     <div class="min-info" >
 
       <div class="icon-info icon-1">
@@ -54,8 +57,8 @@
       <label for="Phone-Number">Phone Number</label>
     </div>
   </div>
-  
-    
+
+
 
   </div>
 </div>
@@ -66,8 +69,8 @@
 
     <div class="Information">
 
-      
-      
+
+
       <div class="min-info" >
 
         <div class="icon-info icon-1">
@@ -99,7 +102,7 @@
         <label for="Salary">Salary</label>
       </div>
     </div>
-      
+
 
     </div>
   </div>
@@ -195,6 +198,6 @@
       </tbody>
     </table>
   </div>
-  
+
 </div>
 {% endblock %}

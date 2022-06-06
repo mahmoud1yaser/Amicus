@@ -1,4 +1,7 @@
 {% extends 'AdminTemplate.html' %}
+{%block name%}
+{{ current_user.a_name }}
+{%endblock%}
 {% block content %}
 <Title>Patients</Title>
 <div class="table-data">
