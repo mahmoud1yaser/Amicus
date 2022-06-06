@@ -1,0 +1,203 @@
+{% extends 'AdminTemplate.html' %}
+{%block name%}
+{{ current_user.a_name }}
+{%endblock%}
+{% block content %}
+<Title>Doctors</Title>
+<div class="table-data">
+  <div class="card1" >
+    <div>
+    <img
+      src="../static/img/download.png"
+      alt="profile-pic"
+      class="profile"
+    />
+   <span>Dr/ Mohamed Ahmed</span>
+   <a href={{url_for('edit_doctor')}} class="btn-edit"> Edit </a>
+
+  </div>
+</div>
+<div class="card2">
+  <h1 class="Info_Doc" style="text-align: left">
+    Personal Information
+  </h1>
+
+
+  <div class="Information">
+
+
+    <div class="min-info" >
+
+      <div class="icon-info icon-1">
+        <i class="fa-solid fa-id-card"></i>
+    </div>
+    <div>
+      <h2>ID</h2>
+      <label for="ID">ID</label>
+    </div>
+  </div>
+    <div class="min-info" >
+
+      <div class="icon-info icon-2">
+        <i class="fa-solid fa-envelope"></i>
+    </div>
+    <div>
+      <h2>E-mail</h2>
+      <label for="E-mail">E-mail</label>
+    </div>
+  </div>
+    <!-- <br /> -->
+    <div class="min-info" >
+
+      <div class="icon-info icon-3">
+        <i class="fa-solid fa-phone"></i>
+    </div>
+    <div>
+      <h2>Phone Number</h2>
+      <label for="Phone-Number">Phone Number</label>
+    </div>
+  </div>
+
+
+
+  </div>
+</div>
+  <div class="card2">
+    <h1 class="Info_Doc" style="text-align: left">
+      Job Information
+    </h1>
+
+    <div class="Information">
+
+
+
+      <div class="min-info" >
+
+        <div class="icon-info icon-1">
+          <i class="fa-solid fa-user-doctor"></i>
+      </div>
+      <div>
+        <h2>Position</h2>
+        <label for="Position">Position</label>
+      </div>
+    </div>
+      <div class="min-info" >
+
+        <div class="icon-info icon-2">
+          <i class="fa-solid fa-clock"></i>
+      </div>
+      <div>
+        <h2>Working period</h2>
+        <label for="Working period">Working period</label>
+      </div>
+    </div>
+      <!-- <br /> -->
+      <div class="min-info" >
+
+        <div class="icon-info icon-3">
+          <i class="fa-solid fa-dollar-sign"></i>
+      </div>
+      <div>
+        <h2>Salary</h2>
+        <label for="Salary">Salary</label>
+      </div>
+    </div>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="table-data">
+  <div class="order">
+    <div class="head">
+      <h3>Patients</h3>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Patient Photo</th>
+          <th>Patient Name</th>
+          <th>ID</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img src="image/people.png" />
+          </td>
+          <td><p>John Doe</p></td>
+          <td>ID</td>
+          <td>Email</td>
+          </tr>
+          <tr>
+            <td>
+              <img src="image/people.png" />
+            </td>
+            <td><p>John Doe</p></td>
+            <td>ID</td>
+            <td>Email</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="image/people.png" />
+              </td>
+              <td><p>John Doe</p></td>
+              <td>ID</td>
+              <td>Email</td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="image/people.png" />
+                </td>
+                <td><p>John Doe</p></td>
+                <td>ID</td>
+                <td>Email</td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="image/people.png" />
+                  </td>
+                  <td><p>John Doe</p></td>
+                  <td>ID</td>
+                  <td>Email</td>
+                  </tr>
+        <tr>
+          <td>
+            <img src="image/people.png" />
+          </td>
+          <td><p>John Doe</p></td>
+          <td>ID</td>
+          <td>Email</td>
+          </tr>
+        <tr>
+          <td>
+            <img src="image/people.png" />
+          </td>
+          <td><p>John Doe</p></td>
+          <td>ID</td>
+          <td>Email</td>
+          </tr>
+        <tr>
+          <td>
+            <img src="image/people.png" />
+          </td>
+          <td><p>John Doe</p></td>
+          <td>ID</td>
+          <td>Email</td>
+          </tr>
+        <tr>
+          <td>
+            <img src="image/people.png" />
+          </td>
+          <td><p>John Doe</p></td>
+          <td>ID</td>
+          <td>Email</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+{% endblock %}

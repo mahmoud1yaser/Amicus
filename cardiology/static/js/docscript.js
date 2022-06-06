@@ -1,3 +1,5 @@
+birthdate.max = new Date().toISOString().split("T")[0];
+
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
 allSideMenu.forEach(item=> {
@@ -11,7 +13,21 @@ allSideMenu.forEach(item=> {
 	})
 });
 
+document.body.onload = function () {
+	var mode = localStorage.getItem("mode");
+	if (mode == "dark") {
+	  switchMode.checked = true;
+	  document.body.classList.add("dark");
+	} else {
+	  document.body.classList.remove("dark");
+	  switchMode.checked = false;
+	}
+	setTimeout(loader,1500);
+  };
+  function loader(){
+	document.querySelector('.loader').style.display='none';
 
+  }
 
 
 // TOGGLE SIDEBAR
@@ -21,6 +37,17 @@ const sidebar = document.getElementById('sidebar');
 menuBar.addEventListener('click', function () {
 	sidebar.classList.toggle('hide');
 })
+
+var editformd = document.getElementById("edit");
+function editform(){
+	editformd.style.width="100%";
+	editformd.style.height="100vh";
+}
+
+function closeform(){
+	editformd.style.width="0";
+	editformd.style.height="0";
+}
 
 
 

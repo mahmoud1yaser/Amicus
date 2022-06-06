@@ -32,6 +32,15 @@ li {
 	--light-orange: #FFE0D3;
 	--close: darkred;
 	--icon:#342E37;
+
+	--span1:'';
+	--span2:'';
+	--span3:'';
+	--span4:'';
+	--spans1:'';
+	--spans2:'';
+	--spans3:'';
+	--spans4:'';
 }
 
 html {
@@ -183,7 +192,91 @@ body {
 	left: 60px;
 }
 
-
+/* Loader */
+.loader {
+	display: block;
+	background: var(--light);
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 99999;
+  }
+  
+  .loader-inner {
+	bottom: 0;
+	height: 60px;
+	left: 0;
+	margin: auto;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100px;
+  }
+  
+  .loader-line-wrap {
+	animation: 
+	spin 2000ms cubic-bezier(.175, .885, .32, 1.275) infinite
+  ;
+	box-sizing: border-box;
+	height: 50px;
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	transform-origin: 50% 100%;
+	width: 100px;
+  }
+  .loader-line {
+	border: 4px solid transparent;
+	border-radius: 100%;
+	box-sizing: border-box;
+	height: 100px;
+	left: 0;
+	margin: 0 auto;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100px;
+  }
+  .loader-line-wrap:nth-child(1) { animation-delay: -50ms; }
+  .loader-line-wrap:nth-child(2) { animation-delay: -100ms; }
+  .loader-line-wrap:nth-child(3) { animation-delay: -150ms; }
+  .loader-line-wrap:nth-child(4) { animation-delay: -200ms; }
+  .loader-line-wrap:nth-child(5) { animation-delay: -250ms; }
+  
+  .loader-line-wrap:nth-child(1) .loader-line {
+	border-color: hsl(0, 80%, 60%);
+	height: 90px;
+	width: 90px;
+	top: 7px;
+  }
+  .loader-line-wrap:nth-child(2) .loader-line {
+	border-color: hsl(60, 80%, 60%);
+	height: 76px;
+	width: 76px;
+	top: 14px;
+  }
+  .loader-line-wrap:nth-child(3) .loader-line {
+	border-color: hsl(120, 80%, 60%);
+	height: 62px;
+	width: 62px;
+	top: 21px;
+  }
+  .loader-line-wrap:nth-child(4) .loader-line {
+	border-color: hsl(180, 80%, 60%);
+	height: 48px;
+	width: 48px;
+	top: 28px;
+  }
+  .loader-line-wrap:nth-child(5) .loader-line {
+	border-color: hsl(240, 80%, 60%);
+	height: 34px;
+	width: 34px;
+	top: 35px;
+  }
 
 
 /* NAVBAR */
@@ -420,6 +513,7 @@ body {
 	grid-gap: 24px;
 	margin-top: 24px;
 	width: 100%;
+	height: 350px;
 	color: var(--dark);
 }
 #content main .table-data > div {
@@ -441,11 +535,15 @@ body {
 }
 #content main .table-data .head .bx {
 	cursor: pointer;
+	content: "\ebdd";
+	font-size: 2rem !important;
 }
 
 #content main .table-data .order {
 	flex-grow: 1;
 	flex-basis: 500px;
+	overflow-y: scroll;
+	max-height: 450px;
 }
 
 #content main .table-data .order table  {
@@ -490,6 +588,8 @@ body {
 	grid-gap: 10px;
 	font-weight: 500;
 	cursor: pointer;
+	/* border: 2px solid var(--blue);
+	transition: 0.5s; */
 }
 
 #content  .btn-edit:hover {
@@ -510,6 +610,7 @@ body {
 	grid-gap: 10px;
 	font-weight: 500;
 	cursor: pointer;
+
 }
 
 #content  .btn-view:hover {
@@ -538,11 +639,16 @@ body {
 	color: var(--red);
 }
 
-
+.bars{
+	margin-top: 30px;
+}
+.bar{
+	margin-top: 10px;
+}
 
 .bx-medal:before {
     content: "\edbd";
-	font-size: 2rem !important
+	font-size: 2rem !important;
 }
 
 .bx-menu:before {
@@ -592,7 +698,7 @@ body {
     transition: 0.5s all ease;
     text-align: left;
     padding: 30px 50px;
-    
+
   }
   .edit-form h1{
     align-self: center;
@@ -673,13 +779,14 @@ body {
     border-color: var(--dark);;
     font-size: 1.1rem;
     color:var(--dark);
-  
+
   }
   #content main .table-data .card1 {
 	position: relative;
 	flex-basis: 25%;
 	text-align: center;
 	vertical-align: middle;
+
   }
   #content main .table-data .card1 div {
 	position: absolute;
@@ -689,9 +796,9 @@ body {
   }
   #content main .table-data .card1 img {
 	border-radius: 100%;
-  
+
 	margin-bottom: 10px;
-	width: 174px; 
+	width: 174px;
 	height: 163px;
   }
   #content main .table-data .card1 div span {
@@ -718,7 +825,7 @@ body {
 
   .min-info .icon-info{
 	position: relative;
-	margin-right: 10px; 
+	margin-right: 10px;
 	width: 40px;
 	height: 40px;
 	background-color: var(--blue);
@@ -736,7 +843,7 @@ body {
 	background-color: var(--light-orange);
 	border: 3px solid var(--light-orange);
   }
-  
+
   .min-info .icon-2 i{
 	color: var(--orange);
   }
@@ -744,18 +851,18 @@ body {
 	background-color: var(--light-yellow);
 	border: 3px solid var(--light-yellow);
   }
-  
+
   .min-info .icon-3 i{
 	color: var(--yellow);
   }
-  
+
   .min-info i{
 	position: absolute;
    top:50%;
    left: 50%;
    transform: translate(-50% ,-50%);
    font-size: 25px;
- 
+
  }
   #content main .table-data .card2 {
 	position: relative;
@@ -777,18 +884,210 @@ body {
 	height: 2px;
 	width: calc(100%);
 	background-color: var(--blue);
-  
+
   }
   .card2 h2{
 	font-size: 1.25rem;
   }
 
+  #content main .table-data .order.add-form{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 40%;
+    border-radius: 20px;
+    box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
+    -webkit-box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
+    -moz-box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
+    background-color: var(--light);
+    min-height: 50vh;
+    transition: 0.5s all ease;
+    text-align: left;
+    padding: 30px 50px;
+
+  }
+  #content main .table-data .order1.main-add-form{
+    display: block;
+    z-index: 9999;
+    position: absolute;
+    top:0;
+    left:0;
+    background-color: rgba(230,230,230,0.5);
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    transition: 1s all ease;
+  }
+  #content main .table-data .order1.add-form h1{
+    align-self: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    color:var(--dark);
+  }
+  #content main .table-data .order1 .add-form form{
+    position: relative;
+    text-align: left;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 25px;
+  }
+  #content main .table-data .order1 .add-form i{
+    position: absolute;
+    top:25px;
+    right: 25px;
+    color:var(--close);
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 999;
+  }
+  #content main .table-data .order1 .add-form form div {
+    position: relative;
+    align-items: center;
+    display: flex;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+  #content main .table-data .order1 .add-form form button {
+    margin-top: 10px;
+    text-align: center;
+    position: relative;
+    align-items: center;
+    margin-bottom: 10px;
+    width: auto;
+    padding: 10px 25px;
+    align-self: center;
+    border-radius: 20px;
+    background-color: var(--blue);
+    border: 1px solid var(--light-blue);
+    transition: 0.5s;
+    cursor: pointer;
+    font-size: 1.25rem;
+    color:black;
+  }
+  #content main .table-data .order1 .add-form form  .upload-btn-wrapper {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+  }
+
+  #content main .table-data .order1 .add-form form .upload-btn-wrapper input[type=file] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      }
+		#content main .table-data .order1 .add-form form input[type="radio" i] {
+			background-color: initial;
+			cursor: default;
+			appearance: auto;
+			box-sizing: border-box;
+			margin: 3px 3px 0px 5px;
+			padding: initial;
+			width: 30px;
+			border: initial;
+		}
+  #content main .table-data .order1 .add-form form button:hover{
+    background-color: var(--light-blue);
+    border: 1px solid var(--blue);
+  }
+  #content main .table-data .order1 .add-form form div i{
+    position: absolute;
+    width: auto;
+    font-size: 20px;
+    top:auto;
+    left:0;
+    color: var(--blue);
+  }
+  #content main .table-data .order1  .add-form form label{
+    margin-bottom: 10px;
+    font-family: "Roboto";
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color:var(--dark);
+  }
+  #content main .table-data .order1 .add-form div input{
+    width: 80%;
+    padding: 10px 30px;
+    outline: none;
+    background-color: transparent;
+    border-style: none none solid none;
+    border-width: 2px ;
+    border-color: var(--dark);;
+    font-size: 1.1rem;
+    color:var(--dark);
+
+  }
+  #content main .table-data .order1 {
+	flex-grow: 1;
+	flex-basis: 500px;
+  }
+
+  #content main .table-data .order1 table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center;
+  }
+  #content main .table-data .order1 table th {
+	padding-bottom: 12px;
+	font-size: 13px;
+	text-align: center;
+	border-bottom: 1px solid var(--grey);
+  }
+  .view{
+
+	text-align: center;
+  }
+  #content main .table-data .order1 table td {
+	padding: 16px 0;
+
+  }
+  #content main .table-data .order1 table td.btn-edit {
+	  margin-right: 10px;
+	  width: auto;
+	  height: 36px;
+	  padding: 0;
+	  border-radius: 36px;
+	  background: var(--blue);
+	  color: var(--light-blue);
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  grid-gap: 10px;
+	  font-weight: 500;
+	  cursor: pointer;
+  }
+
+  #content main .table-data .order1 table td .btn-edit:hover {
+	  background: var(--light-blue);
+	  color: var(--blue);
+  }
+  #content main .table-data .order1 table td img {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	object-fit: cover;
+  }
+  #content main .table-data .order1 table tbody tr:hover {
+	background: var(--grey);
+  }
+  #content main .table-data .order1 table tr td .status:hover {
+	background: var(--light-blue);
+	color: var(--blue);
+	border: 2px solid var(--blue);
+	font-size: 1rem;
+  }
 
 
 
 
 
-  
+
+
 
 /* MAIN */
 /* CONTENT */
@@ -857,13 +1156,160 @@ body {
 	#content main .table-data .card {
 		min-width: 420px;
 	  }
-	
+
 	#content main .table-data .details {
 		min-width: 420px;
 	}
 }
+@keyframes showText {
+	100%{
+	  opacity: 1;
+	}
+  }
+  .card2 .bar .progress-line{
+	height: 10px;
+	width: 100%;
+	background: #f0f0f0;
+	position: relative;
+	transform: scaleX(0);
+	transform-origin: left;
+	border-radius: 10px;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.05),
+				0 1px rgba(255,255,255,0.8);
+	animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
+  }
+
+  @keyframes animate {
+	100%{
+	  transform: scaleX(1);
+	}
+  }
+  #span1{
+	width: var(--spans1);
+  }
+  #span2{
+	width: var(--spans2);
+  }
+  #span3{
+	  	width: var(--spans3);
+  }
+  #span4{
+	width: var(--spans4);
+  }
+  .bar .progress-line span{
+	height: 100%;
+	position: absolute;
+	border-radius: 10px;
+	transform: scaleX(0);
+	transform-origin: left;
+	background: var(--blue);
+	animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
+  }
 
 
+  .progress-line span::before{
+	position: absolute;
+	content: "";
+	top: -10px;
+	right: 0;
+	height: 0;
+	width: 0;
+	border: 7px solid transparent;
+	border-bottom-width: 0px;
+	border-right-width: 0px;
+	border-top-color: #000;
+	opacity: 0;
+	animation: showText2 0.5s 1.5s linear forwards;
+  }
+  .progress-line span::after{
+	position: absolute;
+	top: -28px;
+	right: 0;
+	font-weight: 500;
+	background: #000;
+	color: #fff;
+	padding: 1px 8px;
+	font-size: 12px;
+	border-radius: 3px;
+	opacity: 0;
+	animation: showText2 0.5s 1.5s linear forwards;
+  }
+
+  @keyframes showText2 {
+	100%{
+	  opacity: 1;
+	}
+  }
+	#span1::after{
+		content: var(--span1);
+	}
+	#span2::after{
+		content: var(--span2);
+	}
+	#span3::after{
+		content: var(--span3);
+	}
+	#span4::after{
+		content: var(--span4);
+	}
+
+#btn5{
+	width: 7rem;
+	margin-top:15rem;
+
+}
+
+#btn6{
+	width:3rem;
+	margin-bottom: 1rem;
+    border-radius: 20px;
+	background-color: var(--light);
+	border-color: #eee;
+	color: darkgreen;
+	font-size:x-large ;
+
+
+}
+#btn6:hover{
+	border-color: var(--light);
+}
+.btn {
+
+	color: var(--light);
+	background-color: var(--blue);
+	transition: .5s;
+	margin-top: 1rem;
+	padding: 8px 20px;
+    border-color:var(--blue) ;
+	border-width: 0px;
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 20px;
+	cursor: pointer;
+	opacity: 1;
+
+	text-align: center;
+
+  }
+   .btn:hover{
+	background-color: var(--grey);
+
+	border: 2px solid var(--blue);
+	color: var(--blue);
+
+  }
+  .upload-btn-wrapper {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+  }
+  .upload-btn-wrapper input[type=file] {
+	font-size: 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+  }
 
 
 

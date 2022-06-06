@@ -1,6 +1,7 @@
 from flask import render_template, redirect, url_for, request, flash, Markup
 from flask_sqlalchemy import SQLAlchemy
 from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_records, p_Messages, Scans, Prescription
+from cardiology.forms import editPatientForm
 from cardiology import app, db, doctor
 from datetime import datetime, timedelta
 from cardiology.my_functions import parse_time, generate_gcalendar_link, availabe_appointments, save_picture
@@ -98,15 +99,19 @@ def scans_page():
 @app.route('/EditPatientProfile', methods=['POST', 'GET'])
 @login_required
 def edit_patient():
-    if request.method == 'POST':
-                    
-        p_user.p_username = request.form['username']
-        p_user.p_passward = request.form['passward']
-        p_user.p_email = request.form['email']
-        p_user.p_phone = request.form['phone']
-        flash('profile is updated successfully')
-
-    return render_template('p_edit.html', user=p_user)
+    form = editPatientForm()
+    if form.validate_on_submit():
+        current_user.p_email = form.email.data
+        current_user.password = form.password.data
+        current_user.p_username = form.username.data
+        current_user.p_phone = form.phone.data
+        db.session.commit()
+        flash(f'patient {current_user.p_name} account is updated', category='success')
+        return redirect(url_for('p_profile'))
+    if form.errors != {}:  # If there are not errors from the validations
+        for err_msg in form.errors.values():
+            flash(f'There was an error with editing the admin: {err_msg}', category='danger')
+    return render_template('edit_patient.html', user=current_user, form=form)
 
 
 
