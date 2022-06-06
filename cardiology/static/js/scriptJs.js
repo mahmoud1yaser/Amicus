@@ -115,30 +115,30 @@ const form_1 = document.querySelector("#contact_id");
 const form_2 =  document.getElementById('contact'); 
 const form_3 = document.getElementById('form_3');
 
-if(form_1 !== null){
-form_1.addEventListener("submit", (event) => {
-  event.preventDefault();
-  validateForm_1();
-});
-}
+// if(form_1 !== null){
+// form_1.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   validateForm_1();
+// });
+// }
 
-if(form_2 !== null){
-form_2.addEventListener("submit", (event) => {
-  event.preventDefault();
-  validateForm_2();
-});
-}
-if(form_3 !== null){
-  var Eu = document.getElementById('E-Username');
-  var Ep = document.getElementById('E-Phonenumber');
-  var Ee = document.getElementById('E-Email');
-  var Epass = document.getElementById('E-Password');
-  form_3.addEventListener("submit", (event) => {
+// if(form_2 !== null){
+// form_2.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   validateForm_2();
+// });
+// }
+// if(form_3 !== null){
+//   var Eu = document.getElementById('E-Username');
+//   var Ep = document.getElementById('E-Phonenumber');
+//   var Ee = document.getElementById('E-Email');
+//   var Epass = document.getElementById('E-Password');
+//   form_3.addEventListener("submit", (event) => {
 
-    event.preventDefault();
-    validateForm_3();
-  });
-  }
+//     event.preventDefault();
+//     validateForm_3();
+//   });
+  // }
 
 
 

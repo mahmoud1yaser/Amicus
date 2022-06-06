@@ -1,4 +1,3 @@
-from crypt import methods
 from flask import render_template, redirect, url_for, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_records, p_Messages, Scans, Prescription
@@ -40,8 +39,8 @@ def add_doctors():
 
 
 # needs validation
-@app.route('/EditDoctorInfo', methods=['GET', 'POST'])
-def edit_doc():
+@app.route('/EditDocInfo', methods=['GET', 'POST'])
+def edit_doctor():
     if request.method == 'POST':
         edited_doc = Doctors.query.filter_by(d_id=request.form['id'])
         edited_doc.d_username = request.form['username']
@@ -53,12 +52,11 @@ def edit_doc():
 
         flash(f'doctor {edited_doc.u_name} account is updated')
 
-    return render_template('.html', user=a_user, )
 
 
 @app.route('/AddAdmin')
 def add_admin():
-    return render_template('.html')
+    return render_template('add_admin.html')
 
 
 @app.route('/DoctorInfo')
