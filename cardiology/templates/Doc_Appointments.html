@@ -19,51 +19,26 @@
   </tr>
   </thead>
  <tbody >
+   
+  {% if appoints==[] %}
+  <label for="di">No Appointments to Display</label>
+  {% else %}
+  <tbody >
+  {% for appoint in appoints %}
    <tr>
   <td>
   <p>
-    <label for="Patient">Patient</label>
+    <label for="Patient">{{appoint.p_name}}</label>
    </p>
    </td>
-   <td>ID</td>
- <td >Time</td>
+   <td>{{appoint.date}}</td>
+ <td >{{appoint.Time}}</td>
     </tr>
- <tr>
-  <td>
-    <p>
-    <label for="Patient">Patient</label>
-</p>
-  </td>
-   <td>ID</td>
-   <td >Time</td>
-</tr>
-  <tr>
- <td>
- <p>
-   <label for="Patient">Patient</label>
-  </p>
- </td>
- <td>ID</td>
- <td >Time</td>
- </tr>
- <tr>
- <td>
- <p>
-   <label for="Patient">Patient</label>
-   </p>
-  </td>
-   <td>ID</td>
-   <td >Time</td>
-</tr>
-  <tr>
-  <td>
- <p>
-   <label for="Patient">Patient</label>
-  </p>
- </td>
- <td>ID</td>
- <td >Time</td>
- </tr>
+  {% endfor %}
+  
+
+ </tbody>
+ {% endif %}
  </tbody>
  </table>
 

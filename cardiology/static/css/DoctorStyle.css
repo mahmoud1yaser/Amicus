@@ -19,8 +19,9 @@ li {
 }
 
 :root {
-  --poppins: 'Poppins', sans-serif;
+	--poppins: 'Poppins', sans-serif;
 	--lato: 'Lato', sans-serif;
+
 
   --light: #f9f9f9;
   --blue: #3c91e6;
@@ -525,20 +526,25 @@ h2{
 
 #btn5{
 	width: 7rem;
-	margin-top:20rem;
+	margin-top:20.5rem;
 
 }
 
 #btn6{
 	width:3rem;
 
+margin-top: -.8px;
     border-radius: 20px;
 	background-color: var(--light);
 	border-color: #eee;
 	color: darkgreen;
 	font-size:x-large ;
+  margin-right: 5px;
 
    
+}
+#brand{
+	color: var(--dark);
 }
 #btn6:hover{
 	border-color: var(--light);
@@ -555,16 +561,55 @@ h2{
   justify-content: space-between;
   grid-gap: 16px;
   flex-wrap: wrap;
+
 }
+#content main .table-data {
+	display: flex;
+	flex-wrap: wrap;
+	grid-gap: 24px;
+	margin-top: 24px;
+	width: 100%;
+  
+	color: var(--dark);
+}
+#content main .table-data > div {
+	border-radius: 20px;
+	background: var(--light);
+	padding: 24px;
+	overflow-x: auto;
+}
+#content main .table-data .head {
+	position: relative;
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+	margin-bottom: 24px;
+}
+#content main .table-data .head h3 {
+	position: relative;
+	margin-right: auto;
+	font-size: 24px;
+	font-weight: 600;
+  font-family: rp;
+}
+#content main .table-data .head::after {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: var(--blue);}
 
 .Information {
   position: relative;
-  display: grid;
-  background: var(--white);
-  float: left;
-  text-align: left;
-  padding-top: 10px;
-  margin-top: 30px;
+	display: grid;
+	background: var(--white);
+	float: left;
+	text-align: left;
+	padding-top: 6px;
+	margin-top: 10px;
+	height: 300px
 }
 
 .min-info{
@@ -574,6 +619,7 @@ h2{
   margin-top: 15px;
 }
 .min-info .icon-info{
+  
   position: relative;
   margin-right: 10px; 
   width: 40px;
@@ -718,9 +764,11 @@ h3 span{
   margin-bottom: 24px;
 }
 #content main .table-data .head h3 {
-  margin-right: auto;
-  font-size: 24px;
-  font-weight: 600;
+	position: relative;
+	margin-right: auto;
+	font-size: 24px;
+	font-weight: 600;
+	font-family: roboto;
 }
 #content main .table-data .head .bx {
   cursor: pointer;
@@ -862,7 +910,9 @@ h3 span{
 #content main .table-data .card2 h1 {
   position: relative;
   color: var(--dark);
-  font-weight: 300;
+  
+  
+  
 }
 .card2 h1:after {
   position: absolute;

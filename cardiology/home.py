@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request, flash, Markup
 from flask_sqlalchemy import SQLAlchemy
 from cardiology.models import Doctors, Patients, Admins
-from cardiology import app, db, settings, patient
+from cardiology import app, db, settings, patient, admin
 from cardiology.forms import RegisterForm, LoginForm
 from flask_login import login_user, logout_user, login_required
 

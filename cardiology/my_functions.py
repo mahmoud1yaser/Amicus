@@ -41,7 +41,8 @@ def save_picture(form_picture, folder_name):
 
 def sorting_appointments(appointments, type):
     appoints = [x for x in appointments if x.date>=datetime.date.today()]
-    appoints = sorted(appointments, key= lambda x:x.date and x.Time)
+    appoints = sorted(appoints, key= lambda x:parse_time2(x.date,x.Time))
+
     if type=='patient':
         if len(appoints)>=3:
             return appoints[0:3]
@@ -61,4 +62,9 @@ def doct_patient(appointments):
 
 
 
-    
+def parse_time2(day, time):
+    d = str(day).split('-')
+    t = str(time).split(':')
+    x = datetime.datetime(int(d[0]), int(d[1]), int(d[2]),int(t[0]), int(t[1]))
+    y = datetime.time(int(t[0]), int(t[1]))
+    return x    

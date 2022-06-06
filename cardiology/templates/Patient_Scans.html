@@ -8,28 +8,24 @@
               <h3>Your Scans</h3>
             </div>
 
-            <br /><button type="button" class="collapsible">Scan 1</button>
-            <div class="content" id="scan">
-              <img
-                src="../static/images/4d44e39511097c8cf85d031bda1d770f.jpg"
-                alt=""
-              />
+            {% if scans==[] %}
+            
+            <label for="di">No Scans to Display</label>
+            
+            {% else %}
+            {% for scan in scans %}
+            <br><button type="button" class="collapsible">Scan {{loop.index}}</button>
+              <div class="content">
+              <span id="scan"><h3>Scan Uploding Date: {{scan.scan_date.strftime('%Y-%m-%d')}}</h3></span>
+              <!-- <h2>scan uploding date: {{scan.scan_date.strftime('%Y-%m-%d')}}</h2> -->
+              <img src="{{scan.scan_path}}" alt="">
             </div>
-            <button type="button" class="collapsible">Scan 2</button>
-            <div class="content">
-              <img
-                src="../static/images/cbe0cef3e37f00adca5c0dfcbe70069d.jpg"
-                alt=""
-              />
-            </div>
-            <button type="button" class="collapsible">Scan 3</button>
-            <div class="content">
-              <img
-                src="../static/images/cbe0cef3e37f00adca5c0dfcbe70069d.jpg"
-                alt=""
-              />
-            </div>
+            
+            {% endfor %}
+            {% endif %}
+            <a href="{{url_for('patient_info')}}" class="btn btn3" id="hh"> ❮ Back </a>
           </div>
+
         </div>
-        <a href="Doctor_Patients.html" class="btn btn3" id="hh"> ❮ Back </a>
+       
 {% endblock %}

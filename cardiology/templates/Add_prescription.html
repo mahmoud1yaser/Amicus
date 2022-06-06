@@ -14,8 +14,8 @@
 
         <div class="form_1">
           <form
-            action=""
-            method="POST"
+            action="{{url_for('add_PR')}}"
+            method="post"
             id="contact_id"
             class="input-group-register"
           >
@@ -29,7 +29,7 @@
               <div>
                 <textarea
                   id="textarea_1"
-                  name="comment"
+                  name="diagnosis"
                   rows="5"
                   cols="100"
                 ></textarea>
@@ -42,7 +42,7 @@
               <div>
                 <textarea
                   id="textarea"
-                  name="comment"
+                  name="drugs"
                   rows="5"
                   cols="100"
                 ></textarea>
@@ -52,28 +52,9 @@
               <br />
             </fieldset>
 
-            <fieldset>
-              <legend>
-                <span class="number">2</span>Write Prescription
-              </legend>
-              <br />
-
-              <div>
-                <textarea
-                  id="Message"
-                  class="message"
-                  rows="15"
-                  cols="50"
-                  name="Message"
-                >
-                </textarea>
-                <br /><span></span>
-              </div>
-            </fieldset>
-
             <button type="submit" class="btn" id="btn2">Send</button>
           </form>
-          <a href="Doctor_Patients.html" class="btn btn3" id="hh">
+          <a href="{{url_for('patient_info')}}" class="btn btn3" id="hh">
             ❮ Back
           </a>
         </div>

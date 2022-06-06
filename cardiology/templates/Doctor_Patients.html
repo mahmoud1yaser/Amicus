@@ -5,11 +5,11 @@
   <div class="card1">
     <div>
       <img
-        src="../static/images/download.png"
+        src="{{patient.p_photo}}"
         alt="profile-pic"
         class="profile"
       />
-      <span>User name</span>
+      <span>{{patient.p_name}}</span>
     </div>
   </div>
 
@@ -25,7 +25,7 @@
         </div>
         <div>
           <h2>ID</h2>
-          <label for="ID">ID</label>
+          <label for="ID">{{patient.p_id}}</label>
         </div>
       </div>
       <div class="min-info">
@@ -34,7 +34,7 @@
         </div>
         <div>
           <h2>E-mail</h2>
-          <label for="E-mail">E-mail</label>
+          <label for="E-mail">{{patient.p_email}}</label>
         </div>
       </div>
       <!-- <br /> -->
@@ -44,7 +44,7 @@
         </div>
         <div>
           <h2>Phone Number</h2>
-          <label for="Phone-Number">Phone Number</label>
+          <label for="Phone-Number">{{patient.p_phone}}</label>
         </div>
       </div>
     </div>
@@ -53,24 +53,36 @@
     <h1 class="Info_Doc" style="text-align: left">Next Appointments</h1>
 
     <div class="Information">
-      <div class="min-info">
-        <div class="icon-info icon-2">
-          <i class="fa-solid fa-clock"></i>
-        </div>
-        <div>
-          <h2>Appointment 1</h2>
-          <label for="Working period">here</label>
-        </div>
-      </div>
-      <div class="min-info">
-        <div class="icon-info icon-2">
-          <i class="fa-solid fa-clock"></i>
-        </div>
-        <div>
-          <h2>Appointment 2</h2>
-          <label for="Working period">here</label>
-        </div>
-      </div>
+      {% if appoints==[] %}
+				  	
+					<div class="min-info" >
+	
+						<div class="icon-info icon-2">
+						  <i class="fa-solid fa-clock"></i>
+					  </div>
+					
+					  <div>
+						<h2>No appointment reseved</h2>
+						
+					  </div>
+					</div>
+				{% else %}
+				
+					{% for appoint in appoints %}
+					<div class="min-info" >
+						
+						<div class="icon-info icon-2">
+						  <i class="fa-solid fa-clock"></i>
+					  </div>
+					  
+					  <div>
+						<h2>Appointment {{loop.index}}</h2>
+						<label for="Working period">{{appoint.date}} {{appoint.Time}}</label>
+					  </div>
+					</div>
+					
+					{% endfor %}
+					{% endif %}
     </div>
   </div>
 </div>
@@ -86,26 +98,34 @@
       <span><h3>Medical Record</h3></span>
     </div>
 
-    <div>
-      <br />
-      <h2><span>Diagnosis</span></h2>
-      <label for="di"> write diagnosis here</label>
-    </div>
-    <div>
-      <br />
-      <h2><span>Medical History</span></h2>
-      <label for="di"> write here</label>
-    </div>
-    <div>
-      <br />
-      <h2><span>Restricted Drugs</span></h2>
-      <label for="di"> write diagnosis here</label>
-    </div>
+    {% if MR.diseases_history==Null %}
+					<div>
+						<br><h2> <span>Medical History</span></h2>
+						<label for="di">No Medical History</label>
+					</div>
+					
+					{% else %}
+					<div>
+						<br><h2> <span>Medical History</span></h2>
+						<label for="di">{{MR.diseases_history}}</label>
+					</div>
+					{% endif %}
+					{% if MR.restricted_drugs==Null %}
+					<div>
+						<br><h2><span>Restricted Drugs</span></h2>
+						<label for="di">No Restricted Drugs</label>
+					</div>
+					{% else %}
+					<div>
+						<br><h2><span>Restricted Drugs</span></h2>
+						<label for="di">{{MR.restricted_drugs}}</label>
+					</div>
+					{% endif %}
     <div id="button_MD">
-      <a class="btn" href="Write MD.html" id="button_MD"
+      <a class="btn" href="{{url_for('add_MR')}}" id="button_MD"
         >Write Medical Record</a
       >
-      <a class="btn" href="Patient_Scans.html" id="search"
+      <a class="btn" href="{{url_for('patient_scans')}}" id="search"
         >View Scans</a
       >
     </div>
@@ -114,67 +134,37 @@
     <div class="head">
       <span><h3>Prescription</h3></span>
     </div>
-
-    <br /><button type="button" class="collapsible">
-      Prescription 1
-    </button>
-    <div class="content">
-      <div>
-        <br />
-        <h3><span>Doctor name</span></h3>
-        <label for="di"> write here</label>
+      
+          {% if PRs==[] %}
+					<br><h3> <span>No prescriptions to display</span> </h3>
+					{% else %}
+					{% for pr in PRs %}
+					<br><button type="button" class="collapsible">Prescription 1 </button>
+               		<div class="content">
+						<div>
+							<br><h3> <span>Doctor name</span> </h3>
+							<label for="di">{{pr.d_name}}</label>
+						</div>
+						<div>
+							<br><h3> <span>Date</span></h3>
+							<label for="di">{{pr.pres_date}}</label>
+						</div>
+						<div>
+							<br><h3><span>Diagnosis</span></h3>
+							<label for="di">{{pr.diagnosis}}</label>
+						</div>
+						<div>
+							<br><h3><span>Medicine</span></h3>
+							<label for="di">{{pr.drugs}}</label>
+						</div>
+					</div>
+					{% endfor %}
+					{% endif %}
+          <br>
+          <div>
+      <a class="btn" href="{{url_for('add_PR')}}" id="button_MD"
+        >Add Prescription</a>
       </div>
-      <div>
-        <br />
-        <h3><span>Date</span></h3>
-        <label for="di"> write here</label>
-      </div>
-      <div>
-        <br />
-        <h3><span>Medicine</span></h3>
-        <label for="di"> write here</label>
-      </div>
-    </div>
-    <button type="button" class="collapsible">Prescription 2</button>
-    <div class="content">
-      <div>
-        <br />
-        <h3><span>Doctor name</span></h3>
-        <label for="di"> write here</label>
-      </div>
-      <div>
-        <br />
-        <h3><span>Date</span></h3>
-        <label for="di"> write here</label>
-      </div>
-      <div>
-        <br />
-        <h3><span>Medicine</span></h3>
-        <label for="di"> write here</label>
-      </div>
-    </div>
-    <button type="button" class="collapsible">prescription 3</button>
-    <div class="content">
-      <div>
-        <br />
-        <h3><span>Doctor name</span></h3>
-        <label for="di"> write here</label>
-      </div>
-      <div>
-        <br />
-        <h3><span>Date</span></h3>
-        <label for="di"> write here</label>
-      </div>
-      <div>
-        <br />
-        <h3><span>Medicine</span></h3>
-        <label for="di"> write here</label>
-      </div>
-    </div>
-    <div>
-      <a class="btn" href="Add_prescription.html" id="button_MD"
-        >Add Prescription</a
-      >
     </div>
   </div>
 </div>
