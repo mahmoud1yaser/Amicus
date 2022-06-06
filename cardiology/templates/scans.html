@@ -15,18 +15,17 @@
 		</div>
 		{% if scans==[] %}
 		
-			<p>No Scans to Display</p>
+		<label for="di">No Scans to Display</label>
 		
 		{% else %}
 		{% for scan in scans %}
 		<br><button type="button" class="collapsible">Scan {{loop.index}}</button>
 		   <div class="content">
-			<span id="scan"><h3>scan uploding date: {{scan.scan_date.strftime('%Y-%m-%d')}}</h3></span>
+			<span id="scan"><h3>Scan Uploding Date: {{scan.scan_date.strftime('%Y-%m-%d')}}</h3></span>
 			<!-- <h2>scan uploding date: {{scan.scan_date.strftime('%Y-%m-%d')}}</h2> -->
 			<img src="{{scan.scan_path}}" alt="">
 		</div>
 		
-		{% set i=i+1 %}
 		{% endfor %}
 		{% endif %}
 		

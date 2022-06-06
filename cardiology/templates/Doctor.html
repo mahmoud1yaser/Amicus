@@ -10,7 +10,7 @@
         alt="profile-pic"
         class="profile"/>
 
-       <br><span>Dr/ Mohamed Ahmed</span>
+       <br><span>{{user.d_name}}</span>
        
       <div class="upload-btn-wrapper">
         <button class="btn" id="btn5"  style="margin-top: 10rem;">Edit
@@ -98,10 +98,12 @@
   <div class="order">
     <div class="head">
       <h3>Patients</h3>
-      <button type="button" class="btn" id="search"><i class="bx bx-search"></i></button>
+      <form action={{url_for('doc_profile')}} method="post">
+      <button type="submit" class="btn" id="search"><i class="bx bx-search"></i></button>
 
-      <!-- <i class="bx bx-search"></i> -->
-      <input type="text"  id="id" placeholder="ID" class="input-field">
+      
+      <input type="text"  id="id" placeholder=" Any ID" name="p_id" class="input-field">
+    </form>
     </div>
     <table>
       <thead>
@@ -111,6 +113,11 @@
           <th></th>
         </tr>
       </thead>
+      {% if patients==[] %}
+      <div>
+        <label for="di">No Patients to Display</label>
+      </div>
+      {% else %}
       <tbody>
         {% for patient in patients %}
         <tr>
@@ -121,18 +128,28 @@
           </td>
           <td>{{patient.p_id}}</td>
 
-          <td class="view"><a class="status" href="{{url_for('patient_info')}}" value="{{patient.p_id}}">View more</a></td>
+          <td class="view">
+            <form action="{{url_for('view_more')}}" method="post">
+              <button  class="status" type="submit" value="{{patient.p_id}}" name="gg" >View more</button></form></td>
         </tr>
         {% endfor %}
+        
 
         
       </tbody>
+      {% endif %}
     </table>
   </div>
   <div class="todo">
     <div class="head">
       <span><h3>Inbox</h3></span>
     </div>
+    {% if msgs==[] %}
+    <div>
+      
+      <label for="di">No Messages to Display</label>
+    </div>
+    {% else %}
     {% for msg in msgs %}
     <br /><button type="button" class="collapsible">Messages_1</button>
     <div class="content">
@@ -170,7 +187,7 @@
       </div>
     </div>
     {% endfor %}
-    
+    {% endif %}
   </div>
 </div>
 {% endblock %}

@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request, flash, Markup
 from flask_sqlalchemy import SQLAlchemy
 from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_records, p_Messages, Scans, Prescription
-from cardiology import app, db, doctor
+from cardiology import app, db, doctor, admin
 from datetime import datetime, timedelta
 from cardiology.my_functions import parse_time, generate_gcalendar_link, availabe_appointments, save_picture, sorting_appointments
 from flask_login import current_user, login_required

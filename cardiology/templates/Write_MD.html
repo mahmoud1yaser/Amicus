@@ -12,7 +12,7 @@
           <h1 id="he">Write Medical Record</h1>
         </div>
         <div class="form_2">
-          <form action="" method="POST" id="contact" class="input-group-register">
+          <form action="{{url_for('add_MR')}}" method="POST" id="contact" class="input-group-register">
             <fieldset>
               <legend>
                 <span class="number">1</span>Medical History
@@ -22,7 +22,7 @@
                 <textarea
                   disabled
                   id="textarea"
-                  name="comment"
+                  name="medical_history"
                   rows="5"
                   cols="100"
                 ></textarea>
@@ -41,7 +41,7 @@
                   <textarea
                     disabled
                     id="textarea_1"
-                    name="comment"
+                    name="restricted_drugs"
                     rows="5"
                     cols="100"
                   ></textarea>
@@ -55,7 +55,7 @@
               id="btn2"
               style="margin-left: 7rem">Send</button>
           </form>
-          <a href="Doctor_Patients.html" class="btn btn3" id="hh">
+          <a href="{{url_for('patient_info')}}" class="btn btn3" id="hh">
             ❮ Back
           </a>
         </div>
