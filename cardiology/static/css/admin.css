@@ -610,7 +610,7 @@ body {
 	grid-gap: 10px;
 	font-weight: 500;
 	cursor: pointer;
-
+	
 }
 
 #content  .btn-view:hover {
@@ -698,7 +698,7 @@ body {
     transition: 0.5s all ease;
     text-align: left;
     padding: 30px 50px;
-
+    
   }
   .edit-form h1{
     align-self: center;
@@ -779,7 +779,7 @@ body {
     border-color: var(--dark);;
     font-size: 1.1rem;
     color:var(--dark);
-
+  
   }
   #content main .table-data .card1 {
 	position: relative;
@@ -796,9 +796,9 @@ body {
   }
   #content main .table-data .card1 img {
 	border-radius: 100%;
-
+  
 	margin-bottom: 10px;
-	width: 174px;
+	width: 174px; 
 	height: 163px;
   }
   #content main .table-data .card1 div span {
@@ -825,7 +825,7 @@ body {
 
   .min-info .icon-info{
 	position: relative;
-	margin-right: 10px;
+	margin-right: 10px; 
 	width: 40px;
 	height: 40px;
 	background-color: var(--blue);
@@ -843,7 +843,7 @@ body {
 	background-color: var(--light-orange);
 	border: 3px solid var(--light-orange);
   }
-
+  
   .min-info .icon-2 i{
 	color: var(--orange);
   }
@@ -851,18 +851,18 @@ body {
 	background-color: var(--light-yellow);
 	border: 3px solid var(--light-yellow);
   }
-
+  
   .min-info .icon-3 i{
 	color: var(--yellow);
   }
-
+  
   .min-info i{
 	position: absolute;
    top:50%;
    left: 50%;
    transform: translate(-50% ,-50%);
    font-size: 25px;
-
+ 
  }
   #content main .table-data .card2 {
 	position: relative;
@@ -884,7 +884,7 @@ body {
 	height: 2px;
 	width: calc(100%);
 	background-color: var(--blue);
-
+  
   }
   .card2 h2{
 	font-size: 1.25rem;
@@ -905,7 +905,7 @@ body {
     transition: 0.5s all ease;
     text-align: left;
     padding: 30px 50px;
-
+    
   }
   #content main .table-data .order1.main-add-form{
     display: block;
@@ -1020,13 +1020,13 @@ body {
     border-color: var(--dark);;
     font-size: 1.1rem;
     color:var(--dark);
-
+  
   }
   #content main .table-data .order1 {
 	flex-grow: 1;
 	flex-basis: 500px;
   }
-
+  
   #content main .table-data .order1 table {
 	width: 100%;
 	border-collapse: collapse;
@@ -1039,12 +1039,12 @@ body {
 	border-bottom: 1px solid var(--grey);
   }
   .view{
-
+	
 	text-align: center;
   }
   #content main .table-data .order1 table td {
 	padding: 16px 0;
-
+	
   }
   #content main .table-data .order1 table td.btn-edit {
 	  margin-right: 10px;
@@ -1061,7 +1061,7 @@ body {
 	  font-weight: 500;
 	  cursor: pointer;
   }
-
+  
   #content main .table-data .order1 table td .btn-edit:hover {
 	  background: var(--light-blue);
 	  color: var(--blue);
@@ -1087,7 +1087,7 @@ body {
 
 
 
-
+  
 
 /* MAIN */
 /* CONTENT */
@@ -1156,7 +1156,7 @@ body {
 	#content main .table-data .card {
 		min-width: 420px;
 	  }
-
+	
 	#content main .table-data .details {
 		min-width: 420px;
 	}
@@ -1178,7 +1178,7 @@ body {
 				0 1px rgba(255,255,255,0.8);
 	animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
   }
-
+  
   @keyframes animate {
 	100%{
 	  transform: scaleX(1);
@@ -1205,8 +1205,8 @@ body {
 	background: var(--blue);
 	animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
   }
-
-
+  
+  
   .progress-line span::before{
 	position: absolute;
 	content: "";
@@ -1228,7 +1228,7 @@ body {
 	font-weight: 500;
 	background: #000;
 	color: #fff;
-	padding: 1px 8px;
+	padding: 1px 8px;	
 	font-size: 12px;
 	border-radius: 3px;
 	opacity: 0;
@@ -1252,7 +1252,7 @@ body {
 	#span4::after{
 		content: var(--span4);
 	}
-
+	
 #btn5{
 	width: 7rem;
 	margin-top:15rem;
@@ -1268,13 +1268,13 @@ body {
 	color: darkgreen;
 	font-size:x-large ;
 
-
+   
 }
 #btn6:hover{
 	border-color: var(--light);
 }
 .btn {
-
+	
 	color: var(--light);
 	background-color: var(--blue);
 	transition: .5s;
@@ -1287,16 +1287,16 @@ body {
 	border-radius: 20px;
 	cursor: pointer;
 	opacity: 1;
-
+	
 	text-align: center;
-
+	
   }
    .btn:hover{
 	background-color: var(--grey);
-
+	
 	border: 2px solid var(--blue);
 	color: var(--blue);
-
+	
   }
   .upload-btn-wrapper {
 	position: relative;
@@ -1310,6 +1310,12 @@ body {
 	top: 0;
 	opacity: 0;
   }
+  .error span {
+    color: var(--red);
+    margin-top: 1px;}
+.error{
+	visibility: visible;
+}
 
 
 

@@ -468,6 +468,7 @@ h3 span{
 	margin-right: auto;
 	font-size: 24px;
 	font-weight: 600;
+
 }
 #content main .table-data .head:after {
 	position: absolute;
@@ -918,7 +919,7 @@ label.light {
   #content main .table-data .card2 h1 {
 	position: relative;
 	color: var(--dark);
-	font-family: roboto;
+	
 	
   }
   .card2 h1:after {

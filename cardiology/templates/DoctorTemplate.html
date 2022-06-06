@@ -52,7 +52,6 @@
   </div>
   <!-- End loader -->
    <!-- Copy this to Html file under body tag -->
-
     <!-- SIDEBAR -->
     <section id="sidebar">
       <a href="#" class="brand">
@@ -61,7 +60,8 @@
       </a>
       <ul class="side-menu top">
         <li class="active">
-          <a href="{{url_for("home_page")}}">
+          <a href="{{url_for("home_page")}}" target="_blank">
+
             <i class="bx bxs-home-heart"></i>
             <span class="text">Home</span>
           </a>
@@ -105,7 +105,8 @@
       <!-- NAVBAR -->
       <nav>
         <i class="bx bx-menu"></i>
-        <a href="#" class="nav-link">MedCare</a>
+        <span id="brand"><h3>MedCare</h3></span>
+
         <form action="#">
           <div class="form-input">
             <input type="" placeholder="" />
@@ -116,10 +117,7 @@
         </form>
         <input type="checkbox" id="switch-mode" hidden />
         <label for="switch-mode" class="switch-mode"></label>
-        <a href="#" class="notification">
-          <i class="bx bxs-bell"></i>
-          <span class="num">8</span>
-        </a>
+
         <a href="#" class="profile">
           <img src='{{user.d_photo}}' />
         </a>
@@ -138,6 +136,8 @@
     <!-- CONTENT -->
 
     <script src="../static/js/scriptJs.js"></script>
+    <script src="../static/js/Edit.js"></script>
+
 
   </body>
 </html>

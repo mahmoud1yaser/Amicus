@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../static/css/admin.css">
+
 	<link rel = "icon" href =
 	"../static/images/logoicon.webp"
 			type = "image/x-icon">
@@ -59,19 +60,22 @@
 				</a>
 			</li>
 			<li>
+
 				<a href="{{url_for('view_doctor_patients')}}">
+
 					<i class='bx bxs-user-pin' ></i>
 					<span class="text">Patients</span>
 				</a>
 			</li>
-<!--			<li>-->
-<!--				<a href="{{url_for('view_selected_doctor')}}" #staff">-->
-<!--					<i class='bx bxs-user-pin' ></i>-->
-<!--					<span class="text">Doctors</span>-->
-<!--				</a>-->
-<!--			</li>-->
 			<li>
-				<a href="{{url_for('add_doctor')}}">
+				<a href="{{url_for('admin_dashboard')}} #staff">
+					<i class='bx bxs-user-pin' ></i>
+					<span class="text">Doctors</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{url_for('add_doctors')}}">
+
 					<i class='bx bxs-user-plus' ></i>
 					<span class="text">Add Doctors</span>
 				</a>
@@ -83,11 +87,13 @@
 				</a>
 			</li>
 			<li>
+
 				<a href="{{url_for('edit_admin')}}" >
 				  <i class='bx bxs-pencil' ></i>
 				  <span class="text">Edit profile</span>
 				</a>
 			  </li>
+
 
 
 
@@ -129,6 +135,7 @@
 
 		<!-- MAIN -->
 		<main>
+
 			 {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
            {% for category, message in messages %}
@@ -162,6 +169,7 @@
 
 	<script src="../static/js/admin.js"></script>
 	<script src="../static/js/docscript.js"></script>
+	<script src="../static/js/Edit.js"></script>
 
 
 </body>

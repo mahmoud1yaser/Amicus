@@ -113,32 +113,21 @@ const Diagnoses = document.getElementById("textarea_1");
 const prescription = document.getElementById("Message");
 const form_1 = document.querySelector("#contact_id");
 const form_2 =  document.getElementById('contact'); 
-const form_3 = document.getElementById('form_3');
 
-// if(form_1 !== null){
-// form_1.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   validateForm_1();
-// });
-// }
 
-// if(form_2 !== null){
-// form_2.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   validateForm_2();
-// });
-// }
-// if(form_3 !== null){
-//   var Eu = document.getElementById('E-Username');
-//   var Ep = document.getElementById('E-Phonenumber');
-//   var Ee = document.getElementById('E-Email');
-//   var Epass = document.getElementById('E-Password');
-//   form_3.addEventListener("submit", (event) => {
+if(form_1 !== null){
+form_1.addEventListener("submit", (event) => {
+  event.preventDefault();
+  validateForm_1();
+});
+}
 
-//     event.preventDefault();
-//     validateForm_3();
-//   });
-  // }
+if(form_2 !== null){
+form_2.addEventListener("submit", (event) => {
+  event.preventDefault();
+  validateForm_2();
+});
+}
 
 
 
@@ -190,60 +179,60 @@ function validateForm_2() {
   }
 
 }
-function validateForm_3() {
-  // username
-    if (Eu.value.trim() == "") {
-      setError(Eu, "Please enter a username");
-    } else {
-      clearerror(Eu);
-    }
-    // phone-number
-    if (Ep.value.trim() == "") {
-      setError(Ep, "Please enter your number");
-    } else if (Ep.value.trim().length < 11 || Ep.value.trim().length > 11) {
-      setError(Ep, "Please enter a Valid number");
-    } else {
-      clearerror(Ep);
-    }
-    // Email
-    if (Ee.value.trim() == "") {
-      setError(Ee, "Enter Your Email");
-    } 
-    else if (!ValidateEmail(Ee)) {
-      setError(Ee, "Enter Vaild Email");
-    } 
-    else {
-      clearerror(Ee);
-    } 
-    // password
-    if (Epass.value.trim() == "") {
-      setError(Epass, "Please enter your Password");
-    } else {
-      clearerror(Epass);
-    }
-}
-function setError(element, errorMessage) {
-  const parent = element.parentElement;
-  parent.classList.add("error");
-  const paragraph = parent.querySelector("span");
-  paragraph.innerHTML = errorMessage;
-}
-function clearerror(element) {
-  const parent = element.parentElement;
-  parent.classList.remove("error");
-  const paragraph = parent.querySelector("span");
-  paragraph.innerHTML = '';
-}
-function ValidateEmail(input) {
+// function validateForm_3() {
+//   // username
+//     if (Eu.value.trim() == "") {
+//       setError(Eu, "Please enter a username");
+//     } else {
+//       clearerror(Eu);
+//     }
+//     // phone-number
+//     if (Ep.value.trim() == "") {
+//       setError(Ep, "Please enter your number");
+//     } else if (Ep.value.trim().length < 11 || Ep.value.trim().length > 11) {
+//       setError(Ep, "Please enter a Valid number");
+//     } else {
+//       clearerror(Ep);
+//     }
+//     // Email
+//     if (Ee.value.trim() == "") {
+//       setError(Ee, "Enter Your Email");
+//     } 
+//     else if (!ValidateEmail(Ee)) {
+//       setError(Ee, "Enter Vaild Email");
+//     } 
+//     else {
+//       clearerror(Ee);
+//     } 
+//     // password
+//     if (Epass.value.trim() == "") {
+//       setError(Epass, "Please enter your Password");
+//     } else {
+//       clearerror(Epass);
+//     }
+// }
+// function setError(element, errorMessage) {
+//   const parent = element.parentElement;
+//   parent.classList.add("error");
+//   const paragraph = parent.querySelector("span");
+//   paragraph.innerHTML = errorMessage;
+// }
+// function clearerror(element) {
+//   const parent = element.parentElement;
+//   parent.classList.remove("error");
+//   const paragraph = parent.querySelector("span");
+//   paragraph.innerHTML = '';
+// }
+// function ValidateEmail(input) {
 
-  var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+//   var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-  if (input.value.match(validRegex)) {
-    return true;
+//   if (input.value.match(validRegex)) {
+//     return true;
 
-  } else {
-    return false;
-  }
+//   } else {
+//     return false;
+//   }
 
-}
+// }
 // ----------------------
