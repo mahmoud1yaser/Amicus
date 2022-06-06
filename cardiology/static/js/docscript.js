@@ -1,3 +1,6 @@
+birthdate.max = new Date().toISOString().split("T")[0];
+
+
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
 allSideMenu.forEach(item=> {
@@ -24,7 +27,7 @@ document.body.onload = function () {
   };
   function loader(){
 	document.querySelector('.loader').style.display='none';
-	
+
   }
 
 

@@ -68,3 +68,11 @@ def parse_time2(day, time):
     x = datetime.datetime(int(d[0]), int(d[1]), int(d[2]),int(t[0]), int(t[1]))
     y = datetime.time(int(t[0]), int(t[1]))
     return x    
+
+def count_patients(doctors):
+    num=[0]
+    for doc in doctors :
+        a = Appointments.query.filter_by(d_id=doc.d_id).all()
+        p = doct_patient(a)
+        num.append(len(p))
+    return num

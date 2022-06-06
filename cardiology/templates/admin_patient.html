@@ -1,4 +1,7 @@
 {% extends 'AdminTemplate.html' %}
+{%block name%}
+{{ current_user.a_name }}
+{%endblock%}
 {% block content %}
 <Title>Patients</Title>
 <div class="table-data">
@@ -18,44 +21,28 @@
 				</tr>
 			</thead>
 			<tbody>
+				{% for patient in patients %}
 				<tr>
-					<td>John Doe</td>
-					<td>01-10-2021</td>
-					<td class="view"><a class="status" href="">View more</a></td>
+					<td>{{patient.p_name}}</td>
+					<td>{{patient.p_id}}</td>
+					<td class="view">
+						<form action="{{url_for('view_doctor_patients')}}" method="post" enctype="multipart/form-data">
+						<button class="status" type="submit" name="id" value="{{patient.p_id}}">View more</a>
+					</form></td>
 				</tr>  
-				<tr>
-					<td>John Doe</td>
-					<td>01-10-2021</td>
-					<td class="view"><a class="status" href="">View more</a></td>
-				</tr>  
-				<tr>
-					<td>John Doe</td>
-					<td>01-10-2021</td>
-					<td class="view"><a class="status" href="">View more</a></td>
-				</tr>  
-				<tr>
-					<td>John Doe</td>
-					<td>01-10-2021</td>
-					<td class="view"><a class="status" href="">View more</a></td>
-				</tr>  
-				<tr>
-					<td>John Doe</td>
-					<td>01-10-2021</td>
-					<td class="view"><a class="status" href="">View more</a></td>
-				</tr>  
-				<tr>
-					<td>John Doe</td>
-					<td>01-10-2021</td>
-					<td class="view"><a class="status" href="">View more</a></td>
-				</tr>  
+				{% endfor %}
 			</tbody>
 		</table>
 
 	</div>             
 
 <div class="card2">
+	{% if selected_id == 0 %}
+	
+	<label>No Patient selected to View</label>
+	{% else %}
 	<h1 class="Info_Doc" style="text-align: left">
-		John
+		{{p.p_name}}
 	  </h1>
 
 	  <div class="Information">
@@ -66,7 +53,7 @@
 		  </div>
 		  <div>
 			<h2>ID</h2>
-			<label for="ID">ID</label>
+			<label for="ID">{{p.p_id}}</label>
 		  </div>
 		</div>
 		  <div class="min-info" >
@@ -76,7 +63,7 @@
 		  </div>
 		  <div>
 			<h2>E-mail</h2>
-			<label for="E-mail">E-mail</label>
+			<label for="E-mail">{{p.p_email}}</label>
 		  </div>
 		</div>
 		  <!-- <br /> -->
@@ -87,7 +74,7 @@
 		  </div>
 		  <div>
 			<h2>Phone Number</h2>
-			<label for="Phone-Number">Phone Number</label>
+			<label for="Phone-Number">{{p.p_phone}}</label>
 		  </div>
 		</div>
 		<div class="min-info" >
@@ -96,25 +83,17 @@
 				<i class="fa-solid fa-id-badge"></i>
 			</div>
 		  <div>
-			<h2> Age</h2>
-			<label for="Phone-Number"> Age</label>
+			<h2> Birthdate</h2>
+			<label for="Phone-Number"> {{p.p_birth_date}}</label>
 		  </div>
 		</div>
 		<div class="min-info" >
 
-			<div class="icon-info icon-2">
-				<i class="fa-solid fa-user-md"></i>
-			</div>
-		  <div>
-			<h2>SuperVisor Doctors</h2>
-			<label for="Phone-Number">SuperVisor Doctors</label>
-		  </div>
-		</div>
-
+	
 		
 	  </div>
 		
-
+	  {% endif %}
 	  </div>
 	
 	

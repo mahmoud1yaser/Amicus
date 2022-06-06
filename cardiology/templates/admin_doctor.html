@@ -1,16 +1,19 @@
 {% extends 'AdminTemplate.html' %}
+{%block name%}
+{{ current_user.a_name }}
+{%endblock%}
 {% block content %}
 <Title>Doctors</Title>
 <div class="table-data">
   <div class="card1" >
     <div>
     <img
-      src="../static/img/download.png"
+      src="{{doc.d_photo}}"
       alt="profile-pic"
       class="profile"
     />
-   <span>Dr/ Mohamed Ahmed</span>
-   <a href="#edit" onclick="editform()" class="btn-edit"> Edit </a>
+   <span>{{doc.d_name}}</span>
+   <a href={{url_for('edit_doctor')}} class="btn-edit"> Edit </a>
 
   </div>
 </div>
@@ -18,11 +21,11 @@
   <h1 class="Info_Doc" style="text-align: left">
     Personal Information
   </h1>
-  
- 
+
+
   <div class="Information">
-      
-      
+
+
     <div class="min-info" >
 
       <div class="icon-info icon-1">
@@ -30,7 +33,7 @@
     </div>
     <div>
       <h2>ID</h2>
-      <label for="ID">ID</label>
+      <label for="ID">{{doc.d_id}}</label>
     </div>
   </div>
     <div class="min-info" >
@@ -40,7 +43,7 @@
     </div>
     <div>
       <h2>E-mail</h2>
-      <label for="E-mail">E-mail</label>
+      <label for="E-mail">{{doc.d_email}}</label>
     </div>
   </div>
     <!-- <br /> -->
@@ -51,11 +54,11 @@
     </div>
     <div>
       <h2>Phone Number</h2>
-      <label for="Phone-Number">Phone Number</label>
+      <label for="Phone-Number">{{doc.d_phone}}</label>
     </div>
   </div>
-  
-    
+
+
 
   </div>
 </div>
@@ -66,8 +69,8 @@
 
     <div class="Information">
 
-      
-      
+
+
       <div class="min-info" >
 
         <div class="icon-info icon-1">
@@ -75,7 +78,7 @@
       </div>
       <div>
         <h2>Position</h2>
-        <label for="Position">Position</label>
+        <label for="Position">{{doc.d_position}}</label>
       </div>
     </div>
       <div class="min-info" >
@@ -85,7 +88,7 @@
       </div>
       <div>
         <h2>Working period</h2>
-        <label for="Working period">Working period</label>
+        <label for="Working period">{{doc.d_workperiod}}</label>
       </div>
     </div>
       <!-- <br /> -->
@@ -96,10 +99,10 @@
       </div>
       <div>
         <h2>Salary</h2>
-        <label for="Salary">Salary</label>
+        <label for="Salary">{{doc.d_salary}}</label>
       </div>
     </div>
-      
+
 
     </div>
   </div>
@@ -113,88 +116,28 @@
     <table>
       <thead>
         <tr>
-          <th>Patient Photo</th>
+          
           <th>Patient Name</th>
           <th>ID</th>
           <th>Email</th>
+          <th>Phone Number</th>
         </tr>
       </thead>
       <tbody>
+        {% for patient in doc_patients %}
         <tr>
           <td>
-            <img src="image/people.png" />
           </td>
-          <td><p>John Doe</p></td>
-          <td>ID</td>
-          <td>Email</td>
+          <td><p>{{patient.p_name}}</p></td>
+          <td>{{patient.p_id}}</td>
+          <td>{{patient.p_email}}</td>
+          <td>{{patient.p_phone}}</td>
           </tr>
-          <tr>
-            <td>
-              <img src="image/people.png" />
-            </td>
-            <td><p>John Doe</p></td>
-            <td>ID</td>
-            <td>Email</td>
-            </tr>
-            <tr>
-              <td>
-                <img src="image/people.png" />
-              </td>
-              <td><p>John Doe</p></td>
-              <td>ID</td>
-              <td>Email</td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="image/people.png" />
-                </td>
-                <td><p>John Doe</p></td>
-                <td>ID</td>
-                <td>Email</td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="image/people.png" />
-                  </td>
-                  <td><p>John Doe</p></td>
-                  <td>ID</td>
-                  <td>Email</td>
-                  </tr>
-        <tr>
-          <td>
-            <img src="image/people.png" />
-          </td>
-          <td><p>John Doe</p></td>
-          <td>ID</td>
-          <td>Email</td>
-          </tr>
-        <tr>
-          <td>
-            <img src="image/people.png" />
-          </td>
-          <td><p>John Doe</p></td>
-          <td>ID</td>
-          <td>Email</td>
-          </tr>
-        <tr>
-          <td>
-            <img src="image/people.png" />
-          </td>
-          <td><p>John Doe</p></td>
-          <td>ID</td>
-          <td>Email</td>
-          </tr>
-        <tr>
-          <td>
-            <img src="image/people.png" />
-          </td>
-          <td><p>John Doe</p></td>
-          <td>ID</td>
-          <td>Email</td>
-          </tr>
+
+          {% endfor %}
       </tbody>
     </table>
   </div>
-  
+
 </div>
 {% endblock %}

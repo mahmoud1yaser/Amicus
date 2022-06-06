@@ -1,14 +1,15 @@
-from cardiology import db, bcrypt, login_manager, settings
+from cardiology import db, bcrypt, login_manager
 from flask_login import UserMixin
+from flask import session
 
 
 @login_manager.user_loader
 def user_loader(id):
-    if settings.userType == "Patient":
+    if session["role"] == "Patient":
         return Patients.query.get(int(id))
-    if settings.userType == "Doctor":
+    if session["role"] == "Doctor":
         return Doctors.query.get(int(id))
-    if settings.userType == "Admin":
+    if session["role"] == "Admin":
         return Admins.query.get(int(id))
 
 

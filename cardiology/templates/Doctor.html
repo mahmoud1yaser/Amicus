@@ -12,13 +12,19 @@
 
        <br><span>{{user.d_name}}</span>
        
+       <form action="{{url_for('update_docPic')}}" method="post" enctype="multipart/form-data">
       <div class="upload-btn-wrapper">
-        <button class="btn" id="btn5"  style="margin-top: 10rem;">Edit
+        <button class="btn">Edit
           <input type="file" name="myfile" />
         </button>
-        <button type="submit" class="btn" id="btn6" action="/" ><i class="fa-solid fa-check"></i></button>
-        </div>
-
+      </div>
+      
+      
+        <button type="submit" class="btn" id="btn6"  ><i class="fa-solid fa-check"></i></button>
+      
+      
+      </form>
+    
     </div>
     
   </div>
@@ -26,6 +32,8 @@
     <h1 class="Info_Doc" style="text-align: left">
       Personal Information
     </h1>
+    <!-- <h3 class="Info_Doc" style="text-align: left">Your Scans</h3> -->
+
 
     <div class="Information">
       <div class="min-info">
@@ -106,6 +114,11 @@
     </form>
     </div>
     <table>
+      {% if patients==[] %}
+      <div>
+        <label for="di">No Patients to Display</label>
+      </div>
+      {% else %}
       <thead>
         <tr>
           <th>Patient name</th>
@@ -113,11 +126,6 @@
           <th></th>
         </tr>
       </thead>
-      {% if patients==[] %}
-      <div>
-        <label for="di">No Patients to Display</label>
-      </div>
-      {% else %}
       <tbody>
         {% for patient in patients %}
         <tr>

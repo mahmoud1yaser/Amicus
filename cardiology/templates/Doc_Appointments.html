@@ -11,18 +11,19 @@
     <i class="bx bx-filter"></i> -->
   </div>
   <table id="tabels" class="tabel">
- <thead>
-  <tr>
-  <th>Patient Names</th>
-  <th>Date</th>
-   <th>Time</th>
-  </tr>
-  </thead>
+ 
  <tbody >
    
   {% if appoints==[] %}
   <label for="di">No Appointments to Display</label>
   {% else %}
+  <thead>
+    <tr>
+    <th>Patient Names</th>
+    <th>Date</th>
+     <th>Time</th>
+    </tr>
+    </thead>
   <tbody >
   {% for appoint in appoints %}
    <tr>

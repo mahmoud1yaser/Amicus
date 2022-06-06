@@ -2,9 +2,9 @@
 {% block content %}
 
 <title>Your Scans</title>
-<div class="head-title">
+<!-- <div class="head-title">
 			
-</div>
+</div> -->
 <div class="table-data">
 	
 	<div class="todo">
@@ -29,19 +29,20 @@
 		{% endfor %}
 		{% endif %}
 		
-		<div class="upload-btn-wrapper">
+		
 			<form action="{{url_for('scans_page')}}" method="post" enctype="multipart/form-data">
-			<div>
+				<div>
+				<div class="upload-btn-wrapper">
+				
 			<button class="btn">Upload new scan
 				<input type="file" name="myfile" />
 			</button>
-			<br> 
-			<br> 
-			<br> 
+		</div>
+		<button type="submit" class="btn"id="btn4">save</button>
 			</div>	
-			<button type="submit" class="btn"id="btn4">save</button>
+			
 			</form>
-		  </div>
+		  
 		
 	</div>
 </div> 
