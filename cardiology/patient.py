@@ -5,7 +5,7 @@ from cardiology.forms import editPatientForm
 from cardiology import app, db, doctor
 from datetime import datetime, timedelta
 from cardiology.my_functions import parse_time, generate_gcalendar_link, availabe_appointments, save_picture, \
-    sorting_appointments
+    sorting_appointments, parse_time2
 from flask_login import current_user, login_required
 
 # ---------------------------------
@@ -65,13 +65,12 @@ def doc_appointments():
                                     d_id=Doctors.query.filter_by(d_id=session['doc_id']).first().d_id, date=p_date, Time=p_time)
             db.session.add(appoint)
             db.session.commit()
-            # google_calendar = generate_gcalendar_link("Appointment with dr {Doctors.query.filter_by(d_id=session['doc_id']).first().d_name} at cardiology department",
-            #                                           "", p_time,
-            #                                           timedelta(p_time.split(':')[0], p_time.split(':')[1]) + timedelta(
-            #                                               minutes=30))
-            # flash(Markup(
-            # f'A new appointment is created, <a href="{google_calendar}" target="_blank">save the appointment to your calendar</a>'),
-            #   'success')
+            google_calendar = generate_gcalendar_link(f"Appointment with dr {Doctors.query.filter_by(d_id=session['doc_id']).first().d_name} at cardiology department",
+                                                      "", parse_time2(session['day'], hour),
+                                                      parse_time2(session['day'], hour) + timedelta(minutes=30))
+            flash(Markup(
+            f'A new appointment is created, <a href="{google_calendar}" target="_blank">save the appointment to your calendar</a>'),
+              'success')
             return redirect(url_for('book_appointment'))
 
         available_time = availabe_appointments(Doctors.query.filter_by(d_id=session['doc_id']).first(), session['day'])

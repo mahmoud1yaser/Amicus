@@ -3,16 +3,7 @@
 {{ current_user.a_name }}
 {%endblock%}
 {% block content %}
-<script type="text/javascript">
-	$(function(){
-	  $('.bars li .bar').each(function(key, bar){
-		var percentage = $(this).data('percentage');
-		$(this).animate({
-		  'height' : percentage + '%'
-		},1000);
-	  });
-	});
-	</script>
+
 
 <Title>Profile</Title>
 <div class="table-data">
@@ -32,7 +23,7 @@
 			
 			</form>
 	</div>
-	<div class="card2">
+	<div class="card3">
 		<h1><i class='bx bx-medal' ></i> Best 4 Doctors</h1>
 		<div class="bars">
 		<div class="bar">
@@ -77,21 +68,21 @@
 	<li>
 		<i class='bx bxs-user' ></i>
 		<span class="text">
-			<div class="counter" data-target="102000">{{dnumber}}</div>
+			<div class="counter" data-target="{{dnumber}}">{{dnumber}}</div>
 			<p>Doctors</p>
 		</span>
 	</li>
 	<li>
 		<i class='bx bxs-group' ></i>
 		<span class="text">
-			<div class="counter" id="paN" data-target="2834">{{pnumber}}</div>
+			<div class="counter" id="paN" data-target="{{pnumber}}">{{pnumber}}</div>
 			<p>Patients</p>
 		</span>
 	</li>
 	<li>
 		<i class='bx bxs-first-aid' ></i>
 		<span class="text">
-			<div class="counter" data-target="2543">{{appoinumber}}</div>
+			<div class="counter" data-target="{{appoinumber}}">{{appoinumber}}</div>
 			<p>Appointments</p>
 		</span>
 	</li>
@@ -136,6 +127,9 @@
 					<td><form action={{url_for('admin_dashboard')}} method="post">
 						<button type="submit" class="btn-view" name="id" value="{{doc.d_id}}">View More</button> 
 						<form></td>
+					<td>					
+						 <button type="submit" class="btn-Delete" name="id" value="{{doc.d_id}}">Delete </button> 
+					</td>
 					
 				</tr>
 				{% endfor %}
