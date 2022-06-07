@@ -92,3 +92,15 @@ def logout_page():
     session.clear()
     flash("You have been logged out!", category='info')
     return redirect(url_for("home_page"))
+
+
+
+@app.route('/sendmail', methods=['GET', 'POST'])
+def send_msg():
+    if request.method == 'POST':
+        msg = request.form['msg']
+        subject = request.form['subject']
+        our_mail = "team3@gmail.com"
+        return redirect(f'https://mail.google.com/mail/?view=cm&fs=1&to={our_mail}&su={subject}&body={msg}&')
+
+    

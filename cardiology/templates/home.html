@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="../static/css/home.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-
+    <link rel = "icon" href = 
+    "../static/images/logoicon.webp" 
+        type = "image/x-icon">
 </head>
 <body>
 
@@ -338,22 +340,21 @@
     
     <div class="contact-form-container">
     
-        <form action="">
+      
     
-          <form action="">
+          <form action={{url_for('send_msg')}} method="post" enctype="multipart/form-data">
     
             <h3>Get in Touch</h3>
     
             <div class="inputBox">
-                <input type="text" placeholder=" Subject">
+                <input type="text" placeholder=" Subject" name="subject">
             </div>
-    
-            <textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
+            
+            <textarea  cols="30" rows="10" placeholder="Message" name="msg"></textarea>
     
             <input type="Submit" value="Message">
 
     
-        </form>
         </form>
     </div>
     

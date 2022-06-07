@@ -59,20 +59,22 @@
         <span class="text">{{user.d_name}}</span>
       </a>
       <ul class="side-menu top">
-        <li class="active">
-          <a href="{{url_for("home_page")}}" target="_blank">
-
-            <i class="bx bxs-home-heart"></i>
-            <span class="text">Home</span>
-          </a>
-        </li>
-        <li>
+      
+        {% if active=='profile' %}
+			<li class="active">
+			{% else %}
+			<li >
+			{% endif %}
           <a href={{url_for('doc_profile')}}>
             <i class="bx bxs-dashboard"></i>
             <span class="text">Profile</span>
           </a>
         </li>
-        <li>
+        {% if active=='appointments' %}
+			<li class="active">
+			{% else %}
+			<li >
+			{% endif %}
           <a href={{url_for('doctor_appoints')}}>
             <i class="fa-solid fa-calendar-check" style="margin-left: 15px;
             margin-right: 10px;"></i>
@@ -80,8 +82,12 @@
           </a>
         </li>
 
-        <li>
-          <a href="#" onclick="editform()">
+        {% if active=='edit' %}
+			<li class="active">
+			{% else %}
+			<li >
+			{% endif %}
+          <a href="{{url_for('edit_doc')}}" >
             <i class='bx bxs-pencil' ></i>
             <span class="text">Edit profile</span>
           </a>
@@ -91,7 +97,7 @@
       <ul class="side-menu">
 
         <li>
-          <a href="{{url_for("home_page")}}" class="logout">
+          <a href={{url_for("home_page")}} class="logout">
             <i class="bx bxs-log-out-circle"></i>
             <span class="text">Logout</span>
           </a>
