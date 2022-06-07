@@ -27,7 +27,7 @@
 					<td>{{patient.p_id}}</td>
 					<td class="view">
 						<form action="{{url_for('view_doctor_patients')}}" method="post" enctype="multipart/form-data">
-						<button class="status" type="submit" name="id" value="{{patient.p_id}}">View more</a>
+						<button type="submit" class="btn-edit" name="id" value="{{patient.p_id}}">View More</button>
 					</form></td>
 				</tr>  
 				{% endfor %}
