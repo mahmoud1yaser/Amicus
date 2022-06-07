@@ -15,7 +15,7 @@
        <form action="{{url_for('update_docPic')}}" method="post" enctype="multipart/form-data">
       <div class="upload-btn-wrapper">
         <button class="btn">Edit
-          <input type="file" name="myfile" />
+          <input type="file" name="myfile" required/>
         </button>
       </div>
       
@@ -61,7 +61,7 @@
         </div>
         <div>
           <h2>Phone Number</h2>
-          <label for="Phone-Number">{{user.d_phone}}</label>
+          <label for="Phone-Number">0{{user.d_phone}}</label>
         </div>
       </div>
     </div>
@@ -95,7 +95,7 @@
         </div>
         <div>
           <h2>Salary</h2>
-          <label for="Salary">{{user.d_salary}}</label>
+          <label for="Salary">{{user.d_salary}} EGP</label>
         </div>
       </div>
     </div>
@@ -107,10 +107,10 @@
     <div class="head">
       <h3>Patients</h3>
       <form action={{url_for('doc_profile')}} method="post">
-      <button type="submit" class="btn" id="search"><i class="bx bx-search"></i></button>
+      <button type="submit" class="btn" id="search" ><i class="bx bx-search"></i></button>
 
       
-      <input type="text"  id="id" placeholder=" Any ID" name="p_id" class="input-field">
+      <input type="text"  id="id" placeholder=" Any ID" name="p_id" class="input-field" required>
     </form>
     </div>
     <table>

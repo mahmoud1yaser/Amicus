@@ -1,41 +1,47 @@
 {% extends 'Ptemplate.html' %}
 {% block content %}
+<title>Edit your Profile</title>
 
+<!-- <div class="main-edit-form" id="edit"> -->
 
-<!--<div class="main-edit-form" id="edit">-->
-
-<!--        <div class="edit-form" >-->
-<div>
-          <i onclick="closeform()" class="fa-solid fa-xmark"></i>
-          <form method="POST" class="form-register" action="EditPatientProfile">
+      <div class="edit-form" >
+<!-- <div> -->
+       
+          <form method="POST" class="form-register" action="EditPatientProfile" id="form4" >
               {{ form.hidden_tag() }}
             <h1>Edit form</h1>
             <label>New Username:</label>
             <div>
 				<i class="fa-solid fa-id-card"></i>
-            {{ form.username(class="form-control", value="{{user.p_name}}") }}
+            {{ form.username(class="form-control", value=user.p_name ,id="username") }}
+            <span></span>
             </div>
 
 			<label>New Phone Number:</label>
             <div>
               <i class="fa-solid fa-phone"></i>
-            {{ form.phone(class="form-control", value="{{user.p_phone}}") }}
+            {{ form.phone(class="form-control", value=user.p_phone,id="phone")}}
+            <span></span>
             </div>
             <label>New E-mail:</label>
             <div>
               <i class="fa-solid fa-envelope"></i>
-            {{ form.email(class="form-control", value="{{user.p_email}}") }}
+            {{ form.email(class="form-control", value=user.p_email ,id="Email" )  }}
+            <span></span>
             </div>
             <label>New Password:</label>
             <div>
               <i class="fa-solid fa-lock"></i>
-            {{ form.password(class="form-control", label="Enter your new password") }}
+            {{ form.password(class="form-control", label="Enter your new password" ,id="password" ) }}
+            <span></span>
             </div>
 
             {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
           </form>
         </div>
 
+
 <!--      </div>-->
 <!--       End of Edit form -->
+<!-- <Script src="../static/js/Edit.js"></Script> -->
 {% endblock %}

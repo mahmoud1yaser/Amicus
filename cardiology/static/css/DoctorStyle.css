@@ -165,10 +165,10 @@ html {
   transition: 1s all ease;
 }
 .edit-form{
-  position: absolute;
+  position: relative;
   top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  left:26%;
+ 
   width: 40%;
   min-width:500px;
   border-radius: 20px;
@@ -176,11 +176,11 @@ html {
   -webkit-box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
   -moz-box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
   background-color: var(--light);
-  height: 90vh;
+  height: 100vh;
   transition: 0.5s all ease;
   text-align: left;
   padding: 30px 50px;
-  overflow-y: auto;
+
   
 }
 .edit-form h1{
@@ -199,12 +199,13 @@ html {
   padding: 10px 15px;
 }
 .edit-form i{
-  position: absolute;
-  top:25px;
+  position: relative;
+  color: var(--blue);
+top: 25px;
   right: 25px;
-  color:var(--close);
+ 
   font-size: 25px;
-  cursor: pointer;
+
   z-index: 999;
 }
 .edit-form form div {
@@ -237,15 +238,7 @@ html {
   background-color: var(--light-blue);
   border: 1px solid var(--blue);
 }
-.edit-form form div i{
-  position: absolute;
-  width: auto;
-  font-size: 20px;
-  top:5px;
-  left:0;
-  color: var(--blue);
-  z-index: -9999;
-}
+
 .edit-form form label{
   margin-bottom: 10px;
   font-family: "Roboto";
@@ -1265,7 +1258,7 @@ label.light {
 	width: 12rem;
 }
 #button_MD{
-	margin-left: 8rem;
+	margin-left: 4rem;
 
 }
 
