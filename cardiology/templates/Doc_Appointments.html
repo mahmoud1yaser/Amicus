@@ -29,7 +29,7 @@
    <tr>
   <td>
   <p>
-    <label for="Patient">{{appoint.p_name}}</label>
+    <label for="Patient">{{Patient.query.filter_by(p_id=appoint.p_id).first().p_name}}</label>
    </p>
    </td>
    <td>{{appoint.date}}</td>

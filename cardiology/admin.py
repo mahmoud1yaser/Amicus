@@ -5,7 +5,7 @@ from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_r
 from cardiology import app, db
 from cardiology.forms import editDoctorForm_foreign, addDoctorForm, addAdminForm, editAdminForm
 from datetime import datetime
-from cardiology.my_functions import parse_time, save_picture, count_patients, doct_patient
+from cardiology.my_functions import parse_time, save_picture, count_patients, doct_patient, sorting_docs
 from flask_login import current_user, login_required
 
  
@@ -23,11 +23,15 @@ def admin_dashboard():
             session['doc_id']= request.form['id']
              
             return redirect(url_for('view_selected_doctor'))
+        docs = Doctors.query.all()
+        patients = Patients.query.all()
+        appoints = Appointments.query.all()
         dnumber = len(docs)
         pnumber = len(patients)
         appoinumber = len(appoints)
-        doctor_pnumber = count_patients(docs)
-        return render_template('admin.html', current_user=current_user, docs=docs, dnumber=dnumber, pnumber=pnumber, appoinumber=appoinumber, doctor_pnumber=doctor_pnumber)
+        sorted_docs= sorting_docs(docs)
+        doctor_pnumber = count_patients(sorted_docs)
+        return render_template('admin.html', current_user=current_user, docs=sorted_docs, dnumber=dnumber, pnumber=pnumber, appoinumber=appoinumber, doctor_pnumber=doctor_pnumber)
     else:
         render_template('page403.html')
 
@@ -44,7 +48,7 @@ def update_adminPic():
 
 @app.route('/AdminPatients', methods=['GET', 'POST'])
 @login_required
-def view_doctor_patients():
+def view_admin_patients():
     p = 0
     if session["role"] == "Admin":
         if int(session['patient_id']) != 0:
@@ -52,7 +56,7 @@ def view_doctor_patients():
            
         if request.method == 'POST':
             session['patient_id'] = int(request.form['id'])
-            return redirect(url_for('view_doctor_patients'))
+            return redirect(url_for('view_admin_patients'))
             
     
         return render_template('admin_patient.html', current_user=current_user, patients=patients, p=p, selected_id=int(session['patient_id']), )

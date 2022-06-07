@@ -28,7 +28,7 @@
 		<div class="bars">
 		<div class="bar">
 			<div class="info">
-			  <span>John </span>
+			  <span>{{docs[0].d_name}}</span>
 			</div>
 			<div class="progress-line">
 			  <span id="span1"></span>
@@ -36,7 +36,7 @@
 		  </div>
 		  <div class="bar">
 			<div class="info">
-			  <span>John</span>
+			  <span>{{docs[1].d_name}}</span>
 			</div>
 			<div class="progress-line">
 			  <span id="span2" ></span>
@@ -44,7 +44,7 @@
 		  </div>
 		  <div class="bar">
 			<div class="info">
-			  <span>John</span>
+			  <span>{{docs[2].d_name}}</span>
 			</div>
 			<div class="progress-line">
 			  <span id="span3"></span>
@@ -52,7 +52,7 @@
 		  </div>
 		  <div class="bar">
 			<div class="info">
-			  <span>John</span>
+			  <span>{{docs[3].d_name}}</span>
 			</div>
 			<div class="progress-line">
 			  <span id="span4"></span>
@@ -107,9 +107,9 @@
 		<table>
 			<thead>
 				<tr>
+					<th>ID</th>
 					<th>Name</th>
 					<th>Phone Number</th>
-					<th>Email</th>
 					<th>Job Title</th>
 					<th>Patients No</th>
 					<th></th>
@@ -119,17 +119,14 @@
 			<tbody>
 				{% for doc in docs %}
 				<tr>
+					<td>{{doc.d_id}}</td>
 					<td><p>{{doc.d_name}}</p></td>
 					<td>{{doc.d_phone}}</td>
-					<td>{{doc.d_email}}</td>
 					<td>{{doc.d_position}}</td>
 					<td class="patientsN">{{doctor_pnumber[loop.index]}}</td>
 					<td><form action={{url_for('admin_dashboard')}} method="post">
 						<button type="submit" class="btn-view" name="id" value="{{doc.d_id}}">View More</button> 
 						<form></td>
-					<td>					
-						 <button type="submit" class="btn-Delete" name="id" value="{{doc.d_id}}">Delete </button> 
-					</td>
 					
 				</tr>
 				{% endfor %}

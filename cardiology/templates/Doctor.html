@@ -131,7 +131,7 @@
         <tr>
           <td>
             <p>
-              <label for="Patient">{{patient.p_name}}</label>
+              <label for="Patient">{{Patients.query.filter_by(p_id=patient.p_id).first().p_name}}</label>
             </p>
           </td>
           <td>{{patient.p_id}}</td>
@@ -164,7 +164,7 @@
       <div>
         <br />
         <h3><span>Patient Name</span></h3>
-        <label for="di"> {{msg.p_name}}</label>
+        <label for="di"> {{Patients.query.filter_by(p_id=msg.p_id).first().p_name}}</label>
       </div>
       <div>
         <br />

@@ -2,7 +2,7 @@ import datetime
 
 from sqlalchemy import true
 from cardiology import patient
-from cardiology.models import Appointments, Patients
+from cardiology.models import Appointments, Patients, examin
 import os
 import secrets
 import re
@@ -76,3 +76,8 @@ def count_patients(doctors):
         p = doct_patient(a)
         num.append(len(p))
     return num
+
+def sorting_docs(doctors):
+    docs=sorted(doctors, key= lambda x:len(examin.query.filter_by(d_id=x.d_id).all()))
+    return docs 
+

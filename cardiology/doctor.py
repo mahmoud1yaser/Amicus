@@ -1,7 +1,7 @@
 from cardiology.forms import editDoctorForm_primary
 from flask import render_template, redirect, url_for, Flask, request, flash, session, Response
 from flask_sqlalchemy import SQLAlchemy
-from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_records, p_Messages, Scans, Prescription
+from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_records, p_Messages, Scans, Prescription, examin
 from cardiology import app, db
 from datetime import datetime, date
 from cardiology.my_functions import save_picture, doct_patient, sorting_appointments
@@ -21,8 +21,7 @@ from flask_login import current_user, login_required
 def doc_profile():
     if session["role"] == "Doctor":
         active='profile'
-        doc_appoints = Appointments.query.filter_by(d_id=current_user.d_id).all()
-        doc_patients = doct_patient(doc_appoints)
+        doc_patients = examin.query.filter_by(d_id=current_user.d_id)
         doc_msgs = p_Messages.query.filter_by(d_id=current_user.d_id).all()
         if request.method == 'POST':
             session['patient_id'] = int(request.form['p_id'])
@@ -82,18 +81,15 @@ def add_MR():
     if session["role"] == "Doctor":
         active='profile'
         if request.method == 'POST':
-            if Medical_records.query.filter_by(p_id=Patients.query.filter_by(
-                p_id=int(session['patient_id'])).first().p_id).all() == []:
-                new_MR = Medical_records(p_id=Patients.query.filter_by(
-                p_id=int(session['patient_id'])).first().p_id, p_name=Patients.query.filter_by(
-                p_id=int(session['patient_id'])).first().p_name, d_id=current_user.d_id,
-                                         d_name=current_user.d_name, diseases_history=request.form['medical_history'],
-                                         restricted_drugs=request.form['restricted_drugs'])
+            if Medical_records.query.filter_by(p_id=int(session['patient_id'])).all() == []:
+                new_MR = Medical_records(p_id=int(session['patient_id']),  d_id=current_user.d_id,
+                diseases_history=request.form['medical_history'],
+                restricted_drugs=request.form['restricted_drugs'])
+
                 db.session.add(new_MR)
             else:
                 mr = Medical_records.query.filter_by(
-                    p_id=Patients.query.filter_by(
-                p_id=int(session['patient_id'])).first().p_id).first()
+                    p_id=Patients.query.filter_by(p_id=int(session['patient_id'])).first())
                 mr.restricted_drugs = request.form['restricted_drugs']
                 mr.diseases_history = request.form['medical_history']
             db.session.commit()
@@ -111,12 +107,9 @@ def add_PR():
     if session["role"] == "Doctor":
         active='profile'
         if request.method == 'POST':
-            new_PR = Prescription(p_id=Patients.query.filter_by(
-                p_id=int(session['patient_id'])).first().p_id, p_name=Patients.query.filter_by(
-                p_id=int(session['patient_id'])).first().p_name, d_id=current_user.d_id,
-                                  d_name=current_user.d_name, diagnosis=request.form[
-                    'diagnosis'], drugs=request.form['drugs'],
-                                  pres_date=date.today())
+            new_PR = Prescription(p_id=int(session['patient_id']), d_id=current_user.d_id, diagnosis=request.form['diagnosis'],
+                drugs=request.form['drugs'], pres_date=date.today())
+                
             db.session.add(new_PR)
             db.session.commit()
             flash('Prescription is added successfully.')
