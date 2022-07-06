@@ -21,25 +21,25 @@
 <body>
 
 	<!-- Loader -->
-<!--	<div class="loader">-->
-<!--		<div class="loader-inner">-->
-<!--		  <div class="loader-line-wrap">-->
-<!--			<div class="loader-line"></div>-->
-<!--		  </div>-->
-<!--		  <div class="loader-line-wrap">-->
-<!--			<div class="loader-line"></div>-->
-<!--		  </div>-->
-<!--		  <div class="loader-line-wrap">-->
-<!--			<div class="loader-line"></div>-->
-<!--		  </div>-->
-<!--		  <div class="loader-line-wrap">-->
-<!--			<div class="loader-line"></div>-->
-<!--		  </div>-->
-<!--		  <div class="loader-line-wrap">-->
-<!--			<div class="loader-line"></div>-->
-<!--		  </div>-->
-<!--		</div>-->
-<!--	  </div>-->
+	<div class="loader">
+		<div class="loader-inner">
+		  <div class="loader-line-wrap">
+			<div class="loader-line"></div>
+		  </div>
+		  <div class="loader-line-wrap">
+			<div class="loader-line"></div>
+		  </div>
+		  <div class="loader-line-wrap">
+			<div class="loader-line"></div>
+		  </div>
+		  <div class="loader-line-wrap">
+			<div class="loader-line"></div>
+		  </div>
+		  <div class="loader-line-wrap">
+			<div class="loader-line"></div>
+		  </div>
+		</div>
+	  </div>
 	  <!-- End loader -->
 
 
@@ -53,13 +53,21 @@
 			</span>
 		</a>
 		<ul class="side-menu top">
+			{% if active=='dashboard' %}
 			<li class="active">
+			{% else %}
+			<li >
+			{% endif %}
 				<a href="{{url_for('admin_dashboard')}}">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-			<li>
+			{% if active=='AdminPatients' %}
+			<li class="active">
+			{% else %}
+			<li >
+			{% endif %}
 
 				<a href="{{url_for('view_admin_patients')}}">
 
@@ -68,20 +76,32 @@
 				</a>
 			</li>
 			
-			<li>
+			{% if active=='AddDoctor' %}
+			<li class="active">
+			{% else %}
+			<li >
+			{% endif %}
 				<a href="{{url_for('add_doctor')}}">
 
 					<i class='bx bxs-user-plus' ></i>
 					<span class="text">Add Doctors</span>
 				</a>
 			</li>
-			<li>
+			{% if active=='AddAdmin' %}
+			<li class="active">
+			{% else %}
+			<li >
+			{% endif %}
 				<a href="{{url_for('add_admin')}}">
 					<i class='bx bxs-user-plus' ></i>
 					<span class="text">Add Admin</span>
 				</a>
 			</li>
-			<li>
+			{% if active=='EditAdminInfo' %}
+			<li class="active">
+			{% else %}
+			<li >
+			{% endif %}
 
 				<a href="{{url_for('edit_admin')}}" >
 				  <i class='bx bxs-pencil' ></i>
@@ -112,7 +132,7 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">MedCare</a>
+			<a href="#" class="nav-link">Amicus</a>
 			<form action="#">
 				<div class="form-input">
 					<input type="" placeholder="">
@@ -135,9 +155,7 @@
         {% if messages %}
            {% for category, message in messages %}
               <div class="alert alert-{{ category }}">
-                  <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
+              
                   {{ message }}
               </div>
            {% endfor %}

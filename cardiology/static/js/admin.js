@@ -1,5 +1,4 @@
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
-// birthdate.max = new Date().toISOString().split("T")[0];
 allSideMenu.forEach(item=> {
 	const li = item.parentElement;
 
@@ -103,3 +102,37 @@ for(var i=0; i<4; i++){
 	r.style.setProperty(`--span${i+1}`, `'${Math.ceil(((nums[i].innerHTML)/tot)*100)}%'`);
 
 }
+
+var DOB=document.querySelector('#day')
+var date=new Date()
+var tdate=date.getDate()
+var month=date.getMonth()+1
+
+if(tdate<10){
+  tdate="0"+tdate
+}
+if(month<10){
+  month="0"+month
+}
+var year=date.getUTCFullYear()
+var curdate=year+"-"+month+"-"+tdate
+DOB.min=curdate
+
+//End of Edit form function
+//loder function
+
+document.body.onload = function () {
+	var mode = localStorage.getItem("mode");
+	if (mode == "dark") {
+	  switchMode.checked = true;
+	  document.body.classList.add("dark");
+	} else {
+	  document.body.classList.remove("dark");
+	  switchMode.checked = false;
+	}
+	setTimeout(loader,1500);
+  };
+function loader(){
+	document.querySelector('.loader').style.display='none';
+	
+  }

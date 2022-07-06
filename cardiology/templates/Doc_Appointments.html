@@ -19,6 +19,7 @@
   {% else %}
   <thead>
     <tr>
+    <th>ID</th>
     <th>Patient Names</th>
     <th>Date</th>
      <th>Time</th>
@@ -27,11 +28,15 @@
   <tbody >
   {% for appoint in appoints %}
    <tr>
+    <td>
+      {{p_obj[loop.index].p_id}}
+     </td>
   <td>
   <p>
-    <label for="Patient">{{Patient.query.filter_by(p_id=appoint.p_id).first().p_name}}</label>
+    <label for="Patient">{{p_obj[loop.index].p_name}}</label>
    </p>
    </td>
+   
    <td>{{appoint.date}}</td>
  <td >{{appoint.Time}}</td>
     </tr>

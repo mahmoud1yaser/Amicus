@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_records, p_Messages, Scans, Prescription, examin
 from cardiology import app, db
 from datetime import datetime, date
-from cardiology.my_functions import save_picture, doct_patient, sorting_appointments
+from cardiology.my_functions import save_picture, doct_patient, sorting_appointments, any_name
 from flask_login import current_user, login_required
 
 # # -------------------------------------
@@ -21,12 +21,23 @@ from flask_login import current_user, login_required
 def doc_profile():
     if session["role"] == "Doctor":
         active='profile'
-        doc_patients = examin.query.filter_by(d_id=current_user.d_id)
+        doc_patients = examin.query.filter_by(d_id=current_user.d_id).all()
+        p_names1 = any_name(doc_patients, 'patient')
+
         doc_msgs = p_Messages.query.filter_by(d_id=current_user.d_id).all()
+        p_names2 = any_name(doc_msgs, 'patient')
+
         if request.method == 'POST':
-            session['patient_id'] = int(request.form['p_id'])
+            
+            try:
+                session['patient_id'] = int(request.form['p_id'])
+                a = Patients.query.filter_by(p_id=session['patient_id']).all()
+                if a == []:
+                    flash('Please enter correct id.')
+            except:
+                flash('Please enter correct id.')
             return redirect(url_for('patient_info'))
-        return render_template('Doctor.html', user=current_user, patients=doc_patients, msgs=doc_msgs, active=active)
+        return render_template('Doctor.html', user=current_user, pats=doc_patients, msgs=doc_msgs, active=active, p_names=p_names1, p_names2=p_names2)
     else:
         render_template('page403.html')
 
@@ -68,9 +79,10 @@ def patient_info():
                 p_id=int(session['patient_id'])).first().p_id).all()
         appoints = sorting_appointments(appoints, 'patient')
         PRs.reverse()
+        d_obj = any_name(PRs, 'doctor')
         return render_template('Doctor_Patients.html', user=current_user, patient=Patients.query.filter_by(
                 p_id=int(session['patient_id'])).first(), MR=MR, PRs=PRs,
-                               appoints=appoints, active=active)
+                               appoints=appoints, active=active, d_obj=d_obj)
     else:
         render_template('page403.html')
 
@@ -127,8 +139,9 @@ def doctor_appoints():
         active='appointments'
         doct_appoints = Appointments.query.filter_by(d_id=current_user.d_id).all()
         doc_appoints = sorting_appointments(doct_appoints, 'doctor')
+        p_obj = any_name(doc_appoints, 'patient')
 
-        return render_template('Doc_Appointments.html', user=current_user, appoints=doc_appoints, active=active)
+        return render_template('Doc_Appointments.html', user=current_user, appoints=doc_appoints, active=active, p_obj=p_obj)
     else:
         render_template('page403.html')
 

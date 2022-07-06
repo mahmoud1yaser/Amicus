@@ -9,6 +9,15 @@ input[type=number]::-webkit-inner-spin-button,  input[type=number]::-webkit-oute
   box-sizing: border-box;
   font-family:"Roboto";
 }
+.flash{
+  border-radius: 20px;
+  width: fit-content;
+  margin: auto;
+  margin-top: 10px;
+  font-weight: bolder;
+  margin-bottom: 10px;
+  background-color: rgba(74, 222, 74, 0.504);
+}
 
 a {
   text-decoration: none;

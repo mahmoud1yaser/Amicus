@@ -4,7 +4,7 @@ from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_r
 from cardiology.forms import editPatientForm
 from cardiology import app, db, doctor
 from datetime import datetime, timedelta
-from cardiology.my_functions import parse_time, generate_gcalendar_link, availabe_appointments, save_picture, \
+from cardiology.my_functions import any_name, parse_time, generate_gcalendar_link, availabe_appointments, save_picture, \
     sorting_appointments, parse_time2
 from flask_login import current_user, login_required
 
@@ -26,13 +26,14 @@ def p_profile():
         appoints = Appointments.query.filter_by(p_id=current_user.p_id).all()
         appoints = sorting_appointments(appoints, 'patient')
         PRs.reverse()
+        d_obj = any_name(PRs, 'doctor')
         if request.method == 'POST':
             pic_path = save_picture(request.files['myfile'], 'profile_pics')
             current_user.p_photo=pic_path
             db.session.commit()
             return redirect(url_for('p_profile'))
         return render_template('patient_profile.html', user=current_user, MR=MR, PRs=PRs, appoints=appoints,
-                               active=sidebar_active)
+                               active=sidebar_active, d_obj=d_obj)
     else:
         render_template('page403.html')
 
@@ -59,10 +60,10 @@ def book_appointment():
 def doc_appointments():
     if session["role"] == "Patient":
         sidebar_active = 'book_appointment'
+        doc = Doctors.query.filter_by(d_id=session['doc_id']).first()
         if request.method == 'POST':
             hour = request.form['Time']
             p_date, p_time = parse_time(session['day'], hour)
-            doc = Doctors.query.filter_by(d_id=session['doc_id']).first()
             appoint = Appointments(p_id=current_user.p_id, 
                                     d_id=doc.d_id, date=p_date, Time=p_time)
             db.session.add(appoint)
