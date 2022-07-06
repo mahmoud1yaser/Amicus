@@ -27,7 +27,7 @@
 				</div>
 				<label> BirthDate:</label>
 				<div>
-					{{ form.birthdate(class="form-control", onkeydown="return false") }}
+					{{ form.birthdate(class="form-control", onkeydown="return false", id='day') }}
 				</div>
 				<label> Sex:</label>
 				<div class="gender-details">
@@ -41,16 +41,17 @@
 				<div>
 					{{ form.password(class="form-control", placeholder="Password") }}
 				</div>
+				<label> Salary:</label>
+				<div>
+					{{ form.salary(class="form-control", placeholder="Salary") }}
+				</div>
 				<label> Position:</label>
 				<div>
 				</div>
 				<div>
 					{{ form.position(class="form-control")}}
 				</div>
-				<label> Salary:</label>
-				<div>
-					{{ form.salary(class="form-control", placeholder="Salary") }}
-				</div>
+				
 				<label>Work period From:</label>
 				<div>
 					{{ form.work_periodFrom(class="form-control") }}

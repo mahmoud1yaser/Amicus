@@ -127,11 +127,11 @@
         </tr>
       </thead>
       <tbody>
-        {% for patient in patients %}
+        {% for patient in pats %}
         <tr>
           <td>
             <p>
-              <label for="Patient">{{patient.p_name}}</label>
+              <label for="Patient">{{p_names[loop.index].p_name}}</label>
             </p>
           </td>
           <td>{{patient.p_id}}</td>
@@ -159,22 +159,22 @@
     </div>
     {% else %}
     {% for msg in msgs %}
-    <br /><button type="button" class="collapsible">Messages_1</button>
+    <br /><button type="button" class="collapsible">Messages {{loop.index}}</button>
     <div class="content">
       <div>
         <br />
         <h3><span>Patient Name</span></h3>
-        <label for="di"> {{msg.p_name}}</label>
+        <label for="di"> {{p_names2[loop.index].p_name}}</label>
       </div>
       <div>
         <br />
         <h3><span>Patient Email</span></h3>
-        <label for="di"> {{Patients.query.filter_by(p_id=msg.p_id).first().p_email}}</label>
+        <label for="di"> {{p_names2[loop.index].p_email}}</label>
       </div>
       <div>
         <br />
         <h3><span>Patient Number</span></h3>
-        <label for="di"> {{Patients.query.filter_by(p_id=msg.p_id).first().p_phon}}</label>
+        <label for="di"> 0{{p_names2[loop.index].p_phone}}</label>
       </div>
       <div>
         <br />
@@ -190,7 +190,7 @@
           name="comment"
           rows="5"
           cols="100"
-          value="{{msg.message}}"
+          placeholder="{{msg.message}}"
         ></textarea>
       </div>
     </div>

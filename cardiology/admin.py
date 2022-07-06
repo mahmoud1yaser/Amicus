@@ -1,11 +1,11 @@
 from flask import render_template, redirect, url_for, request, flash, session, Response
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import ValidationError
-from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_records, p_Messages, Scans, Prescription
+from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_records, examin, p_Messages, Scans, Prescription
 from cardiology import app, db
 from cardiology.forms import editDoctorForm_foreign, addDoctorForm, addAdminForm, editAdminForm
 from datetime import datetime
-from cardiology.my_functions import parse_time, save_picture, count_patients, doct_patient
+from cardiology.my_functions import parse_time, save_picture, count_patients, doct_patient, sorting_docs
 from flask_login import current_user, login_required
 
  
@@ -17,17 +17,22 @@ appoints = Appointments.query.all()
 @app.route('/AdminDashboard', methods=['GET', 'POST'])
 @login_required
 def admin_dashboard():
+    active = 'dashboard'
     session['patient_id'] = 0
     if session["role"] == "Admin":
         if request.method == 'POST':
             session['doc_id']= request.form['id']
              
             return redirect(url_for('view_selected_doctor'))
+        docs = Doctors.query.all()
+        patients = Patients.query.all()
+        appoints = Appointments.query.all()
         dnumber = len(docs)
         pnumber = len(patients)
         appoinumber = len(appoints)
-        doctor_pnumber = count_patients(docs)
-        return render_template('admin.html', current_user=current_user, docs=docs, dnumber=dnumber, pnumber=pnumber, appoinumber=appoinumber, doctor_pnumber=doctor_pnumber)
+        sorted_docs= sorting_docs(docs)
+        doctor_pnumber = count_patients(sorted_docs)
+        return render_template('admin.html', active=active, current_user=current_user, docs=sorted_docs, dnumber=dnumber, pnumber=pnumber, appoinumber=appoinumber, doctor_pnumber=doctor_pnumber)
     else:
         render_template('page403.html')
 
@@ -44,7 +49,8 @@ def update_adminPic():
 
 @app.route('/AdminPatients', methods=['GET', 'POST'])
 @login_required
-def view_doctor_patients():
+def view_admin_patients():
+    active = 'AdminPatients'
     p = 0
     if session["role"] == "Admin":
         if int(session['patient_id']) != 0:
@@ -52,10 +58,10 @@ def view_doctor_patients():
            
         if request.method == 'POST':
             session['patient_id'] = int(request.form['id'])
-            return redirect(url_for('view_doctor_patients'))
+            return redirect(url_for('view_admin_patients'))
             
     
-        return render_template('admin_patient.html', current_user=current_user, patients=patients, p=p, selected_id=int(session['patient_id']), )
+        return render_template('admin_patient.html', active=active,current_user=current_user, patients=patients, p=p, selected_id=int(session['patient_id']), )
     else:
         render_template('page403.html')
 
@@ -65,8 +71,8 @@ def view_doctor_patients():
 def view_selected_doctor():
     if session["role"] == "Admin":
         doct= Doctors.query.filter_by(d_id=int(session['doc_id'])).first()
-        appoint = Appointments.query.filter_by(d_id=doct.d_id).all()
-        doc_patients = doct_patient(appoint)
+        examin_list = examin.query.filter_by(d_id=doct.d_id).all()
+        doc_patients = doct_patient(examin_list)
         return render_template('admin_doctor.html', current_user=current_user, doc=doct, doc_patients=doc_patients)
     else:
         render_template('page403.html')
@@ -75,6 +81,7 @@ def view_selected_doctor():
 @app.route('/AddAdmin', methods=['GET', 'POST'])
 @login_required
 def add_admin():
+    active= 'AddAdmin'
     if session["role"] == "Admin":
         form = addAdminForm()
         if form.validate_on_submit():
@@ -90,7 +97,7 @@ def add_admin():
             for err_msg in form.errors.values():
                 flash(f'There was an error with creating a user: {err_msg}', category='danger')
 
-        return render_template('add_admin.html', form=form, current_user=current_user)
+        return render_template('add_admin.html', form=form, current_user=current_user, active=active)
     else:
         render_template('page403.html')
 
@@ -98,6 +105,7 @@ def add_admin():
 @app.route('/AddDoctor', methods=['GET', 'POST'])
 @login_required
 def add_doctor():
+    active='AddDoctor'
     if session["role"] == "Admin":
         form = addDoctorForm()
         if form.validate_on_submit():
@@ -119,7 +127,7 @@ def add_doctor():
             for err_msg in form.errors.values():
                 flash(f'There was an error with creating a user: {err_msg}', category='danger')
 
-        return render_template('add_doctor.html', form=form, current_user=current_user)
+        return render_template('add_doctor.html', form=form, current_user=current_user, active=active)
     else:
         render_template('page403.html')
 
@@ -151,6 +159,7 @@ def edit_doctor():
 @app.route('/EditAdminInfo', methods=['GET', 'POST'])
 @login_required
 def edit_admin():
+    active = 'EditAdminInfo'
     if session["role"] == "Admin":
         form = editAdminForm()
         if form.validate_on_submit():
@@ -163,6 +172,6 @@ def edit_admin():
         if form.errors != {}:  # If there are not errors from the validations
             for err_msg in form.errors.values():
                 flash(f'There was an error with editing the admin: {err_msg}', category='danger')
-        return render_template('edit_admin.html', form=form, current_user=current_user)
+        return render_template('edit_admin.html', form=form, current_user=current_user, active=active)
     else:
         render_template('page403.html')

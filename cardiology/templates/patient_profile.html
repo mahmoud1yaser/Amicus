@@ -66,7 +66,7 @@
 				  </div>
 				  <div>
 					<h2>Phone Number</h2>
-					<label for="Phone-Number">{{user.p_phone}}</label>
+					<label for="Phone-Number">0{{user.p_phone}}</label>
 				  </div>
 				</div>
 				  
@@ -169,7 +169,7 @@
                		<div class="content">
 						<div>
 							<br><h3> <span>Doctor name</span> </h3>
-							<label for="di">{{pr.d_name}}</label>
+							<label for="di">{{d_obj[loop.index].d_name}}</label>
 						</div>
 						<div>
 							<br><h3> <span>Date</span></h3>

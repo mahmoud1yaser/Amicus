@@ -126,12 +126,11 @@
       <tbody>
         {% for patient in doc_patients %}
         <tr>
-          <td>
-          </td>
+          
           <td><p>{{patient.p_name}}</p></td>
           <td>{{patient.p_id}}</td>
           <td>{{patient.p_email}}</td>
-          <td>{{patient.p_phone}}</td>
+          <td>0{{patient.p_phone}}</td>
           </tr>
 
           {% endfor %}

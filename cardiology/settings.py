@@ -1,2 +1,2 @@
-global userType
-userType = "Patient"
+# global userType
+# userType = "Patient"

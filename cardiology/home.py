@@ -16,6 +16,7 @@ def home_page():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def register_page():
+    session["role"]="Default"
     form = RegisterForm()
     if form.validate_on_submit():
         patient_to_create = Patients(p_username=form.username.data,
@@ -42,6 +43,7 @@ def register_page():
 
 @app.route('/signin', methods=['GET', 'POST'])
 def login_page():
+    session["role"]="Default"
     form = LoginForm()
     if form.validate_on_submit():
         if form.role.data == "Admin":

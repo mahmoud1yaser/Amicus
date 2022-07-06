@@ -1287,7 +1287,55 @@ body {
 	background: var(--grey);
   }
   
-
+#position{
+	background: rgba(255,255,255,0.1);
+	border: none;
+	font-size: 16px;
+	height: auto;
+	margin: auto;
+	outline: 0;
+	padding: 8px;
+	width: 100%;
+	background-color: #e8eeef;
+	color: black;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	border-radius: 20px;
+	width:40%;
+  
+}
+#work_periodFrom{
+	background: rgba(255,255,255,0.1);
+	border: none;
+	font-size: 16px;
+	height: auto;
+	margin: auto;
+	outline: 0;
+	padding: 8px;
+	width: 100%;
+	background-color: #e8eeef;
+	color: black;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	border-radius: 20px;
+	width:40%;
+    padding-right: 30px;
+  
+}
+#work_periodTo{
+	background: rgba(255,255,255,0.1);
+	border: none;
+	font-size: 16px;
+	height: auto;
+	margin: auto;
+	outline: 0;
+	padding: 8px;
+	width: 100%;
+	background-color: #e8eeef;
+	color: black;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	border-radius: 20px;
+	width:40%;
+  
+}
 
 
 
