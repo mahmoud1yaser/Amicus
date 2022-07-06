@@ -14,20 +14,20 @@
             <label>New Username:</label>
             <div >
 				<i class="fa-solid fa-id-card"></i>
-            {{ form.username(class="form-control", value="{{user.d_username}}" , id="username") }}
+            {{ form.username(class="form-control", value=user.d_username , id="username") }}
             <span></span>
             </div>
 
 			<label>New Phone Number:</label>
             <div>
               <i class="fa-solid fa-phone"></i>
-            {{ form.phone(class="form-control", value="{{user.d_phone}}" , id="phone") }}
+            {{ form.phone(class="form-control", value=user.d_phone, id="phone") }}
           <span></span>
             </div>
             <label>New E-mail:</label>
             <div>
               <i class="fa-solid fa-envelope"></i>
-            {{ form.email(class="form-control", value="{{user.d_email}}" ,id="Email") }}
+            {{ form.email(class="form-control", value=user.d_email ,id="Email") }}
            <span></span>
             </div>
             <label>New Password:</label>

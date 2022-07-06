@@ -1,7 +1,4 @@
-birthdate.max = new Date().toISOString().split("T")[0];
-
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
-
 allSideMenu.forEach(item=> {
 	const li = item.parentElement;
 
@@ -26,44 +23,6 @@ menuBar.addEventListener('click', function () {
 
 
 
-
-
-
-
-// const searchButton = document.querySelector('#content nav form .form-input button');
-// const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
-// const searchForm = document.querySelector('#content nav form');
-
-// searchButton.addEventListener('click', function (e) {
-// 	if(window.innerWidth < 576) {
-// 		e.preventDefault();
-// 		searchForm.classList.toggle('show');
-// 		if(searchForm.classList.contains('show')) {
-// 			searchButtonIcon.classList.replace('bx-search', 'bx-x');
-// 		} else {
-// 			searchButtonIcon.classList.replace('bx-x', 'bx-search');
-// 		}
-// 	}
-// })
-
-
-
-
-
-// if(window.innerWidth < 768) {
-// 	sidebar.classList.add('hide');
-// } else if(window.innerWidth > 576) {
-// 	searchButtonIcon.classList.replace('bx-x', 'bx-search');
-// 	searchForm.classList.remove('show');
-// }
-
-
-// window.addEventListener('resize', function () {
-// 	if(this.innerWidth > 576) {
-// 		searchButtonIcon.classList.replace('bx-x', 'bx-search');
-// 		searchForm.classList.remove('show');
-// 	}
-// })
 
 
 
@@ -143,3 +102,37 @@ for(var i=0; i<4; i++){
 	r.style.setProperty(`--span${i+1}`, `'${Math.ceil(((nums[i].innerHTML)/tot)*100)}%'`);
 
 }
+
+var DOB=document.querySelector('#day')
+var date=new Date()
+var tdate=date.getDate()
+var month=date.getMonth()+1
+
+if(tdate<10){
+  tdate="0"+tdate
+}
+if(month<10){
+  month="0"+month
+}
+var year=date.getUTCFullYear()
+var curdate=year+"-"+month+"-"+tdate
+DOB.min=curdate
+
+//End of Edit form function
+//loder function
+
+document.body.onload = function () {
+	var mode = localStorage.getItem("mode");
+	if (mode == "dark") {
+	  switchMode.checked = true;
+	  document.body.classList.add("dark");
+	} else {
+	  document.body.classList.remove("dark");
+	  switchMode.checked = false;
+	}
+	setTimeout(loader,1500);
+  };
+function loader(){
+	document.querySelector('.loader').style.display='none';
+	
+  }

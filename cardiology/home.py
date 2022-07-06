@@ -16,6 +16,7 @@ def home_page():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def register_page():
+    session["role"]="Default"
     form = RegisterForm()
     if form.validate_on_submit():
         patient_to_create = Patients(p_username=form.username.data,
@@ -42,6 +43,7 @@ def register_page():
 
 @app.route('/signin', methods=['GET', 'POST'])
 def login_page():
+    session["role"]="Default"
     form = LoginForm()
     if form.validate_on_submit():
         if form.role.data == "Admin":
@@ -92,3 +94,15 @@ def logout_page():
     session.clear()
     flash("You have been logged out!", category='info')
     return redirect(url_for("home_page"))
+
+
+
+@app.route('/sendmail', methods=['GET', 'POST'])
+def send_msg():
+    if request.method == 'POST':
+        msg = request.form['msg']
+        subject = request.form['subject']
+        our_mail = "team3@gmail.com"
+        return redirect(f'https://mail.google.com/mail/?view=cm&fs=1&to={our_mail}&su={subject}&body={msg}&')
+
+    

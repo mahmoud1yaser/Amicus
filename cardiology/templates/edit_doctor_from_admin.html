@@ -11,15 +11,19 @@
 <!--		<h3>Add Doctor</h3>-->
 <!--	  </div>-->
 <!--		<div class="add-form" >-->
-<div>
+	<div class="table-data">
+		<div class="order1">
+		  <div class="head">
+			<i class='bx bxs-user-plus'></i>
+			<h3>Edit Doctor</h3>
+		  </div>
+	<div class="add-form">
 			<form action="EditDoctorInfo" method="post">
 			  {{ form.hidden_tag() }}
 			  <h1>Edit form</h1>
 			  <label>New E-mail:</label>
 			  <div>
-				  {{ form.email(class="form-control", placeholder="Old E-mail") }} 
-				
-				</div>
+				  {{ form.email(class="form-control", placeholder="Old E-mail") }}                </div>
 			  <label>New Password:</label>
 			  <div>
 				  {{ form.password(class="form-control", placeholder="Old Password") }}
@@ -44,6 +48,8 @@
 			  {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
 		  </form>
 		</div>
+	</div>
+</div>
 
 
 <!--</div>-->

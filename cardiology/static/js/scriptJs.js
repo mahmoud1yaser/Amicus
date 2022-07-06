@@ -115,19 +115,19 @@ const form_1 = document.querySelector("#contact_id");
 const form_2 =  document.getElementById('contact'); 
 
 
-if(form_1 !== null){
-form_1.addEventListener("submit", (event) => {
-  event.preventDefault();
-  validateForm_1();
-});
-}
+// if(form_1 !== null){
+// form_1.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   validateForm_1();
+// });
+// }
 
-if(form_2 !== null){
-form_2.addEventListener("submit", (event) => {
-  event.preventDefault();
-  validateForm_2();
-});
-}
+// if(form_2 !== null){
+// form_2.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   validateForm_2();
+// });
+// }
 
 
 
@@ -236,3 +236,13 @@ function validateForm_2() {
 
 // }
 // ----------------------
+
+function close(){
+  var x= document.getElementById("#flash");
+  if(x.style.display=="none"){
+    x.style.display="block"
+  }
+  else{
+    x.style.display="none"
+  }
+}

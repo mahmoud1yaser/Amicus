@@ -2,7 +2,7 @@ import datetime
 
 from sqlalchemy import true
 from cardiology import patient
-from cardiology.models import Appointments, Patients
+from cardiology.models import Appointments, Doctors, Patients, examin
 import os
 import secrets
 import re
@@ -27,6 +27,25 @@ def availabe_appointments(doc, day):
     availabe_time = list(set(all_appointmnts) - set(reserved_times))
 
     return sorted(availabe_time)
+
+
+
+
+
+def any_name(list, type):
+    names=[0]
+    if type=='patient':
+        for p in list:
+            names.append(Patients.query.filter_by(p_id=p.p_id).first())
+        return names
+    else:
+        for d in list:
+            names.append(Doctors.query.filter_by(d_id=d.d_id).first())
+        return names
+
+
+
+    
 
 
 def save_picture(form_picture, folder_name):
@@ -76,3 +95,8 @@ def count_patients(doctors):
         p = doct_patient(a)
         num.append(len(p))
     return num
+
+def sorting_docs(doctors):
+    docs=sorted(doctors, key= lambda x:len(examin.query.filter_by(d_id=x.d_id).all()))
+    return docs
+

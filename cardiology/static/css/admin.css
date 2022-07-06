@@ -176,22 +176,6 @@ body {
 }
 /* SIDEBAR */
 
-
-
-
-
-/* CONTENT */
-#content {
-	position: relative;
-	width: calc(100% - 280px);
-	left: 280px;
-	transition: .3s ease;
-}
-#sidebar.hide ~ #content {
-	width: calc(100% - 60px);
-	left: 60px;
-}
-
 /* Loader */
 .loader {
 	display: block;
@@ -278,6 +262,19 @@ body {
 	top: 35px;
   }
 
+  /* Loader */
+
+/* CONTENT */
+#content {
+	position: relative;
+	width: calc(100% - 280px);
+	left: 280px;
+	transition: .3s ease;
+}
+#sidebar.hide ~ #content {
+	width: calc(100% - 60px);
+	left: 60px;
+}
 
 /* NAVBAR */
 #content nav {
@@ -407,8 +404,6 @@ body {
 
 
 
-
-
 /* MAIN */
 #content main {
 	width: 100%;
@@ -446,13 +441,6 @@ body {
 	color: var(--blue);
 	pointer-events: unset;
 }
-
-
-
-
-
-
-
 #content main .box-info {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -513,7 +501,6 @@ body {
 	grid-gap: 24px;
 	margin-top: 24px;
 	width: 100%;
-	height: 350px;
 	color: var(--dark);
 }
 #content main .table-data > div {
@@ -563,12 +550,7 @@ body {
 	padding-left: 3px;
 	align-items: center;
 }
-/* #content main .table-data .order table tr td:first-child {
-	display: flex;
-	align-items: center;
-	grid-gap: 6px;
-	padding-left: 3px;
-} */
+
 
 #content main .table-data .order table tbody tr:hover {
 	background: var(--grey);
@@ -588,13 +570,13 @@ body {
 	grid-gap: 10px;
 	font-weight: 500;
 	cursor: pointer;
-	/* border: 2px solid var(--blue);
-	transition: 0.5s; */
+	border-color: var(--blue);
 }
 
 #content  .btn-edit:hover {
 	background: var(--light-blue);
 	color: var(--blue);
+	border-color: var(--light-blue);
 }
 #content  .btn-view {
 	margin-right: 10px;
@@ -604,6 +586,7 @@ body {
 	border-radius: 36px;
 	background: var(--yellow);
 	color: var(--light-yellow);
+	border-color: var(--yellow);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -616,6 +599,7 @@ body {
 #content  .btn-view:hover {
 	background: var(--light-yellow);
 	color: var(--yellow);
+	border-color: var(--light-yellow);
 }
 
 #content  .btn-Delete {
@@ -626,6 +610,7 @@ body {
 	border-radius: 36px;
 	background: var(--red);
 	color: var(--light-red);
+	border-color: var(--red);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -637,6 +622,7 @@ body {
 #content  .btn-Delete:hover {
 	background: var(--light-red);
 	color: var(--red);
+	border-color: var(--light-red);
 }
 
 .bars{
@@ -786,7 +772,6 @@ body {
 	flex-basis: 25%;
 	text-align: center;
 	vertical-align: middle;
-
   }
   #content main .table-data .card1 div {
 	position: absolute;
@@ -866,6 +851,12 @@ body {
  }
   #content main .table-data .card2 {
 	position: relative;
+	/* flex-basis: 65%; */
+	text-align: left;
+	float: left;
+  }
+  #content main .table-data .card3 {
+	position: relative;
 	flex-basis: 65%;
 	text-align: left;
 	float: left;
@@ -884,7 +875,21 @@ body {
 	height: 2px;
 	width: calc(100%);
 	background-color: var(--blue);
-  
+  }
+  #content main .table-data .card3 h1 {
+	position: relative;
+	color: var(--dark);
+	font-family: roboto;
+	weight: 300;
+  }
+  .card3 h1:after {
+	position: absolute;
+	bottom:-10px;
+	left:0;
+	content: '';
+	height: 2px;
+	width: calc(100%);
+	background-color: var(--blue);
   }
   .card2 h2{
 	font-size: 1.25rem;
@@ -1081,7 +1086,256 @@ body {
 	border: 2px solid var(--blue);
 	font-size: 1rem;
   }
-
+  .Information-doc {
+	position: relative;
+	display: grid;
+	background: var(--white);
+	float: left;
+	text-align: left;
+	padding-top: 10px;
+	margin-top: 30px;
+  }
+  
+  .min-info-doc{
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	margin-top: 15px;
+  }
+  .min-info-doc .icon-info{
+	position: relative;
+	margin-right: 10px; 
+	width: 40px;
+	height: 40px;
+	background-color: var(--blue);
+	border: 3px solid var(--blue);
+	border-radius: 50%;
+  }
+  .min-info-doc .icon-1{
+	background-color: var(--light-blue);
+	border: 3px solid var(--light-blue);
+  }
+  .min-info-doc .icon-1 i{
+	color: var(--blue);
+  }
+  .min-info-doc .icon-2{
+	background-color: var(--light-orange);
+	border: 3px solid var(--light-orange);
+  }
+  
+  .min-info-doc .icon-2 i{
+	color: var(--orange);
+  }
+  .min-info-doc .icon-3{
+	background-color: var(--light-yellow);
+	border: 3px solid var(--light-yellow);
+  }
+  
+  .min-info-doc .icon-3 i{
+	color: var(--yellow);
+  }
+  .min-info-doc i{
+	 position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50% ,-50%);
+	font-size: 25px;
+  }
+  .main-edit-form-doc{
+	display: block;
+	z-index: 9999;
+	position: absolute;
+	top:0;
+	left:0;
+	background-color: rgba(230,230,230,0.5);
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	transition: 1s all ease;
+  }
+  .edit-form-doc{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	width: 40%;
+	border-radius: 20px;
+	box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
+	-webkit-box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
+	-moz-box-shadow: 8px 6px 18px -8px rgba(60,145,230,0.5);
+	background-color: var(--light);
+	min-height: 50vh;
+	transition: 0.5s all ease;
+	text-align: left;
+	padding: 30px 50px;
+	
+  }
+  .edit-form-doc h1{
+	align-self: center;
+	margin-bottom: 40px;
+	text-transform: uppercase;
+	color:var(--dark);
+  }
+  .edit-form-doc form{
+	position: relative;
+	text-align: left;
+	width: 100%;
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	padding: 20px 25px;
+  }
+  .edit-form-doc i{
+	position: absolute;
+	top:25px;
+	right: 25px;
+	color:var(--close);
+	font-size: 30px;
+	cursor: pointer;
+	z-index: 999;
+  }
+  .edit-form-doc form div {
+	position: relative;
+	align-items: center;
+	display: flex;
+	margin-bottom: 30px;
+	width: 100%;
+  }
+  .edit-form-doc form button {
+	margin-top: 10px;
+	text-align: center;
+	position: relative;
+	align-items: center;
+	margin-bottom: 10px;
+	width: auto;
+	padding: 10px 25px;
+	align-self: center;
+	border-radius: 20px;
+	background-color: var(--blue);
+	border: 1px solid var(--light-blue);
+	transition: 0.5s;
+	cursor: pointer;
+	font-size: 1.25rem;
+	color:black;
+  }
+  .edit-form-doc form button:hover{
+	background-color: var(--light-blue);
+	border: 1px solid var(--blue);
+  }
+  .edit-form-doc form div i{
+	position: absolute;
+	width: auto;
+	font-size: 20px;
+	top:auto;
+	left:0;
+	color: var(--blue);
+	z-index: -9999;
+  }
+  .edit-form-doc form label{
+	margin-bottom: 10px;
+	font-family: "Roboto";
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	font-weight: bold;
+	color:var(--dark);
+  }
+  .edit-form-doc div input{
+	width: 80%;
+	padding: 10px 30px;
+	outline: none;
+	background-color: transparent;
+	border-style: none none solid none;
+	border-width: 2px ;
+	border-color: var(--dark);;
+	font-size: 1.1rem;
+	color:var(--dark);
+  
+  }
+  #content main .table-data-doc .order-doc {
+	flex-grow: 1;
+	flex-basis: 500px;
+	overflow-y: scroll;
+	  max-height: 462px;
+  }
+  
+  #content main .table-data-doc .order-doc table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center;
+  }
+  #content main .table-data-doc .order-doc table th {
+	padding-bottom: 12px;
+	font-size: 13px;
+	text-align: center;
+	border-bottom: 1px solid var(--grey);
+  }
+  #content main .table-data-doc .order-doc table td {
+	  padding: 16px 0;
+	  align-items: center;
+	  grid-gap: 6px;
+	  padding-left: 3px;
+	  align-items: center;
+  }
+  
+  #content main .table-data-doc .order-doc table td img {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	object-fit: cover;
+  }
+  #content main .table-data-doc .order-doc table tbody tr:hover {
+	background: var(--grey);
+  }
+  
+#position{
+	background: rgba(255,255,255,0.1);
+	border: none;
+	font-size: 16px;
+	height: auto;
+	margin: auto;
+	outline: 0;
+	padding: 8px;
+	width: 100%;
+	background-color: #e8eeef;
+	color: black;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	border-radius: 20px;
+	width:40%;
+  
+}
+#work_periodFrom{
+	background: rgba(255,255,255,0.1);
+	border: none;
+	font-size: 16px;
+	height: auto;
+	margin: auto;
+	outline: 0;
+	padding: 8px;
+	width: 100%;
+	background-color: #e8eeef;
+	color: black;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	border-radius: 20px;
+	width:40%;
+    padding-right: 30px;
+  
+}
+#work_periodTo{
+	background: rgba(255,255,255,0.1);
+	border: none;
+	font-size: 16px;
+	height: auto;
+	margin: auto;
+	outline: 0;
+	padding: 8px;
+	width: 100%;
+	background-color: #e8eeef;
+	color: black;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	border-radius: 20px;
+	width:40%;
+  
+}
 
 
 
@@ -1166,7 +1420,7 @@ body {
 	  opacity: 1;
 	}
   }
-  .card2 .bar .progress-line{
+  .card3 .bar .progress-line{
 	height: 10px;
 	width: 100%;
 	background: #f0f0f0;

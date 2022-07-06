@@ -18,21 +18,22 @@
 </head>
 <body>
 
+  
 
 <!-- header section starts  -->
 
 <header>
 
-<a href="#" class="logo"><i class="fas fa-heartbeat"></i>MedCare</a>
+<a href="#" class="logo"><i class="fas fa-heartbeat"></i>Amicus</a>
 <nav class="navbar">
     <ul>
-        <li><a href="../templates/home.html" class="active">Home</a></li>
-        <li><a href="../templates/about.html">About</a></li>
-        <li><a href="../templates/our_doctors.html">Our Doctors</a></li>
-        <li><a href="../templates/our_services.html">Our Services</a></li>
-        <li><a href="../templates/book.html">Book</a></li>
-        <li><a href="../templates/contact.html">Contact</a></li>
-        <li><a href="\">Sign Up</a></li>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#doctor">Our Doctors</a></li>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#book">Book</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href={{ url_for('register_page') }}>Sign Up</a></li>
         <input type="checkbox" id="switch-mode" hidden>
 		<label for="switch-mode" class="switch-mode"></label>
 
@@ -51,8 +52,8 @@
 <section class="home" id="home">
 
 <div class="content">
-    <h1>learn online form home</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum rerum accusantium dolore esse error facere totam eveniet dicta molestiae ea?</p>
+    <h1>Trust Experience.Trust Technology.Trust Amicus.</h1>
+    <p>A Friend that cares about your Health</p>
     <a href={{ url_for('login_page') }}><button> Sign in</button></a>
 </div>
 
@@ -96,7 +97,7 @@
 
     <div class="content">
         <h3>Exceptional Care. Every Patient. Every Day.</h3>
-        <p>Medcare provides you with the best cardiologists and the fastest services. 
+        <p>Amicus provides you with the best cardiologists and the fastest services. 
           We offer Same Day Appointments, 24hr Online Consultations, and Complete Access to all your test results, updated medical status, and prescriptions.</p>
 
         <a href="#doctor"><button>Meet Our Doctors</button></a>
@@ -138,7 +139,6 @@
     
         <div class="info">
           <h4>doctor info</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus voluptate exercitationem pariatur sunt nihil rem molestiae accusamus ipsam dignissimos tenetur.</p>
 
 
         </div>
@@ -158,7 +158,6 @@
     
         <div class="info">
           <h4>doctor info</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus voluptate exercitationem pariatur sunt nihil rem molestiae accusamus ipsam dignissimos tenetur.</p>
 
         </div>
     
@@ -176,7 +175,6 @@
     
         <div class="info">
           <h4>doctor info</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus voluptate exercitationem pariatur sunt nihil rem molestiae accusamus ipsam dignissimos tenetur.</p>
 
         </div>
     
@@ -194,7 +192,6 @@
     
         <div class="info">
           <h4>doctor info</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus voluptate exercitationem pariatur sunt nihil rem molestiae accusamus ipsam dignissimos tenetur.</p>
 
         </div>
     
@@ -206,14 +203,13 @@
         </div>
     
         <div class="content">
-          <h3>Dr Manar</h3>
+          <h3>Dr Maye</h3>
           
         </div>
     
         <div class="info">
           <h4>doctor info</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus voluptate exercitationem pariatur sunt nihil rem molestiae accusamus ipsam dignissimos tenetur.</p>
-
+          <
         </div>
     
       </div>
@@ -225,13 +221,12 @@
         </div>
     
         <div class="content">
-          <h3>Dr Mayar</h3>
+          <h3>Dr Yousef</h3>
           
         </div>
     
         <div class="info">
           <h4>doctor info</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus voluptate exercitationem pariatur sunt nihil rem molestiae accusamus ipsam dignissimos tenetur.</p>
 
         </div>
     
@@ -340,22 +335,21 @@
     
     <div class="contact-form-container">
     
-        <form action="">
+      
     
-          <form action="">
+          <form action={{url_for('send_msg')}} method="post" enctype="multipart/form-data">
     
             <h3>Get in Touch</h3>
     
             <div class="inputBox">
-                <input type="text" placeholder=" Subject">
+                <input type="text" placeholder=" Subject" name="subject">
             </div>
-    
-            <textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
+            
+            <textarea  cols="30" rows="10" placeholder="Message" name="msg"></textarea>
     
             <input type="Submit" value="Message">
 
     
-        </form>
         </form>
     </div>
     
@@ -369,7 +363,7 @@
 
 <section class="footer">
 
-<div class="credit">Supervised by <span>Dr. Ahmed Hesham</span> | MedCare Hospital.</div>
+<div class="credit">Supervised by <span>Dr. Ahmed Hesham</span> | Amicus Hospital.</div>
 
 </section>
 

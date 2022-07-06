@@ -3,16 +3,7 @@
 {{ current_user.a_name }}
 {%endblock%}
 {% block content %}
-<script type="text/javascript">
-	$(function(){
-	  $('.bars li .bar').each(function(key, bar){
-		var percentage = $(this).data('percentage');
-		$(this).animate({
-		  'height' : percentage + '%'
-		},1000);
-	  });
-	});
-	</script>
+
 
 <Title>Profile</Title>
 <div class="table-data">
@@ -32,12 +23,12 @@
 			
 			</form>
 	</div>
-	<div class="card2">
+	<div class="card3">
 		<h1><i class='bx bx-medal' ></i> Best 4 Doctors</h1>
 		<div class="bars">
 		<div class="bar">
 			<div class="info">
-			  <span>John </span>
+			  <span>{{docs[0].d_name}}</span>
 			</div>
 			<div class="progress-line">
 			  <span id="span1"></span>
@@ -45,7 +36,7 @@
 		  </div>
 		  <div class="bar">
 			<div class="info">
-			  <span>John</span>
+			  <span>{{docs[1].d_name}}</span>
 			</div>
 			<div class="progress-line">
 			  <span id="span2" ></span>
@@ -53,7 +44,7 @@
 		  </div>
 		  <div class="bar">
 			<div class="info">
-			  <span>John</span>
+			  <span>{{docs[2].d_name}}</span>
 			</div>
 			<div class="progress-line">
 			  <span id="span3"></span>
@@ -61,7 +52,7 @@
 		  </div>
 		  <div class="bar">
 			<div class="info">
-			  <span>John</span>
+			  <span>{{docs[3].d_name}}</span>
 			</div>
 			<div class="progress-line">
 			  <span id="span4"></span>
@@ -77,21 +68,21 @@
 	<li>
 		<i class='bx bxs-user' ></i>
 		<span class="text">
-			<div class="counter" data-target="102000">{{dnumber}}</div>
+			<div class="counter" data-target="{{dnumber}}">{{dnumber}}</div>
 			<p>Doctors</p>
 		</span>
 	</li>
 	<li>
 		<i class='bx bxs-group' ></i>
 		<span class="text">
-			<div class="counter" id="paN" data-target="2834">{{pnumber}}</div>
+			<div class="counter" id="paN" data-target="{{pnumber}}">{{pnumber}}</div>
 			<p>Patients</p>
 		</span>
 	</li>
 	<li>
 		<i class='bx bxs-first-aid' ></i>
 		<span class="text">
-			<div class="counter" data-target="2543">{{appoinumber}}</div>
+			<div class="counter" data-target="{{appoinumber}}">{{appoinumber}}</div>
 			<p>Appointments</p>
 		</span>
 	</li>
@@ -116,9 +107,9 @@
 		<table>
 			<thead>
 				<tr>
+					<th>ID</th>
 					<th>Name</th>
 					<th>Phone Number</th>
-					<th>Email</th>
 					<th>Job Title</th>
 					<th>Patients No</th>
 					<th></th>
@@ -128,9 +119,9 @@
 			<tbody>
 				{% for doc in docs %}
 				<tr>
+					<td>{{doc.d_id}}</td>
 					<td><p>{{doc.d_name}}</p></td>
 					<td>{{doc.d_phone}}</td>
-					<td>{{doc.d_email}}</td>
 					<td>{{doc.d_position}}</td>
 					<td class="patientsN">{{doctor_pnumber[loop.index]}}</td>
 					<td><form action={{url_for('admin_dashboard')}} method="post">

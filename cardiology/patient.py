@@ -1,11 +1,11 @@
 from flask import render_template, redirect, url_for, request, flash, Markup, session, Response
 from flask_sqlalchemy import SQLAlchemy
-from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_records, p_Messages, Scans, Prescription
+from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_records, p_Messages, Scans, Prescription, examin
 from cardiology.forms import editPatientForm
 from cardiology import app, db, doctor
 from datetime import datetime, timedelta
-from cardiology.my_functions import parse_time, generate_gcalendar_link, availabe_appointments, save_picture, \
-    sorting_appointments
+from cardiology.my_functions import any_name, parse_time, generate_gcalendar_link, availabe_appointments, save_picture, \
+    sorting_appointments, parse_time2
 from flask_login import current_user, login_required
 
 # ---------------------------------
@@ -20,18 +20,20 @@ doctors = Doctors.query.all()
 def p_profile():
     if session["role"] == "Patient":
         sidebar_active = 'p_profile'
-        MR = Medical_records.query.filter_by(p_id=p_user.p_id).first()
-        PRs = Prescription.query.filter_by(p_id=p_user.p_id).all()
-        appoints = Appointments.query.filter_by(p_id=p_user.p_id).all()
+        doctors = Doctors.query.all()
+        MR = Medical_records.query.filter_by(p_id=current_user.p_id).first()
+        PRs = Prescription.query.filter_by(p_id=current_user.p_id).all()
+        appoints = Appointments.query.filter_by(p_id=current_user.p_id).all()
         appoints = sorting_appointments(appoints, 'patient')
         PRs.reverse()
+        d_obj = any_name(PRs, 'doctor')
         if request.method == 'POST':
             pic_path = save_picture(request.files['myfile'], 'profile_pics')
-            p_user.p_photo=pic_path
+            current_user.p_photo=pic_path
             db.session.commit()
             return redirect(url_for('p_profile'))
-        return render_template('patient_profile.html', user=p_user, MR=MR, PRs=PRs, appoints=appoints,
-                               active=sidebar_active)
+        return render_template('patient_profile.html', user=current_user, MR=MR, PRs=PRs, appoints=appoints,
+                               active=sidebar_active, d_obj=d_obj)
     else:
         render_template('page403.html')
 
@@ -42,13 +44,14 @@ def book_appointment():
     if session["role"] == "Patient":
         global  day
         sidebar_active = 'book_appointment'
+        doctors = Doctors.query.all()
         if request.method == 'POST':            
             session['doc_id'] = request.form['doctors']
             session['day'] = request.form['date']
 
             return redirect(url_for('doc_appointments'))
 
-        return render_template('Booking.html', user=p_user, doctors=doctors, active=sidebar_active)
+        return render_template('Booking.html', user=current_user, doctors=doctors, active=sidebar_active)
     else:
         render_template('page403.html')
 
@@ -57,25 +60,29 @@ def book_appointment():
 def doc_appointments():
     if session["role"] == "Patient":
         sidebar_active = 'book_appointment'
+        doc = Doctors.query.filter_by(d_id=session['doc_id']).first()
         if request.method == 'POST':
             hour = request.form['Time']
             p_date, p_time = parse_time(session['day'], hour)
-            appoint = Appointments(p_id=p_user.p_id, p_name=p_user.p_name,
-                                   d_name=Doctors.query.filter_by(d_id=session['doc_id']).first().d_name,
-                                    d_id=Doctors.query.filter_by(d_id=session['doc_id']).first().d_id, date=p_date, Time=p_time)
+            appoint = Appointments(p_id=current_user.p_id, 
+                                    d_id=doc.d_id, date=p_date, Time=p_time)
             db.session.add(appoint)
             db.session.commit()
-            # google_calendar = generate_gcalendar_link("Appointment with dr {Doctors.query.filter_by(d_id=session['doc_id']).first().d_name} at cardiology department",
-            #                                           "", p_time,
-            #                                           timedelta(p_time.split(':')[0], p_time.split(':')[1]) + timedelta(
-            #                                               minutes=30))
-            # flash(Markup(
-            # f'A new appointment is created, <a href="{google_calendar}" target="_blank">save the appointment to your calendar</a>'),
-            #   'success')
+            google_calendar = generate_gcalendar_link(f"Appointment with dr {Doctors.query.filter_by(d_id=session['doc_id']).first().d_name} at cardiology department",
+                                                      "", parse_time2(session['day'], hour),
+                                                      parse_time2(session['day'], hour) + timedelta(minutes=30))
+            flash(Markup(
+            f'A new appointment is created, <a href="{google_calendar}" target="_blank">save the appointment to your calendar</a>'),
+              'success')
+
+            if examin.query.filter_by(d_id=doc.d_id, p_id=current_user.p_id).all()==[]:
+                pat = examin(d_id=doc.d_id, p_id=current_user.p_id)
+                db.session.add(pat)
+                db.session.commit()
             return redirect(url_for('book_appointment'))
 
-        available_time = availabe_appointments(Doctors.query.filter_by(d_id=session['doc_id']).first(), session['day'])
-        return render_template('book2.html', user=p_user, time=available_time, active=sidebar_active)
+        available_time = availabe_appointments(doc, session['day'])
+        return render_template('book2.html', user=current_user, time=available_time, active=sidebar_active)
     else:
         render_template('page403.html')
 
@@ -85,14 +92,15 @@ def doc_appointments():
 def contact_page():
     if session["role"] == "Patient":
         sidebar_active = 'contact_page'
+        doctors = Doctors.query.all()
         if request.method == 'POST':
             _text = request.form['Message']
             session['doc_id'] = request.form['doctor']
-            message1 = p_Messages(p_id=p_user.p_id, p_name=p_user.p_name, d_id=Doctors.query.filter_by(d_id=session['doc_id']).first().d_id,
-                                  d_name=Doctors.query.filter_by(d_id=session['doc_id']).first().d_name, message=_text, msg_date=datetime.now())
+            message1 = p_Messages(p_id=p_user.p_id, d_id=Doctors.query.filter_by(d_id=session['doc_id']).first().d_id,
+                                message=_text, msg_date=datetime.now())
             db.session.add(message1)
             db.session.commit()
-            # flash('Message is sent successfully')
+            flash('Message is sent successfully')
     else:
         render_template('page403.html')
 
@@ -107,10 +115,10 @@ def scans_page():
         i = 1
         if request.method == 'POST':
             scan_path = save_picture(request.files['myfile'], 'scans')
-            scan = Scans(p_id=p_user.p_id, p_name=p_user.p_name, scan_path=scan_path, scan_date=datetime.now())
+            scan = Scans(p_id=p_user.p_id, scan_path=scan_path, scan_date=datetime.now())
             db.session.add(scan)
             db.session.commit()
-            # flash('Your scan is uploaded')
+            flash('Your scan is uploaded')
 
         patient_scans = Scans.query.filter_by(p_id=p_user.p_id).all()
         return render_template('scans.html', user=p_user, scans=patient_scans, i=i, active=sidebar_active)

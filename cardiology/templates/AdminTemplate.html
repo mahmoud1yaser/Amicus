@@ -21,25 +21,25 @@
 <body>
 
 	<!-- Loader -->
-<!--	<div class="loader">-->
-<!--		<div class="loader-inner">-->
-<!--		  <div class="loader-line-wrap">-->
-<!--			<div class="loader-line"></div>-->
-<!--		  </div>-->
-<!--		  <div class="loader-line-wrap">-->
-<!--			<div class="loader-line"></div>-->
-<!--		  </div>-->
-<!--		  <div class="loader-line-wrap">-->
-<!--			<div class="loader-line"></div>-->
-<!--		  </div>-->
-<!--		  <div class="loader-line-wrap">-->
-<!--			<div class="loader-line"></div>-->
-<!--		  </div>-->
-<!--		  <div class="loader-line-wrap">-->
-<!--			<div class="loader-line"></div>-->
-<!--		  </div>-->
-<!--		</div>-->
-<!--	  </div>-->
+	<div class="loader">
+		<div class="loader-inner">
+		  <div class="loader-line-wrap">
+			<div class="loader-line"></div>
+		  </div>
+		  <div class="loader-line-wrap">
+			<div class="loader-line"></div>
+		  </div>
+		  <div class="loader-line-wrap">
+			<div class="loader-line"></div>
+		  </div>
+		  <div class="loader-line-wrap">
+			<div class="loader-line"></div>
+		  </div>
+		  <div class="loader-line-wrap">
+			<div class="loader-line"></div>
+		  </div>
+		</div>
+	  </div>
 	  <!-- End loader -->
 
 
@@ -61,18 +61,13 @@
 			</li>
 			<li>
 
-				<a href="{{url_for('view_doctor_patients')}}">
+				<a href="{{url_for('view_admin_patients')}}">
 
 					<i class='bx bxs-user-pin' ></i>
 					<span class="text">Patients</span>
 				</a>
 			</li>
-			<li>
-				<a href="/AdminDashboard #staff">
-					<i class='bx bxs-user-pin' ></i>
-					<span class="text">Doctors</span>
-				</a>
-			</li>
+			
 			<li>
 				<a href="{{url_for('add_doctor')}}">
 
@@ -117,7 +112,7 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">MedCare</a>
+			<a href="#" class="nav-link">Amicus</a>
 			<form action="#">
 				<div class="form-input">
 					<input type="" placeholder="">
@@ -140,9 +135,7 @@
         {% if messages %}
            {% for category, message in messages %}
               <div class="alert alert-{{ category }}">
-                  <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
+              
                   {{ message }}
               </div>
            {% endfor %}

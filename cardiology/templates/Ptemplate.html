@@ -58,13 +58,7 @@
 			<span class="text" >{{user.p_name}} </span>
 		</a>
 		<ul class="side-menu top">
-			<li>
-
-				<a href="{{url_for("home_page")}}" target="_blank" >
-					<i class='bx bxs-home-heart' ></i>
-					<span class="text">Home</span>
-				</a>
-			</li>
+			
 			{% if active=='p_profile' %}
 			<li class="active">
 			{% else %}
@@ -139,7 +133,7 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<span id="brand"><h3>MedCare</h3></span>
+			<span id="brand"><h3>Amicus</h3></span>
 			<form action="#">
 				<div class="form-input">
 					
@@ -159,13 +153,11 @@
 		<!-- MAIN -->
 		<main>
 		
-		 {% with messages = get_flashed_messages(with_categories=true) %}
+		{% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
            {% for category, message in messages %}
               <div class="alert alert-{{ category }}">
-                  <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close" id="btn7">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
+                  
                  <div id="alert"> {{ message }}</div>
               </div>
            {% endfor %}

@@ -17,7 +17,7 @@
 					<form action="{{url_for('p_profile')}}" method="post" enctype="multipart/form-data">
 						<div class="upload-btn-wrapper">
 						  <button class="btn">Edit
-							<input type="file" name="myfile" />
+							<input type="file" name="myfile" required/>
 						  </button>
 						</div>
 						
@@ -169,7 +169,7 @@
                		<div class="content">
 						<div>
 							<br><h3> <span>Doctor name</span> </h3>
-							<label for="di">{{pr.d_name}}</label>
+							<label for="di">{{d_obj[loop.index].d_name}}</label>
 						</div>
 						<div>
 							<br><h3> <span>Date</span></h3>

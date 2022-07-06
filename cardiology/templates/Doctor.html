@@ -15,7 +15,7 @@
        <form action="{{url_for('update_docPic')}}" method="post" enctype="multipart/form-data">
       <div class="upload-btn-wrapper">
         <button class="btn">Edit
-          <input type="file" name="myfile" />
+          <input type="file" name="myfile" required/>
         </button>
       </div>
       
@@ -61,7 +61,7 @@
         </div>
         <div>
           <h2>Phone Number</h2>
-          <label for="Phone-Number">{{user.d_phone}}</label>
+          <label for="Phone-Number">0{{user.d_phone}}</label>
         </div>
       </div>
     </div>
@@ -95,7 +95,7 @@
         </div>
         <div>
           <h2>Salary</h2>
-          <label for="Salary">{{user.d_salary}}</label>
+          <label for="Salary">{{user.d_salary}} EGP</label>
         </div>
       </div>
     </div>
@@ -127,11 +127,11 @@
         </tr>
       </thead>
       <tbody>
-        {% for patient in patients %}
+        {% for patient in pats %}
         <tr>
           <td>
             <p>
-              <label for="Patient">{{patient.p_name}}</label>
+              <label for="Patient">{{p_names[loop.index].d_name}}</label>
             </p>
           </td>
           <td>{{patient.p_id}}</td>
@@ -164,17 +164,17 @@
       <div>
         <br />
         <h3><span>Patient Name</span></h3>
-        <label for="di"> {{msg.p_name}}</label>
+        <label for="di"> {{p_names2[loop.index].p_name}}</label>
       </div>
       <div>
         <br />
         <h3><span>Patient Email</span></h3>
-        <label for="di"> {{Patients.query.filter_by(p_id=msg.p_id).first().p_email}}</label>
+        <label for="di"> {{p_names2[loop.index].p_email}}</label>
       </div>
       <div>
         <br />
         <h3><span>Patient Number</span></h3>
-        <label for="di"> {{Patients.query.filter_by(p_id=msg.p_id).first().p_phon}}</label>
+        <label for="di"> {{p_names2[loop.index].p_phone}}</label>
       </div>
       <div>
         <br />
@@ -190,7 +190,7 @@
           name="comment"
           rows="5"
           cols="100"
-          value="{{msg.message}}"
+          placeholder="{{msg.message}}"
         ></textarea>
       </div>
     </div>
