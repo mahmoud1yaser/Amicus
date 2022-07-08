@@ -1,7 +1,4 @@
 import datetime
-
-from sqlalchemy import true
-from cardiology import patient
 from cardiology.models import Appointments, Doctors, Patients, examin
 import os
 import secrets

@@ -72,7 +72,7 @@
 				<a href="{{url_for('view_admin_patients')}}">
 
 					<i class='bx bxs-user-pin' ></i>
-					<span class="text">Patients</span>
+					<span class="text">All Patients</span>
 				</a>
 			</li>
 			
@@ -108,6 +108,8 @@
 				  <span class="text">Edit profile</span>
 				</a>
 			  </li>
+			{% block navbar %}
+			{% endblock %}
 
 
 
@@ -131,8 +133,8 @@
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Amicus</a>
+			<i class="bx bx-menu"></i>
+        <span id="brand"><h3>Amicus</h3></span>
 			<form action="#">
 				<div class="form-input">
 					<input type="" placeholder="">
@@ -142,7 +144,7 @@
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
 
-			<a href="#" class="profile">
+			<a href="{{url_for('admin_dashboard')}}" class="profile">
 				<img src="{{current_user.a_photo}}">
 			</a>
 		</nav>
@@ -151,16 +153,19 @@
 		<!-- MAIN -->
 		<main>
 
-			 {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-           {% for category, message in messages %}
-              <div class="alert alert-{{ category }}">
-              
-                  {{ message }}
-              </div>
-           {% endfor %}
-        {% endif %}
-      {% endwith %}
+			<script type="text/javascript">window.setTimeout("document.getElementById('flash').style.display='none';", 5000); </script>
+            <div class="flash" id="flash">
+			{% with messages = get_flashed_messages(with_categories=true) %}
+			  {% if messages %}
+				 {% for category, message in messages %}
+				  <div class="alert alert-{{ category }}">
+					{{ message }}
+				  </div>
+				 {% endfor %}
+			  {% endif %}
+			  {% endwith %}
+			</div>
+
 
             {% block content %}
             <!-- =========== Body =========  -->

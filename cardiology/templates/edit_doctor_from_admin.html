@@ -2,15 +2,23 @@
 {%block name%}
 {{ current_user.a_name }}
 {%endblock%}
+
+{% block navbar %}
+{% if active=='EditDoctorInfo' %}
+			<li class="active">
+			{% else %}
+			<li >
+			{% endif %}
+
+				<a href="{{url_for('edit_doctor')}}" >
+				  <i class='bx bxs-pencil' ></i>
+				  <span class="text">Edit Doctor</span>
+				</a>
+			  </li>
+{% endblock %}
+
 {% block content %}
 <Title>Add doctor</Title>
-<!--<div class="table-data">-->
-<!--	<div class="order1">-->
-<!--	  <div class="head">-->
-<!--		<i class='bx bxs-user-plus'></i>-->
-<!--		<h3>Add Doctor</h3>-->
-<!--	  </div>-->
-<!--		<div class="add-form" >-->
 	<div class="table-data">
 		<div class="order1">
 		  <div class="head">
@@ -18,23 +26,31 @@
 			<h3>Edit Doctor</h3>
 		  </div>
 	<div class="add-form">
-			<form action="EditDoctorInfo" method="post">
+			<form action="EditDoctorInfo" method="POST">
 			  {{ form.hidden_tag() }}
-			  <h1>Edit form</h1>
+
+				<label>New Password:</label>
+			  <div>
+				  {{ form.password(class="form-control", placeholder="Enter New Password") }}
+			  </div>
+
 			  <label>New E-mail:</label>
 			  <div>
-				  {{ form.email(class="form-control", placeholder="Old E-mail") }}                </div>
-			  <label>New Password:</label>
+				  {{ form.email(class="form-control", value=doc.d_email) }}                </div>
+			  <label>New Phone:</label>
 			  <div>
-				  {{ form.password(class="form-control", placeholder="Old Password") }}
-			  </div>
-			  <label>New Position:</label>
-			  <div>
-				  {{ form.position(class="form-control", placeholder="Old Position") }}
+				  {{ form.phone(class="form-control", value=doc.d_phone) }}
 			  </div>
 			  <label>New Salary:</label>
 			  <div>
-				  {{ form.salary(class="form-control", placeholder="Old Salary") }}
+				  {{ form.salary(class="form-control", value=doc.d_salary) }}
+			  </div>
+
+
+
+			  <label>New Position:</label>
+			  <div>
+				  {{ form.position(class="form-control", value=doc.d_position) }}
 			  </div>
 			  <label>New Work period From:</label>
 			  <div>

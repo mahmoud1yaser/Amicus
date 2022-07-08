@@ -53,8 +53,15 @@ body {
 }
 
 
-
-
+.flash{
+  border-radius: 20px;
+  width: fit-content;
+  margin: auto;
+  margin-top: 10px;
+  font-weight: bolder;
+  margin-bottom: 10px;
+  background-color: rgba(74, 222, 74, 0.504);
+}
 
 /* SIDEBAR */
 #sidebar {
@@ -1254,3 +1261,6 @@ cursor: pointer;
   #alert{
 	  color: var(--dark);
   }
+
+
+

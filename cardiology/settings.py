@@ -1,2 +1,0 @@
-# global userType
-# userType = "Patient"

@@ -103,7 +103,7 @@ class Appointments(db.Model):
 
 
 class Medical_records(db.Model):
-    p_id = db.Column(db.Integer(), db.ForeignKey( 'patients.p_id'), primary_key=True)
+    p_id = db.Column(db.Integer(), db.ForeignKey('patients.p_id'), primary_key=True)
     d_id = db.Column(db.Integer(), db.ForeignKey('doctors.d_id'))
     diseases_history = db.Column(db.String())
     restricted_drugs = db.Column(db.String())
@@ -131,6 +131,7 @@ class Scans(db.Model):
     p_id = db.Column(db.Integer(), db.ForeignKey('patients.p_id'))
     scan_path = db.Column(db.String(), nullable=False)
     scan_date = db.Column(db.DateTime())
+
 
 class examin(db.Model):
     _index = db.Column(db.Integer(), primary_key=True)
