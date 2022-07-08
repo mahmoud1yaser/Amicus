@@ -4,6 +4,7 @@ from flask import session
 
 
 @login_manager.user_loader
+# To log in different types of users.
 def user_loader(id):
     if session["role"] == "Patient":
         return Patients.query.get(int(id))

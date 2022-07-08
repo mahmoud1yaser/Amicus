@@ -13,7 +13,9 @@ from flask_login import current_user, login_required
 @app.route('/DoctorProfile', methods=['GET', 'POST'])
 @login_required
 def doc_profile():
+    # Setting the logged in user type
     if session["role"] == "Doctor":
+        # For the dynamic navbar
         active = 'profile'
         doc_patients = examin.query.filter_by(d_id=current_user.d_id).all()
         p_names1 = any_name(doc_patients, 'patient')
@@ -40,6 +42,7 @@ def doc_profile():
 @app.route('/updatepic', methods=['GET', 'POST'])
 @login_required
 def update_docPic():
+    # Setting the logged in user type
     if session["role"] == "Doctor":
         if request.method == 'POST':
             new_path = save_picture(request.files['myfile'], 'profile_pics')
@@ -51,6 +54,7 @@ def update_docPic():
 @app.route("/viewmore", methods=['GET', 'POST'])
 @login_required
 def view_more():
+    # Setting the logged in user type
     if session["role"] == "Doctor":
         active = ' '
         global selected_patient
@@ -64,7 +68,9 @@ def view_more():
 @app.route('/PatientInfo')
 @login_required
 def patient_info():
+    # Setting the logged in user type
     if session["role"] == "Doctor":
+        # For the dynamic navbar
         active = 'profile'
         MR = Medical_records.query.filter_by(p_id=Patients.query.filter_by(
             p_id=int(session['patient_id'])).first().p_id).first()
@@ -85,7 +91,9 @@ def patient_info():
 @app.route('/AddMedicalRecord', methods=['GET', 'POST'])
 @login_required
 def add_MR():
+    # Setting the logged in user type
     if session["role"] == "Doctor":
+        # For the dynamic navbar
         active = 'profile'
         if request.method == 'POST':
             if Medical_records.query.filter_by(p_id=int(session['patient_id'])).all() == []:
@@ -111,7 +119,9 @@ def add_MR():
 @app.route('/AddPrescription', methods=['GET', 'POST'])
 @login_required
 def add_PR():
+    # Setting the logged in user type
     if session["role"] == "Doctor":
+        # For the dynamic navbar
         active = 'profile'
         if request.method == 'POST':
             new_PR = Prescription(p_id=int(session['patient_id']), d_id=current_user.d_id,
@@ -131,7 +141,9 @@ def add_PR():
 @app.route('/DoctorAppointments')
 @login_required
 def doctor_appoints():
+    # Setting the logged in user type
     if session["role"] == "Doctor":
+        # For the dynamic navbar
         active = 'appointments'
         doct_appoints = Appointments.query.filter_by(d_id=current_user.d_id).all()
         doc_appoints = sorting_appointments(doct_appoints, 'doctor')
@@ -146,7 +158,9 @@ def doctor_appoints():
 @app.route('/EditDoctorInformation', methods=['GET', 'POST'])
 @login_required
 def edit_doc():
+    # Setting the logged in user type
     if session["role"] == "Doctor":
+        # For the dynamic navbar
         active = 'edit'
         form = editDoctorForm_primary()
         if form.validate_on_submit():
@@ -168,7 +182,9 @@ def edit_doc():
 @app.route('/PatientScans')
 @login_required
 def patient_scans():
+    # Setting the logged in user type
     if session["role"] == "Doctor":
+        # For the dynamic navbar
         active = 'scans'
         patient_scans = Scans.query.filter_by(p_id=Patients.query.filter_by(
             p_id=int(session['patient_id'])).first().p_id).all()

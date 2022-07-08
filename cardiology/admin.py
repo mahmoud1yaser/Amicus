@@ -13,6 +13,7 @@ appoints = Appointments.query.all()
 @app.route('/AdminDashboard', methods=['GET', 'POST'])
 @login_required
 def admin_dashboard():
+    # For the dynamic navbar
     active = 'dashboard'
     session['patient_id'] = 0
     if session["role"] == "Admin":
@@ -48,6 +49,7 @@ def update_adminPic():
 @app.route('/AdminPatients', methods=['GET', 'POST'])
 @login_required
 def view_admin_patients():
+    # For the dynamic navbar
     active = 'AdminPatients'
     p = 0
     if session["role"] == "Admin":
@@ -67,6 +69,7 @@ def view_admin_patients():
 @app.route('/DoctorView')
 @login_required
 def view_selected_doctor():
+    # For the dynamic navbar
     active = 'DoctorView'
     if session["role"] == "Admin":
         doct = Doctors.query.filter_by(d_id=int(session['doc_id'])).first()
@@ -81,6 +84,7 @@ def view_selected_doctor():
 @app.route('/AddAdmin', methods=['GET', 'POST'])
 @login_required
 def add_admin():
+    # For the dynamic navbar
     active = 'AddAdmin'
     if session["role"] == "Admin":
         form = addAdminForm()
@@ -105,6 +109,7 @@ def add_admin():
 @app.route('/AddDoctor', methods=['GET', 'POST'])
 @login_required
 def add_doctor():
+    # For the dynamic navbar
     active = 'AddDoctor'
     if session["role"] == "Admin":
         form = addDoctorForm()
@@ -135,6 +140,7 @@ def add_doctor():
 @app.route('/EditDoctorInfo', methods=['GET', 'POST'])
 @login_required
 def edit_doctor():
+    # For the dynamic navbar
     active = 'EditDoctorInfo'
     if session["role"] == "Admin":
 
@@ -165,7 +171,9 @@ def edit_doctor():
 @app.route('/EditAdminInfo', methods=['GET', 'POST'])
 @login_required
 def edit_admin():
+    # For the dynamic navbar
     active = 'EditAdminInfo'
+    # Setting the logged in user type
     if session["role"] == "Admin":
         form = editAdminForm()
         if form.validate_on_submit():

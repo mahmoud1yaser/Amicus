@@ -20,7 +20,9 @@ doctors = Doctors.query.all()
 @app.route('/PatientProfile', methods=['GET', 'POST'])
 @login_required
 def p_profile():
+    # For the dynamic navbar
     if session["role"] == "Patient":
+        # For the dynamic navbar
         sidebar_active = 'p_profile'
         MR = Medical_records.query.filter_by(p_id=current_user.p_id).first()
         PRs = Prescription.query.filter_by(p_id=current_user.p_id).all()
@@ -42,8 +44,10 @@ def p_profile():
 @app.route('/BookAppointment', methods=['GET', 'POST'])
 @login_required
 def book_appointment():
+    # Setting the logged in user type
     if session["role"] == "Patient":
         global day
+        # For the dynamic navbar
         sidebar_active = 'book_appointment'
         doctors = Doctors.query.all()
         if request.method == 'POST':
@@ -60,7 +64,9 @@ def book_appointment():
 @app.route('/AvailableAppointment', methods=['GET', 'POST'])
 @login_required
 def doc_appointments():
+    # Setting the logged in user type
     if session["role"] == "Patient":
+        # For the dynamic navbar
         sidebar_active = 'book_appointment'
         doc = Doctors.query.filter_by(d_id=session['doc_id']).first()
         if request.method == 'POST':
@@ -93,7 +99,9 @@ def doc_appointments():
 @app.route('/contact', methods=['POST', 'GET'])
 @login_required
 def contact_page():
+    # Setting the logged in user type
     if session["role"] == "Patient":
+        # For the dynamic navbar
         sidebar_active = 'contact_page'
         doctors = Doctors.query.all()
         if request.method == 'POST':
@@ -113,7 +121,9 @@ def contact_page():
 @app.route('/scans', methods=['POST', 'GET'])
 @login_required
 def scans_page():
+    # Setting the logged in user type
     if session["role"] == "Patient":
+        # For the dynamic navbar
         sidebar_active = 'scans_page'
         i = 1
         if request.method == 'POST':
@@ -132,21 +142,10 @@ def scans_page():
 @app.route('/EditPatientProfile', methods=['POST', 'GET'])
 @login_required
 def edit_patient():
+    # Setting the logged in user type
     if session["role"] == "Patient":
         form = editPatientForm()
         if form.validate_on_submit():
-            patientEmail = Patients.query.filter_by(p_email=form.email.data).first()
-            patientPhone = Patients.query.filter_by(p_phone=form.phone.data).first()
-            patientUser = Patients.query.filter_by(p_username=form.username.data).first()
-
-            updatedPatient = Patients.query.get(current_user.p_id)
-            if patientEmail and not (updatedPatient.p_id == patientEmail.p_id):
-                raise ValidationError('Email Address already exists! Please try a different email address')
-            if patientPhone and not (updatedPatient.p_id == patientPhone.p_id):
-                raise ValidationError('Phone Number already exists! Please try a different phone number')
-            if patientUser and not (updatedPatient.p_id == patientUser.p_id):
-                raise ValidationError('Username already exists! Please try a different username')
-
             current_user.p_email = form.email.data
             current_user.password = form.password.data
             current_user.p_username = form.username.data

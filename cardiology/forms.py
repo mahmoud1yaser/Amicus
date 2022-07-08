@@ -61,6 +61,7 @@ class addDoctorForm(FlaskForm):
         if doctorPhone:
             raise ValidationError('Phone number already exists! Please try a different phone number')
 
+    # To create all combinations of hours
     def work_period_counter(self):
         l1 = []
         l2 = []
@@ -117,7 +118,7 @@ class editDoctorForm_foreign(FlaskForm):
         doctorPhone = Doctors.query.filter_by(d_phone=phone_to_check.data).first()
         if doctorPhone and not (updatedDoctor.d_id == doctorPhone.d_id):
             raise ValidationError('Phone number already exists! Please try a different phone number')
-
+    # To create all combinations of hours
     def work_period_counter(self):
         l1 = []
         l2 = []
