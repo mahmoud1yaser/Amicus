@@ -1,8 +1,9 @@
-from flask import render_template, redirect, url_for, request, flash, Markup, session, Response
-from flask_sqlalchemy import SQLAlchemy
-from cardiology.models import Doctors, Patients, Admins, Appointments, Medical_records, p_Messages, Scans, Prescription, examin
+from flask import render_template, redirect, url_for, request, flash, Markup, session
+from wtforms.validators import ValidationError
+from cardiology.models import Doctors, Patients, Appointments, Medical_records, p_Messages, Scans, Prescription, \
+    examin
 from cardiology.forms import editPatientForm
-from cardiology import app, db, doctor
+from cardiology import app, db
 from datetime import datetime, timedelta
 from cardiology.my_functions import any_name, parse_time, generate_gcalendar_link, availabe_appointments, save_picture, \
     sorting_appointments, parse_time2
@@ -12,6 +13,7 @@ from flask_login import current_user, login_required
 p_user = current_user
 doctors = Doctors.query.all()
 
+
 # ---------------------------------
 
 
@@ -20,7 +22,6 @@ doctors = Doctors.query.all()
 def p_profile():
     if session["role"] == "Patient":
         sidebar_active = 'p_profile'
-        doctors = Doctors.query.all()
         MR = Medical_records.query.filter_by(p_id=current_user.p_id).first()
         PRs = Prescription.query.filter_by(p_id=current_user.p_id).all()
         appoints = Appointments.query.filter_by(p_id=current_user.p_id).all()
@@ -29,7 +30,7 @@ def p_profile():
         d_obj = any_name(PRs, 'doctor')
         if request.method == 'POST':
             pic_path = save_picture(request.files['myfile'], 'profile_pics')
-            current_user.p_photo=pic_path
+            current_user.p_photo = pic_path
             db.session.commit()
             return redirect(url_for('p_profile'))
         return render_template('patient_profile.html', user=current_user, MR=MR, PRs=PRs, appoints=appoints,
@@ -42,10 +43,10 @@ def p_profile():
 @login_required
 def book_appointment():
     if session["role"] == "Patient":
-        global  day
+        global day
         sidebar_active = 'book_appointment'
         doctors = Doctors.query.all()
-        if request.method == 'POST':            
+        if request.method == 'POST':
             session['doc_id'] = request.form['doctors']
             session['day'] = request.form['date']
 
@@ -54,6 +55,7 @@ def book_appointment():
         return render_template('Booking.html', user=current_user, doctors=doctors, active=sidebar_active)
     else:
         render_template('page403.html')
+
 
 @app.route('/AvailableAppointment', methods=['GET', 'POST'])
 @login_required
@@ -64,18 +66,19 @@ def doc_appointments():
         if request.method == 'POST':
             hour = request.form['Time']
             p_date, p_time = parse_time(session['day'], hour)
-            appoint = Appointments(p_id=current_user.p_id, 
-                                    d_id=doc.d_id, date=p_date, Time=p_time)
+            appoint = Appointments(p_id=current_user.p_id,
+                                   d_id=doc.d_id, date=p_date, Time=p_time)
             db.session.add(appoint)
             db.session.commit()
-            google_calendar = generate_gcalendar_link(f"Appointment with dr {Doctors.query.filter_by(d_id=session['doc_id']).first().d_name} at cardiology department",
-                                                      "", parse_time2(session['day'], hour),
-                                                      parse_time2(session['day'], hour) + timedelta(minutes=30))
+            google_calendar = generate_gcalendar_link(
+                f"Appointment with dr {Doctors.query.filter_by(d_id=session['doc_id']).first().d_name} at cardiology department",
+                "", parse_time2(session['day'], hour),
+                parse_time2(session['day'], hour) + timedelta(minutes=30))
             flash(Markup(
-            f'A new appointment is created, <a href="{google_calendar}" target="_blank">save the appointment to your calendar</a>'),
-              'success')
+                f'A new appointment is created, <a href="{google_calendar}" target="_blank">save the appointment to your calendar</a>'),
+                'success')
 
-            if examin.query.filter_by(d_id=doc.d_id, p_id=current_user.p_id).all()==[]:
+            if examin.query.filter_by(d_id=doc.d_id, p_id=current_user.p_id).all() == []:
                 pat = examin(d_id=doc.d_id, p_id=current_user.p_id)
                 db.session.add(pat)
                 db.session.commit()
@@ -97,7 +100,7 @@ def contact_page():
             _text = request.form['Message']
             session['doc_id'] = request.form['doctor']
             message1 = p_Messages(p_id=p_user.p_id, d_id=Doctors.query.filter_by(d_id=session['doc_id']).first().d_id,
-                                message=_text, msg_date=datetime.now())
+                                  message=_text, msg_date=datetime.now())
             db.session.add(message1)
             db.session.commit()
             flash('Message is sent successfully')
@@ -126,13 +129,24 @@ def scans_page():
         render_template('page403.html')
 
 
-# needs validation
 @app.route('/EditPatientProfile', methods=['POST', 'GET'])
 @login_required
 def edit_patient():
     if session["role"] == "Patient":
         form = editPatientForm()
         if form.validate_on_submit():
+            patientEmail = Patients.query.filter_by(p_email=form.email.data).first()
+            patientPhone = Patients.query.filter_by(p_phone=form.phone.data).first()
+            patientUser = Patients.query.filter_by(p_username=form.username.data).first()
+
+            updatedPatient = Patients.query.get(current_user.p_id)
+            if patientEmail and not (updatedPatient.p_id == patientEmail.p_id):
+                raise ValidationError('Email Address already exists! Please try a different email address')
+            if patientPhone and not (updatedPatient.p_id == patientPhone.p_id):
+                raise ValidationError('Phone Number already exists! Please try a different phone number')
+            if patientUser and not (updatedPatient.p_id == patientUser.p_id):
+                raise ValidationError('Username already exists! Please try a different username')
+
             current_user.p_email = form.email.data
             current_user.password = form.password.data
             current_user.p_username = form.username.data

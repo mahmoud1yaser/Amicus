@@ -318,7 +318,7 @@ top: 25px;
 #sidebar .side-menu li {
   height: 48px;
   background: transparent;
-  margin-left: 6px;
+  margin-left: -2rem;
   border-radius: 48px 0 0 48px;
   padding: 4px;
 }

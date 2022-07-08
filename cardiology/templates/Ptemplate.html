@@ -52,7 +52,7 @@
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
+		<a href="href="{{url_for('p_profile')}}"" class="brand">
 			
 			<i class='bx bxs-user-circle'></i>
 			<span class="text" >{{user.p_name}} </span>
@@ -143,7 +143,7 @@
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
 			
-			<a href="#" class="profile">
+			<a href="{{url_for('p_profile')}}" class="profile">
 				<img src="{{user.p_photo}}">
 			</a>
 
@@ -153,16 +153,18 @@
 		<!-- MAIN -->
 		<main>
 		
-		{% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-           {% for category, message in messages %}
-              <div class="alert alert-{{ category }}">
-                  
-                 <div id="alert"> {{ message }}</div>
-              </div>
-           {% endfor %}
-        {% endif %}
-      {% endwith %}
+		<script type="text/javascript">window.setTimeout("document.getElementById('flash').style.display='none';", 5000); </script>
+            <div class="flash" id="flash">
+			{% with messages = get_flashed_messages(with_categories=true) %}
+			  {% if messages %}
+				 {% for category, message in messages %}
+				  <div class="alert alert-{{ category }}">
+					{{ message }}
+				  </div>
+				 {% endfor %}
+			  {% endif %}
+			  {% endwith %}
+			</div>
 			  
 			  
 			  

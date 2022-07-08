@@ -1,7 +1,4 @@
 import datetime
-
-from sqlalchemy import true
-from cardiology import patient
 from cardiology.models import Appointments, Doctors, Patients, examin
 import os
 import secrets
@@ -70,9 +67,9 @@ def sorting_appointments(appointments, type):
     return appoints
 
 
-def doct_patient(appointments):
+def doct_patient(examin_list):
     patients=[]
-    for i in appointments:
+    for i in examin_list:
         p= Patients.query.filter_by(p_id=i.p_id).first()
         patients.append(p)
     patients = list(set(patients))
@@ -97,6 +94,6 @@ def count_patients(doctors):
     return num
 
 def sorting_docs(doctors):
-    docs=sorted(doctors, key= lambda x:len(examin.query.filter_by(d_id=x.d_id).all()))
+    docs=sorted(doctors, key= lambda x:len(examin.query.filter_by(d_id=x.d_id).all()), reverse=True)
     return docs
 

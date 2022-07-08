@@ -42,37 +42,6 @@ function validateForm(){
 
 
 
-// form.addEventListener('submit',(event)=>{  
-//     event.preventDefault();
-//     validateForm();
-//    })
-
-
-//   function validateForm(){
-//   if(doctors.value=='Select your doctor'){
-//     setError(doctorInput,"Please select your doctor");
-//     // flag = true;
-//   }
-//   else{
-//     clearerror(doctorInput);
-    
-//   }
-//   if(day.value.trim()==''){
-//     setError(day,"Select a day");
-//     // flag = true;
-//   }
-//   else{
-//     clearerror(day);
-    
-//   }
-  
-// }
-
-// }
-  // }
-
-
-
 function setError(element,errorMessage){
     const parent=element.parentElement;
     parent.classList.add('error');

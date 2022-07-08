@@ -236,13 +236,3 @@ function validateForm_2() {
 
 // }
 // ----------------------
-
-function close(){
-  var x= document.getElementById("#flash");
-  if(x.style.display=="none"){
-    x.style.display="block"
-  }
-  else{
-    x.style.display="none"
-  }
-}

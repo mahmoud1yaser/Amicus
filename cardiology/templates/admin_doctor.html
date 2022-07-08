@@ -1,7 +1,23 @@
 {% extends 'AdminTemplate.html' %}
+
 {%block name%}
 {{ current_user.a_name }}
 {%endblock%}
+
+{% block navbar %}
+{% if active=='DoctorView' %}
+			<li class="active">
+			{% else %}
+			<li >
+			{% endif %}
+
+				<a href="{{url_for('view_selected_doctor')}}" >
+				  <i class='bx bxs-pencil' ></i>
+				  <span class="text">View Doctor</span>
+				</a>
+			  </li>
+{% endblock %}
+
 {% block content %}
 <Title>Doctors</Title>
 <div class="table-data">
@@ -13,7 +29,10 @@
       class="profile"
     />
    <span>{{doc.d_name}}</span>
-   <a href={{url_for('edit_doctor')}} class="btn-edit"> Edit </a>
+
+   <form action="{{url_for('edit_doctor')}}">
+						<button type="submit" class="btn-edit" value="{{doc.d_id}}">Edit</button>
+						<form>
 
   </div>
 </div>
@@ -126,12 +145,14 @@
       <tbody>
         {% for patient in doc_patients %}
         <tr>
+          
           <td>
+            <p>{{patient.p_name}}</p>
+
           </td>
-          <td><p>{{patient.p_name}}</p></td>
           <td>{{patient.p_id}}</td>
           <td>{{patient.p_email}}</td>
-          <td>{{patient.p_phone}}</td>
+          <td>0{{patient.p_phone}}</td>
           </tr>
 
           {% endfor %}

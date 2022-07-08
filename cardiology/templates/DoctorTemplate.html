@@ -56,7 +56,7 @@
   <!-- Copy this to Html file under body tag -->
     <!-- SIDEBAR -->
     <section id="sidebar">
-      <a href="#" class="brand">
+      <a href="{{url_for('doc_profile')}}" class="brand">
         <i class="bx bxs-user-circle"></i>
         <span class="text">{{user.d_name}}</span>
       </a>
@@ -67,7 +67,7 @@
 			{% else %}
 			<li >
 			{% endif %}
-          <a href={{url_for('doc_profile')}}>
+          <a href="{{url_for('doc_profile')}}">
             <i class="bx bxs-dashboard"></i>
             <span class="text">Profile</span>
           </a>
@@ -77,10 +77,9 @@
 			{% else %}
 			<li >
 			{% endif %}
-          <a href={{url_for('doctor_appoints')}}>
-            <i class="fa-solid fa-calendar-check" style="margin-left: 15px;
-            margin-right: 10px;"></i>
-             <span class="text">Appointments</span>
+          <a href="{{url_for('doctor_appoints')}}">
+            <i class="fa-solid fa-calendar-check" style="margin-left: 1rem;" ></i>
+             <span class="text" style="margin-left: 1rem;">Appointments</span>
           </a>
         </li>
 
@@ -126,25 +125,24 @@
         <input type="checkbox" id="switch-mode" hidden />
         <label for="switch-mode" class="switch-mode"></label>
 
-        <a href="#" class="profile">
+        <a href="{{url_for('doc_profile')}}" class="profile">
           <img src='{{user.d_photo}}' />
         </a>
       </nav>
       <!-- NAVBAR -->
-`   <div class="flash" id="flash">
-  {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-         {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">
-                <button onclick="close()"type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close" id="flash">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                {{ message }}
-            </div>
-         {% endfor %}
-      {% endif %}
-    {% endwith %}
-  </div>  
+
+      <script type="text/javascript">window.setTimeout("document.getElementById('flash').style.display='none';", 5000); </script>
+            <div class="flash" id="flash">
+			{% with messages = get_flashed_messages(with_categories=true) %}
+			  {% if messages %}
+				 {% for category, message in messages %}
+				  <div class="alert alert-{{ category }}">
+					{{ message }}
+				  </div>
+				 {% endfor %}
+			  {% endif %}
+			  {% endwith %}
+			</div>
       <!-- MAIN -->
       <main>
         {% block content %}

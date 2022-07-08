@@ -131,7 +131,7 @@
         <tr>
           <td>
             <p>
-              <label for="Patient">{{p_names[loop.index].d_name}}</label>
+              <label for="Patient">{{p_names[loop.index].p_name}}</label>
             </p>
           </td>
           <td>{{patient.p_id}}</td>
@@ -159,7 +159,7 @@
     </div>
     {% else %}
     {% for msg in msgs %}
-    <br /><button type="button" class="collapsible">Messages_1</button>
+    <br /><button type="button" class="collapsible">Messages {{loop.index}}</button>
     <div class="content">
       <div>
         <br />
@@ -174,7 +174,7 @@
       <div>
         <br />
         <h3><span>Patient Number</span></h3>
-        <label for="di"> {{p_names2[loop.index].p_phone}}</label>
+        <label for="di"> 0{{p_names2[loop.index].p_phone}}</label>
       </div>
       <div>
         <br />

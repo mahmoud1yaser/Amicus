@@ -25,7 +25,6 @@ menuBar.addEventListener('click', function () {
 
 
 
-
 const switchMode = document.getElementById('switch-mode');
 
 switchMode.addEventListener('change', function () {
@@ -136,3 +135,19 @@ function loader(){
 	document.querySelector('.loader').style.display='none';
 	
   }
+
+// input date validation
+var DOB=document.querySelector('#date')
+var date=new Date()
+var tdate=date.getDate()
+var month=date.getMonth()+1
+
+if(tdate<10){
+  tdate="0"+tdate
+}
+if(month<10){
+  month="0"+month
+}
+var year=date.getUTCFullYear()
+var curdate=year+"-"+month+"-"+tdate
+DOB.max=curdate

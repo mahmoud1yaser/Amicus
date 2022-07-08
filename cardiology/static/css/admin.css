@@ -61,6 +61,15 @@ body {
 }
 
 
+.flash{
+  border-radius: 20px;
+  width: fit-content;
+  margin: auto;
+  margin-top: 10px;
+  font-weight: bolder;
+  margin-bottom: 10px;
+  background-color: rgba(74, 222, 74, 0.504);
+}
 
 
 
@@ -114,7 +123,7 @@ body {
 #sidebar .side-menu li {
 	height: 48px;
 	background: transparent;
-	margin-left: 6px;
+
 	border-radius: 48px 0 0 48px;
 	padding: 4px;
 }
@@ -557,8 +566,9 @@ body {
 }
 
 #content  .btn-edit {
-	margin-right: 10px;
-	width: auto;
+	margin-left: 10px;
+	margin-top: 10px;
+	width: 150px;
 	height: 36px;
 	padding: 0;
 	border-radius: 36px;
@@ -1512,7 +1522,12 @@ body {
 	margin-top:15rem;
 
 }
-
+#brand{
+	color: var(--dark);
+}
+h3 span{
+	color: var(--dark);
+}
 #btn6{
 	width:3rem;
 	margin-bottom: 1rem;
@@ -1570,6 +1585,8 @@ body {
 .error{
 	visibility: visible;
 }
+
+
 
 
 

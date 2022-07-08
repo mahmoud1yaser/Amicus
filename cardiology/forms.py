@@ -3,6 +3,8 @@ from wtforms import StringField, PasswordField, SubmitField, RadioField, DateFie
     FloatField
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError, NumberRange
 from cardiology.models import Patients, Doctors, Admins
+from flask_login import current_user
+from flask import session
 
 
 class RegisterForm(FlaskForm):
@@ -25,7 +27,7 @@ class RegisterForm(FlaskForm):
     username = StringField(validators=[Length(min=2, max=30), DataRequired()])
     email = StringField(validators=[Email(), DataRequired()])
     phone = IntegerField(
-        validators=[NumberRange(min=100000000, max=10000000000, message="Please enter a valid phone number"),
+        validators=[NumberRange(min=1000000000, max=10000000000, message="Please enter a valid phone number"),
                     DataRequired()])
     password = PasswordField(validators=[Length(min=6), DataRequired()])
     confirm_password = PasswordField(validators=[EqualTo('password'), DataRequired()])
@@ -76,7 +78,7 @@ class addDoctorForm(FlaskForm):
     fullname = StringField(validators=[Length(min=2, max=50), DataRequired()])
     email = StringField(validators=[Email(), DataRequired()])
     phone = IntegerField(
-        validators=[NumberRange(min=100000000, max=10000000000, message="Please enter a valid phone number"),
+        validators=[NumberRange(min=1000000000, max=10000000000, message="Please enter a valid phone number"),
                     DataRequired()])
     birthdate = DateField(validators=[DataRequired()])
     sex = RadioField(choices=[('Male', 'Male'), ('Female', 'Female')], validators=[DataRequired()])
@@ -98,14 +100,23 @@ class addDoctorForm(FlaskForm):
 class editDoctorForm_foreign(FlaskForm):
 
     def validate_username(self, username_to_check):
+
+        updatedDoctor = Doctors.query.filter_by(d_id=int(session['doc_id'])).first()
         doctorName = Doctors.query.filter_by(d_username=username_to_check.data).first()
-        if doctorName:
+        if doctorName and not (updatedDoctor.d_id == doctorName.d_id):
             raise ValidationError('Username already exists! Please try a different username')
 
     def validate_email(self, email_address_to_check):
+        updatedDoctor = Doctors.query.filter_by(d_id=int(session['doc_id'])).first()
         doctorEmail = Doctors.query.filter_by(d_email=email_address_to_check.data).first()
-        if doctorEmail:
+        if doctorEmail and not (updatedDoctor.d_id == doctorEmail.d_id):
             raise ValidationError('Email Address already exists! Please try a different email address')
+
+    def validate_phone(self, phone_to_check):
+        updatedDoctor = Doctors.query.filter_by(d_id=int(session['doc_id'])).first()
+        doctorPhone = Doctors.query.filter_by(d_phone=phone_to_check.data).first()
+        if doctorPhone and not (updatedDoctor.d_id == doctorPhone.d_id):
+            raise ValidationError('Phone number already exists! Please try a different phone number')
 
     def work_period_counter(self):
         l1 = []
@@ -121,6 +132,9 @@ class editDoctorForm_foreign(FlaskForm):
 
     password = PasswordField(validators=[DataRequired(), Length(min=6)])
     email = StringField(validators=[Email(), DataRequired()])
+    phone = IntegerField(
+        validators=[NumberRange(min=1000000000, max=10000000000, message="Please enter a valid phone number"),
+                    DataRequired()])
     salary = FloatField(validators=[DataRequired(), NumberRange(min=2000, max=100000000)])
     work_periodFrom = SelectField(validators=[DataRequired()],
                                   choices=work_period_counter('From'))
@@ -156,8 +170,9 @@ class addAdminForm(FlaskForm):
 
 class editAdminForm(FlaskForm):
     def validate_email(self, email_address_to_check):
+        updatedAdmin = Admins.query.get(current_user.a_id)
         adminEmail = Admins.query.filter_by(a_email=email_address_to_check.data).first()
-        if adminEmail:
+        if adminEmail and not (updatedAdmin.a_id == adminEmail.a_id):
             raise ValidationError('Email Address already exists! Please try a different email address')
 
     password = PasswordField(validators=[DataRequired(), Length(min=6)])
@@ -167,25 +182,29 @@ class editAdminForm(FlaskForm):
 
 
 class editPatientForm(FlaskForm):
+
     def validate_username(self, username_to_check):
+        updatedPatient = Patients.query.get(current_user.p_id)
         patientName = Patients.query.filter_by(p_username=username_to_check.data).first()
-        if patientName:
+        if patientName and not (updatedPatient.p_id == patientName.p_id):
             raise ValidationError('Username already exists! Please try a different username')
 
     def validate_email(self, email_address_to_check):
+        updatedPatient = Patients.query.get(current_user.p_id)
         patientEmail = Patients.query.filter_by(p_email=email_address_to_check.data).first()
-        if patientEmail:
+        if patientEmail and not (updatedPatient.p_id == patientEmail.p_id):
             raise ValidationError('Email Address already exists! Please try a different email address')
 
     def validate_phone(self, phone_to_check):
+        updatedPatient = Patients.query.get(current_user.p_id)
         patientPhone = Patients.query.filter_by(p_phone=phone_to_check.data).first()
-        if patientPhone:
+        if patientPhone and not (updatedPatient.p_id == patientPhone.p_id):
             raise ValidationError('Phone number already exists! Please try a different phone number')
 
     username = StringField(validators=[DataRequired(), Length(min=2, max=30)])
     email = StringField(validators=[Email(), DataRequired()])
     phone = IntegerField(
-        validators=[NumberRange(min=100000000, max=10000000000, message="Please enter a valid phone number"),
+        validators=[NumberRange(min=1000000000, max=10000000000, message="Please enter a valid phone number"),
                     DataRequired()])
     password = PasswordField(validators=[DataRequired(), Length(min=6)])
     submit = SubmitField(label='Update Patient')
@@ -193,24 +212,27 @@ class editPatientForm(FlaskForm):
 
 class editDoctorForm_primary(FlaskForm):
     def validate_username(self, username_to_check):
+        updatedDoctor = Doctors.query.get(current_user.d_id)
         doctorName = Doctors.query.filter_by(d_username=username_to_check.data).first()
-        if doctorName:
+        if doctorName and not (updatedDoctor.d_id == doctorName.d_id):
             raise ValidationError('Username already exists! Please try a different username')
 
     def validate_email(self, email_address_to_check):
+        updatedDoctor = Doctors.query.get(current_user.d_id)
         doctorEmail = Doctors.query.filter_by(d_email=email_address_to_check.data).first()
-        if doctorEmail:
+        if doctorEmail and not (updatedDoctor.d_id == doctorEmail.d_id):
             raise ValidationError('Email Address already exists! Please try a different email address')
 
     def validate_phone(self, phone_to_check):
+        updatedDoctor = Doctors.query.get(current_user.d_id)
         doctorPhone = Doctors.query.filter_by(d_phone=phone_to_check.data).first()
-        if doctorPhone:
+        if doctorPhone and not (updatedDoctor.d_id == doctorPhone.d_id):
             raise ValidationError('Phone number already exists! Please try a different phone number')
 
     username = StringField(validators=[DataRequired(), Length(min=2, max=30)])
     email = StringField(validators=[Email(), DataRequired()])
     phone = IntegerField(
-        validators=[NumberRange(min=100000000, max=10000000000, message="Please enter a valid phone number"),
+        validators=[NumberRange(min=1000000000, max=10000000000, message="Please enter a valid phone number"),
                     DataRequired()])
     password = PasswordField(validators=[DataRequired(), Length(min=6)])
     submit = SubmitField(label='Update Doctor')
