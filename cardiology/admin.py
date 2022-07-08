@@ -95,7 +95,7 @@ def add_admin():
                                      password=form.password.data, )
             db.session.add(admin_to_create)
             db.session.commit()
-            flash(f'doctor {admin_to_create.a_name} account is added', category='success')
+            flash(f'admin {admin_to_create.a_name} account is added', category='success')
             return redirect(url_for('admin_dashboard'))
         if form.errors != {}:  # If there are not errors from the validations
             for err_msg in form.errors.values():
@@ -126,7 +126,7 @@ def add_doctor():
                                        d_workperiod=str(form.work_periodFrom.data) + " " + str(form.work_periodTo.data))
             db.session.add(doctor_to_create)
             db.session.commit()
-            flash(f'admin {current_user.a_name} account is added', category='success')
+            flash(f'doctor {current_user.a_name} account is added', category='success')
             return redirect(url_for('admin_dashboard'))
         if form.errors != {}:  # If there are not errors from the validations
             for err_msg in form.errors.values():

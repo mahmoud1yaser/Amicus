@@ -71,6 +71,14 @@ This app Front-end design is inspired by @fajarnurwahid - <a href="https://githu
 > <center><a href="https://his-cardiology.herokuapp.com/">Hosted Website</a></center>
 <hr>
 
+- > User Accounts to test the website:
+  - > Username       | Password
+    - > patientexample | 12345678
+    - > doctorexample  | 12345678
+    - > adminexample   | 12345678  
+
+<hr>
+
 ## Team
 - Mahmoud Salman (Back-end)
 - Yousef Kadry (Back-end)
