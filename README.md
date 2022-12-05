@@ -49,6 +49,7 @@ To run this project, install it locally using pip:
 ```
 $ cd ../"project_path"
 $ pip install "required_modules"
+$ py run app.py
 ```
 <hr>
 
@@ -69,6 +70,7 @@ This app Front-end design is inspired by @fajarnurwahid - <a href="https://githu
 <hr>
 
 > <center><a href="https://his-cardiology.herokuapp.com/">Hosted Website</a></center>
+> **Heroku free services are not available anymore that's why the app will not run globally**
 <hr>
 
 - > User Accounts to test the website:
@@ -81,9 +83,9 @@ This app Front-end design is inspired by @fajarnurwahid - <a href="https://githu
 
 ## Team
 - Mahmoud Salman (Back-end)
-- Yousef Kadry (Back-end)
-- Maye Khaled (Front-end)
-- Rawan Fekry (Front-end)
-- Habiba Fathalla (Front-end)
-- Mayar Ehab (Front-end)
+- Yousef Kadry (Backend)
+- Maye Khaled (Frontend)
+- Rawan Fekry (Frontend)
+- Habiba Fathalla (Frontend)
+- Mayar Ehab (Frontend)
 <hr>
